@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Compozitie</title>
+    <link rel="stylesheet" type="text/css" href="dirijor.css">
+    <script src="https://unpkg.com/wavesurfer.js"></script>
+</head>
+<body>
+    <main id="main">
+        <aside id="aside">
+            <div class="instrument">
+                <img id="instrument1" class="poza_instrument" src="assets/synth.png"/><br/>
+                <input id="volume1" type="range" orient="circular" min="0" max="20" value="8"/>
+            </div> 
+            <div class="instrument">
+                <img id="instrument2" class="poza_instrument" src="assets/guitar.png"/><br/>
+                <input id="volume2" type="range" orient="circular"/> 
+            </div>
+            <div class="instrument">
+                <img id="instrument3" class="poza_instrument" src="assets/drums.png"/><br/>
+                <input id="volume3" type="range" orient="circular"/>
+            </div>    
+            <div class="instrument">
+                <img id="instrument4" class="poza_instrument" src="assets/violin.png"/><br/>
+                <input id="volume4" type="range" orient="circular"/>
+            </div>
+            
+            <button id="addInstrumentBtn" class="btn">+</button>
+        </aside>
+        <div id="music_channels">
+            <div id="waveform1" class="instrument1"></div>
+            <div id="waveform2" class="instrument2"></div>
+            <div id="waveform3" class="instrument3"></div>
+            <div id="waveform4" class="instrument4"></div> 
+            
+            <div id="summary">
+
+            </div>     
+        </div>
+    </main>
+    <div id="instrument_options">
+        <ul id="instrument_options_list">
+            
+        </ul>
+    </div>
+    <script src="dirijor.js"></script>
+</body>
+</html>
