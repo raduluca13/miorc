@@ -13,7 +13,7 @@
 				grid-row: 2/3;
 				grid-column: 2/3;
 			}
-			.mini{
+			.form_content{
 				display: grid;
 				grid-template-columns: repeat(3,1fr);
 				grid-template-rows: repeat(3,1fr);
@@ -26,7 +26,7 @@
 				grid-column: 2/3;
 				margin: auto auto;
 			}
-			.mini > label{
+			.form_content > label{
 				margin: auto auto;
 				grid-column: 1/2;
 				align-content: center;
@@ -43,7 +43,7 @@
 				grid-row: 2/3;
 				grid-column: 2/3;
 			}
-			.mini{
+			.form_content{
 				display: grid;
 				grid-template-columns: 1fr;
 				grid-template-rows: repeat(5,1fr);
@@ -58,12 +58,12 @@
 				grid-row: 4/5;
 				margin: auto auto;
 			}
-			.mini > label:nth-child(1){
+			.form_content > label:nth-child(1){
 				margin: auto auto;
 				grid-row: 1/2;
 				align-content: center;
 			}
-			.mini > label:nth-child(2){
+			.form_content > label:nth-child(2){
 				margin: auto auto;
 				grid-row: 3/4;
 				align-content: center;
@@ -80,7 +80,7 @@
 <body>
 	<main>
 		<div id="container">
-			<div class="mini">
+			<div class="form_content">
 				<label for="email_login"> Email : </label>
 				<input id="email_login" type="email" placeholder="Your email goes here"/>
 				<br/>
