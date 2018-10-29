@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<head>
+	<style>
+		main{
+				display: grid;
+				grid-template-columns: repeat(3,1fr);
+				grid-template-rows: repeat(3,1fr);
+		} /* asta se pastreaza indiferent de dimensiune*/
+
+ 		@media screen and (min-width: 800px){	
+			#container{
+				margin-top: auto;
+				grid-row: 2/3;
+				grid-column: 2/3;
+			}
+			.mini{
+				display: grid;
+				grid-template-columns: repeat(3,1fr);
+				grid-template-rows: repeat(3,1fr);
+
+				background-color: lightblue;
+				min-height:200px;
+				min-width: 200px;
+			}
+			#email_login, #password_login{
+				grid-column: 2/3;
+				margin: auto auto;
+			}
+			.mini > label{
+				margin: auto auto;
+				grid-column: 1/2;
+				align-content: center;
+			}
+			#btn_login{
+				grid-row:3/4;
+				grid-column:2/3;
+				margin-bottom: 10px;
+			}
+		}
+		@media screen and (max-width: 400px){
+			#container{
+				margin-top: auto;
+				grid-row: 2/3;
+				grid-column: 2/3;
+			}
+			.mini{
+				display: grid;
+				grid-template-columns: 1fr;
+				grid-template-rows: repeat(5,1fr);
+				background-color: lightblue;
+				min-height: 100px;
+				min-width: 100px;
+			}
+			#email_login{
+				grid-row: 2/3;
+			}
+			#password_login{
+				grid-row: 4/5;
+				margin: auto auto;
+			}
+			.mini > label:nth-child(1){
+				margin: auto auto;
+				grid-row: 1/2;
+				align-content: center;
+			}
+			.mini > label:nth-child(2){
+				margin: auto auto;
+				grid-row: 3/4;
+				align-content: center;
+			}
+			#btn_login{
+				grid-row:5/6;
+				margin-bottom: 10px;
+			}
+		}
+
+	</style>
+</head>
+
+<body>
+	<main>
+		<div id="container">
+			<div class="mini">
+				<label for="email_login"> Email : </label>
+				<input id="email_login" type="email" placeholder="Your email goes here"/>
+				<br/>
+				<label for="password_login"> Parola :</label>
+				<input id="password_login" type="password" placeholder="*********">
+				<button id="btn_login">Login</button>
+			</div>
+		</div>
+	</main>
+</body>
