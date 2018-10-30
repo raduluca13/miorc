@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Compozitie</title>
     <link rel="stylesheet" type="text/css" href="dirijor.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
     <script src="https://unpkg.com/wavesurfer.js"></script>
 </head>
 <body>
@@ -25,23 +26,23 @@
         <div id="mainContainer">
             <aside id="aside">
                 <div id ="instrument_container1" class="instrumentDiv">
-                    <img id="instrument1" class="poza_instrument" src="assets/synth.png"/><br/>
+                    <img id="instrument1" class="poza_instrument" src="assets/synth.png"/>
                     <input id="volume1" class="volum_instrument" type="range" orient="circular" min="0" max="20" value="8"/>
-                </div> 
+                </div>
                 <div id ="instrument_container2" class="instrumentDiv">
-                    <img id="instrument2" class="poza_instrument" src="assets/violin.png"/><br/>
+                    <img id="instrument2" class="poza_instrument" src="assets/violin.png"/>
                     <input id="volume2" class="volum_instrument" type="range" orient="circular"/> 
                 </div>
                 <div id ="instrument_container3" class="instrumentDiv">
-                    <img id="instrument3" class="poza_instrument" src="assets/drums.png"/><br/>
+                    <img id="instrument3" class="poza_instrument" src="assets/drums.png"/>
                     <input id="volume3" class="volum_instrument" type="range" orient="circular"/>
                 </div>    
                 <div id ="instrument_container4" class="instrumentDiv">
-                    <img id="instrument4" class="poza_instrument" src="assets/violin.png"/><br/>
+                    <img id="instrument4" class="poza_instrument" src="assets/violin.png"/>
                     <input id="volume4" class="volum_instrument" type="range" orient="circular"/>
                 </div>
                 <div id="addInstrumentDiv">
-                    <button id="addInstrumentBtn" class="btn">+</button>
+                    <a id="addInstrumentBtn" class="btn"><i class="far fa-plus-square fa-4x colorchanger"></i></a>
                 </div>
             </aside>
             <div id="music_channels">
@@ -57,7 +58,7 @@
         </div>
         <div id="instrument_options">
             <div id="instrument_options_title">
-                <p>Alege partitura pentru fiecare instrument</p>
+                <span id="info-link">Alege partitura pentru fiecare instrument</span>
             </div>
             <ul id="lista_instrumente" class="instrument_options_list">
                 <li id="option1_li"><a class="info-link">Pian</a></li>

@@ -4,7 +4,7 @@ function applyTheme(themeOption){
 }
 var wavesurfer1 = WaveSurfer.create({
     container: '#waveform1',
-    waveColor: 'violet',
+    waveColor: 'green',
     progressColor: 'green',
     crossOrigin: 'anonymous',
     autoCenter: 'true'

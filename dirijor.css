@@ -4,11 +4,12 @@
     --yellow: #C9C243;
     --orange: #FFA644;
     --light_blue: #3498db;
+    --Fonts: #858185;
     font-size: 10px;
   }
 #main{
     display:grid;
-    grid-gap:2%;
+    grid-gap:20px;
     grid-template-rows: 4% 13% 38% 28% 4%;
     grid-template-columns: 4% 88% 4%;
 }
@@ -17,7 +18,7 @@
     grid-column:2/3;
 
     display:grid;
-    grid-gap: 2%;
+    grid-gap: 20px;
     grid-template-columns: 19% 79%;
 }
 #themeSelector{
@@ -48,12 +49,15 @@
     grid-column: 2/3;
     
     display: grid;
-    grid-gap: 2%;
+    grid-gap: 20px;
+    /* grid-column-gap: 2%; */
     grid-template-columns: 19% 79%;
 }
 aside{
-    background: transparent;
-    background-color: #eee;
+    background-color: white;
+    border: 2px solid rgb(193, 190, 203);
+    border-radius:10px;
+    grid-gap: 20px;
     grid-column: 1/2;
     display: grid;
     grid-template-rows: repeat(5,1fr);
@@ -71,9 +75,9 @@ aside > img{
 .instrumentDiv{
     position:relative;
     justify-content:center;
+    border-bottom: 2px solid rgb(193, 190, 203);
     display: grid;
     grid-template-rows: 70% 30%;
-    margin:20%;
 }
 #volume1, #volume2, #volume3, #volume4{
     grid-row:2/3;
@@ -84,7 +88,7 @@ aside > img{
 }
 #summary{
     min-height: 100px;
-    background-color:#eee;
+    background-color:rgba(210, 207, 220,0.9);
     grid-row:5/6;
 }
 #summary p{
@@ -92,16 +96,15 @@ aside > img{
 }
 
 .poza_instrument, .volum_instrument{
+    padding-top:10px;
+    padding-bottom:10px;
     background: transparent;
     justify-content: center;
     align-content: center;
-    width:100%;
+    width:60%;
     height:auto;
     position: relative;
-    /* margin: auto; */
-}
-.volum_instrument{
-    margin-top:10%;
+    margin: auto;
 }
 
 #instrument_options{
@@ -111,7 +114,7 @@ aside > img{
     grid-column: 2/3;
     grid-template-rows: 25% 75%;
     grid-template-columns: 19% 79%;
-    grid-gap:2%;
+    grid-gap:15px;
 }
 #instrument_options_title{
     grid-row:1/2;
@@ -144,7 +147,7 @@ aside > img{
     position: relative;
     /* padding: 12px 8px 12px 20px; */
     list-style-type: none;
-    background: #eee;
+    background: rgb(210, 207, 220);
     font-size: 18px;
     transition: 0.2s;
   
@@ -153,27 +156,27 @@ aside > img{
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-  }
+}
   
   /* Set all odd list items to a different color (zebra-stripes) */
-  .instrument_options_list li:nth-child(odd) {
-    background: #f9f9f9;
-  }
+.instrument_options_list li:nth-child(odd) {
+    background: rgb(193, 190, 203);
+}
   
   /* Darker background-color on hover */
-  .instrument_options_list li:hover {
-    background: #ddd;
-  }
+.instrument_options_list li:hover {
+    background: rgb(222, 224, 241);
+}
   
   /* When clicked on, add a background color and strike out text */
-  .instrument_options_list li.checked {
+.instrument_options_list li.checked {
     background: #3498db;
     color: #fff;
     text-decoration: line-through;
-  }
+}
   
   /* Add a "checked" mark when clicked on */
-  .instrument_options_list li.checked::before {
+.instrument_options_list li.checked::before {
     content: '';
     position: absolute;
     border-color: #fff;
@@ -184,43 +187,45 @@ aside > img{
     transform: rotate(45deg);
     height: 15px;
     width: 7px;
-  }
-  .instrument_options_list li a{
+}
+.instrument_options_list li a{
     padding:10px;
     text-decoration:none;
     font-family: 'Ubuntu', sans-serif;
-  }
-  .info-link {
+}
+.info-link {
     text-align: center;
     text-decoration: none;
-    color: var(--light_blue);
+    color: var(--Fonts);
     padding: 10px;
     display: block;
     font-size: 3rem;
-  }
-  #option1_li{
+}
+#option1_li{
     grid-row:1/5;
     display: flex;
     justify-content: center;
     align-items: center;
-  }
-  #option2_li{
+}
+#option2_li{
     grid-row:5/6;
-  }
-  #option3_li{
+}
+#option3_li{
     grid-row:6/7;
-  }
-  #option4_li{
+}
+#option4_li{
     grid-row:7/8;
-  }
-  
-  @media (max-width: 640px){
+}
+.colorchanger{
+    color: #858185;
+}
+@media (max-width: 640px){
     .info-link{
         font-size: 1.4rem;
     }  
-  }
-  @media (max-width: 380px){
+}
+@media (max-width: 380px){
     .info-link{
         font-size: 0.7rem;
     }
-  }
+}
