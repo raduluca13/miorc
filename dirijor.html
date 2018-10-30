@@ -10,42 +10,69 @@
 </head>
 <body>
     <main id="main">
-        <aside id="aside">
-            <div class="instrument">
-                <img id="instrument1" class="poza_instrument" src="assets/synth.png"/><br/>
-                <input id="volume1" type="range" orient="circular" min="0" max="20" value="8"/>
-            </div> 
-            <div class="instrument">
-                <img id="instrument2" class="poza_instrument" src="assets/guitar.png"/><br/>
-                <input id="volume2" type="range" orient="circular"/> 
+        <div id="header">
+            <div id="themeSelector">
+                <select id="themeSelector_select">Select your theme:
+                    <option id="lightThemeOption">Light</option>
+                    <option id="darkThemeOption">Dark</option>
+                    <option id="strangeThemeOption">Strange</option>
+                    <option id="dumbThemeOption">Dumb</option>
+                </select>
             </div>
-            <div class="instrument">
-                <img id="instrument3" class="poza_instrument" src="assets/drums.png"/><br/>
-                <input id="volume3" type="range" orient="circular"/>
-            </div>    
-            <div class="instrument">
-                <img id="instrument4" class="poza_instrument" src="assets/violin.png"/><br/>
-                <input id="volume4" type="range" orient="circular"/>
-            </div>
-            
-            <button id="addInstrumentBtn" class="btn">+</button>
-        </aside>
-        <div id="music_channels">
-            <div id="waveform1" class="instrument1"></div>
-            <div id="waveform2" class="instrument2"></div>
-            <div id="waveform3" class="instrument3"></div>
-            <div id="waveform4" class="instrument4"></div> 
-            
-            <div id="summary">
-
-            </div>     
+            <div id="headerMovingDiv"><span id="headerMovingCursor">|</span></div>
+            <progress id="progress" max="100" min="0" value="0"></progress>
         </div>
-    </main>
-    <div id="instrument_options">
-        <ul id="instrument_options_list">
-            
-        </ul>
+        <div id="mainContainer">
+            <aside id="aside">
+                <div id ="instrument_container1" class="instrumentDiv">
+                    <img id="instrument1" class="poza_instrument" src="assets/synth.png"/><br/>
+                    <input id="volume1" class="volum_instrument" type="range" orient="circular" min="0" max="20" value="8"/>
+                </div> 
+                <div id ="instrument_container2" class="instrumentDiv">
+                    <img id="instrument2" class="poza_instrument" src="assets/violin.png"/><br/>
+                    <input id="volume2" class="volum_instrument" type="range" orient="circular"/> 
+                </div>
+                <div id ="instrument_container3" class="instrumentDiv">
+                    <img id="instrument3" class="poza_instrument" src="assets/drums.png"/><br/>
+                    <input id="volume3" class="volum_instrument" type="range" orient="circular"/>
+                </div>    
+                <div id ="instrument_container4" class="instrumentDiv">
+                    <img id="instrument4" class="poza_instrument" src="assets/violin.png"/><br/>
+                    <input id="volume4" class="volum_instrument" type="range" orient="circular"/>
+                </div>
+                <div id="addInstrumentDiv">
+                    <button id="addInstrumentBtn" class="btn">+</button>
+                </div>
+            </aside>
+            <div id="music_channels">
+                <div id="waveform1" class="waveformDiv"></div>
+                <div id="waveform2" class="waveformDiv"></div>
+                <div id="waveform3" class="waveformDiv"></div>
+                <div id="waveform4" class="waveformDiv"></div> 
+                
+                <div id="summary">
+                    <p>THIS SPACE COULD BE EMPTY</p>
+                </div>     
+            </div>
+        </div>
+        <div id="instrument_options">
+            <div id="instrument_options_title">
+                <p>Alege partitura pentru fiecare instrument</p>
+            </div>
+            <div id="lista_instrumente" class="instrument_options_list">
+                <li id="option1_li"><a class="info-link">Pian</a></li>
+                <li id="option2_li"><a class="info-link">Chitara</a></li>
+                <li id="option3_li"><a class="info-link">Vioara</a></li>
+                <li id="option4_li"><a class="info-link">Mixer</a></li>
+            </div>
+            <div id="partituri_instrument">
+                <div id="partitura1" class="waveformDiv"></div>
+                <div id="partitura2" class="waveformDiv"></div>
+                <div id="partitura3" class="waveformDiv"></div>
+                <div id="partitura4" class="waveformDiv"></div> 
+        </div>
     </div>
+    </main>
     <script src="dirijor.js"></script>
 </body>
 </html>
