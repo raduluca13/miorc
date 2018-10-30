@@ -4,6 +4,7 @@
     --yellow: #C9C243;
     --orange: #FFA644;
     --light_blue: #3498db;
+    font-size: 10px;
   }
 #main{
     display:grid;
@@ -68,18 +69,16 @@ aside > img{
     grid-template-rows: repeat(5,1fr);
 }
 .instrumentDiv{
-    padding-top: 10px;
+    position:relative;
     justify-content:center;
     display: grid;
     grid-template-rows: 70% 30%;
-    margin: auto auto;
+    margin:20%;
 }
 #volume1, #volume2, #volume3, #volume4{
     grid-row:2/3;
-    margin: auto;
 }
 #addInstrumentDiv{
-    
     margin: auto;
     grid-row:5/6;
 }
@@ -96,9 +95,13 @@ aside > img{
     background: transparent;
     justify-content: center;
     align-content: center;
-    max-width:150px;
-    max-height:150px;
-    margin: auto;
+    width:100%;
+    height:auto;
+    position: relative;
+    /* margin: auto; */
+}
+.volum_instrument{
+    margin-top:10%;
 }
 
 #instrument_options{
@@ -122,21 +125,24 @@ aside > img{
     padding-inline-start: unset;
     grid-column:1/2;
     grid-row:2/3;
+    display:grid;
+    grid-template-rows: repeat(8,1fr);
 }
 #partituri_instrument{
     /*margin: auto;*/
+    position:relative;
     grid-column: 2/3;
     grid-row:2/3;
 }
 #partitura1, #partitura2, #partitura3, #partitura4{
-    min-width: 100px;
+    /* min-width: 100px; */
     cursor: grab;
 }
 /* list */
 .instrument_options_list li {
     cursor: pointer;
     position: relative;
-    padding: 12px 8px 12px 20px;
+    /* padding: 12px 8px 12px 20px; */
     list-style-type: none;
     background: #eee;
     font-size: 18px;
@@ -185,9 +191,36 @@ aside > img{
     font-family: 'Ubuntu', sans-serif;
   }
   .info-link {
+    text-align: center;
     text-decoration: none;
     color: var(--light_blue);
     padding: 10px;
     display: block;
+    font-size: 3rem;
+  }
+  #option1_li{
+    grid-row:1/5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  #option2_li{
+    grid-row:5/6;
+  }
+  #option3_li{
+    grid-row:6/7;
+  }
+  #option4_li{
+    grid-row:7/8;
   }
   
+  @media (max-width: 640px){
+    .info-link{
+        font-size: 1.4rem;
+    }  
+  }
+  @media (max-width: 380px){
+    .info-link{
+        font-size: 0.7rem;
+    }
+  }

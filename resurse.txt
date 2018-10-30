@@ -3,3 +3,5 @@ https://codepen.io/one20/pen/zBGPpb
 FileReader -> LoadBlob(wavesurfer method)
 
 http://wavesurfer-js.org/docs/methods.html
+
+https://codepen.io/chrisdwheatley/pen/cJKIr
