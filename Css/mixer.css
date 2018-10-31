@@ -1,0 +1,98 @@
+.main_container {
+    position: absolute;
+    display: grid;
+    grid-template-rows: 10% 90%;
+    grid-row-gap: 10px;
+    bottom: 0;
+    margin: 0 0 15px 15px;
+    padding: 2px 15px 2px 5px;
+    width: 80vw;
+    height: 85vh;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.main_container nav {
+    position: sticky;
+    text-align: center;
+    line-height: 35px;
+    display: grid;
+    grid-template-columns: 1fr 10fr 1fr;
+    white-space: nowrap;
+}
+
+.play_button {
+    text-decoration: none;
+    background: none !important;
+    border: none;
+    width: 35px;
+    height: 35px;
+    font-size: 1.5em;
+    color: blue;
+}
+
+.mixer {
+    display: grid;
+    grid-template-columns: 10% 90%;
+    grid-column-gap: 10px;
+}
+
+.mixer_notes {
+    display: grid;
+    grid-template-rows: repeat(16, 1fr);
+    grid-gap: 2px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.mixer_notes div {
+    background: black;
+    color: white;
+    width: 30px;
+    height: 30px;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-column-gap: 10px;
+    overflow: auto;
+    overflow-y: hidden;
+    margin-bottom: 10px;
+}
+::-webkit-scrollbar { 
+    display: none; 
+}
+.mixer_table_part {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-gap: 10px;
+}
+
+.grid_column {
+    display: grid;
+    grid-template-rows: repeat(16, 1fr);
+    grid-gap: 2px;
+    margin-bottom: 10px;
+}
+
+.grid_column .grid_cell:nth-child(2n) {
+    background: black;
+    width: 30px;
+    height: 30px;
+}
+
+.grid_column .grid_cell:nth-child(2n+1) {
+    background: rgb(148, 193, 245);
+    width: 30px;
+    height: 30px;
+}
+
+.active_cell {
+    background: red !important;
+}
+
+@media (max-width: 640px),(max-height: 640px) {
+    .main_container {
+        overflow: auto;
+    }
+}
