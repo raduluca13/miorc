@@ -15,92 +15,92 @@
 
 <body>
 
-    <div id="round_menu" class="main_menu">
-        <a class="main_button" onclick="openMenu()"><i class="fa fa-list"></i></a>
-
-        <div class="item_list">
-            <a href="./index.html" class="menu_item fa fa-home"></a>
-            <a href="./mixer.html" class="menu_item fa fa-play"></a>
-            <a href="./dirijor.html" class="menu_item fa fa-music"></a>
-            <a id="trigger" class="menu_item fa fa-sign-in-alt"></a>
-        </div>
-    </div>
-
-
-    <div class="login_modal" id="login_modal">
-        <div class="login_modal_content">
-            <span class="login_modal_close" id="login_modal_close"><i class="far fa-times-circle"></i></span>
-            <div class="form_container">
-                <form class="login_form" id="sign_in">
-                    <input id="email_login" type="email" placeholder="Email"  />
-                    <input id="password_login" type="password" placeholder="Password"  />
-                    <button type="submit">Log In</button>
-                    <p class="form_extra" id="log_button">Not registered? <a href="#">Create an account</a></p>
-
-                </form>
-                <form class="register_form" id="sign_up">
-                    <input type="email" placeholder="Email"  />
-                    <input type="password" placeholder="Password"  />
-                    <input type="password" placeholder="Repeat Password"  />
-                    <button type="submit">Sign Up</button>
-                    <p class="form_extra" id="register_button">Already registered? <a href="#">Sign In</a></p>
-                </form>
-            </div>
-        </div>
-    </div>
+    
 
     <main id="main">
+        <div id="round_menu" class="main_menu">
+                <a class="main_button" onclick="openMenu()"><i class="fa fa-list"></i></a>
+        
+                <div class="item_list">
+                    <a href="./index.html" class="menu_item fa fa-home"></a>
+                    <a href="./mixer.html" class="menu_item fa fa-play"></a>
+                    <a href="./dirijor.html" class="menu_item fa fa-music"></a>
+                    <a id="trigger" class="menu_item fa fa-sign-in-alt"></a>
+                </div>
+        </div>
+        
+        <div class="login_modal" id="login_modal">
+            <div class="login_modal_content">
+                <span class="login_modal_close" id="login_modal_close"><i class="far fa-times-circle"></i></span>
+                <div class="form_container">
+                    <form class="login_form" id="sign_in">
+                        <input id="email_login" type="email" placeholder="Email"  />
+                        <input id="password_login" type="password" placeholder="Password"  />
+                        <button type="submit">Log In</button>
+                        <p class="form_extra" id="log_button">Not registered? <a href="#">Create an account</a></p>
+    
+                    </form>
+                    <form class="register_form" id="sign_up">
+                        <input type="email" placeholder="Email"  />
+                        <input type="password" placeholder="Password"  />
+                        <input type="password" placeholder="Repeat Password"  />
+                        <button type="submit">Sign Up</button>
+                        <p class="form_extra" id="register_button">Already registered? <a href="#">Sign In</a></p>
+                    </form>
+                </div>
+            </div>
+        </div>
+
         <div id="header">
             <div id="themeSelector">
-                <select id="themeSelector_select">Select your theme:
-                    <option id="lightThemeOption">Light</option>
-                    <option id="darkThemeOption">Dark</option>
-                    <option id="strangeThemeOption">Strange</option>
-                    <option id="dumbThemeOption">Dumb</option>
-                </select>
+                <div class="select">
+                    <select id="themeSelector_select">Select your theme:
+                        <option id="lightThemeOption">Light</option>
+                        <option id="darkThemeOption">Dark</option>
+                        <option id="strangeThemeOption">Strange</option>
+                        <option id="dumbThemeOption">Dumb</option>
+                    </select>
+                </div>
             </div>
-            <div id="headerMovingDiv"><span id="headerMovingCursor">|</span></div>
-            <progress id="progress" max="100" min="0" value="0"></progress>
+            <!-- <div id="headerMovingDiv"><span id="headerMovingCursor">|</span></div>
+            <progress id="progress" max="100" min="0" value="0"></progress> -->
         </div>
         <div id="mainContainer">
-            <aside id="aside">
                 <div id="instrument_container1" class="instrumentDiv">
                     <img id="instrument1" class="poza_instrument" src="../assets/synth.png" />
                     <input id="volume1" class="volum_instrument" type="range" orient="circular" min="0" max="20" value="8" />
                 </div>
+                <div id="waveform1" class="waveformDiv"></div>
+                
                 <div id="instrument_container2" class="instrumentDiv">
                     <img id="instrument2" class="poza_instrument" src="../assets/violin.png" />
                     <input id="volume2" class="volum_instrument" type="range" orient="circular" />
                 </div>
+                <div id="waveform2" class="waveformDiv"></div>
                 <div id="instrument_container3" class="instrumentDiv">
                     <img id="instrument3" class="poza_instrument" src="../assets/drums.png" />
                     <input id="volume3" class="volum_instrument" type="range" orient="circular" />
                 </div>
+                <div id="waveform3" class="waveformDiv"></div>
                 <div id="instrument_container4" class="instrumentDiv">
                     <img id="instrument4" class="poza_instrument" src="../assets/violin.png" />
                     <input id="volume4" class="volum_instrument" type="range" orient="circular" />
                 </div>
-                <div id="addInstrumentDiv">
+                <div id="waveform4" class="waveformDiv"></div>
+                <div id="addInstrumentDiv" class="addButtonHover">
                     <a id="addInstrumentBtn" class="btn"><i class="far fa-plus-square fa-4x colorchanger"></i></a>
                 </div>
-            </aside>
-            <div id="music_channels">
-                <div id="waveform1" class="waveformDiv"></div>
-                <div id="waveform2" class="waveformDiv"></div>
-                <div id="waveform3" class="waveformDiv"></div>
-                <div id="waveform4" class="waveformDiv"></div>
+                <div id="summary" class="addButtonHover">
 
-                <div id="summary">
-                    <p>THIS SPACE COULD BE EMPTY</p>
                 </div>
             </div>
         </div>
         <div id="instrument_options">
             <div id="instrument_options_title">
-                <span id="info-link">Alege partitura pentru fiecare instrument</span>
+                <h1>Alege partitura pentru fiecare instrument<h1>
             </div>
             <ul id="lista_instrumente" class="instrument_options_list">
-                <li id="option1_li"><a class="info-link">Pian</a></li>
+                <li id="option1_li"><a class="info-link" href="#option1_li">Pian</a></li>
                 <li id="option2_li"><a class="info-link">Chitara</a></li>
                 <li id="option3_li"><a class="info-link">Vioara</a></li>
                 <li id="option4_li"><a class="info-link">Mixer</a></li>

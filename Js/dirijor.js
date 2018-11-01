@@ -4,27 +4,31 @@ function applyTheme(themeOption){
 }
 var wavesurfer1 = WaveSurfer.create({
     container: '#waveform1',
-    waveColor: 'green',
+    waveColor: '#ffcb0c',
+    cursorColor: '#ffcb0c',
     progressColor: 'green',
     crossOrigin: 'anonymous',
     autoCenter: 'true'
 });
 var wavesurfer2 = WaveSurfer.create({
     container: '#waveform2',
-    waveColor: 'green',
-    progressColor: 'purple',
+    waveColor: '#ffcb0c',
+    cursorColor: '#ffcb0c',
+    progressColor: 'green',
     autoCenter: 'true'
 });
 var wavesurfer3 = WaveSurfer.create({
     container: '#waveform3',
-    waveColor: 'green',
-    progressColor: 'purple',
+    waveColor: '#ffcb0c',
+    cursorColor: '#ffcb0c',
+    progressColor: 'green',
     autoCenter: 'true'
 });
 var wavesurfer4 = WaveSurfer.create({
     container: '#waveform4',
-    waveColor: 'green',
-    progressColor: 'purple',
+    waveColor: '#ffcb0c',
+    cursorColor: '#ffcb0c',
+    progressColor: 'green',
     autoCenter: 'true'
 });
 
@@ -35,29 +39,32 @@ wavesurfer4.load("http://ia902606.us.archive.org/35/items/shortpoetry_047_libriv
 
 var wavePartitura1 = WaveSurfer.create({
     container: '#partitura1',
-    waveColor: 'violet',
+    waveColor: '#ffcb0c',
     progressColor: 'green',
+    cursorColor: '#ffcb0c',
     crossOrigin: 'anonymous',
     autoCenter: 'true',
     barWidth: "6"
 });
 var wavePartitura2 = WaveSurfer.create({
     container: '#partitura2',
-    waveColor: 'green',
-    progressColor: 'purple',
+    waveColor: '#ffcb0c',
+    cursorColor: '#ffcb0c',
+    progressColor: 'green',
     autoCenter: 'true',
     barWidth: "6"
 });
 var wavePartitura3 = WaveSurfer.create({
     container: '#partitura3',
-    waveColor: 'green',
-    progressColor: 'purple',
+    waveColor: '#ffcb0c',
+    cursorColor: '#ffcb0c',
+    progressColor: 'green',
     autoCenter: 'true',
     barWidth: "6"
 });
 var wavePartitura4 = WaveSurfer.create({
     container: '#partitura4',
-    waveColor: 'green',
+    waveColor: '#ffcb0c',
     progressColor: 'purple',
     autoCenter: 'true',
     barWidth: "6"
@@ -82,16 +89,16 @@ var themeOptionSelector = document.getElementById("themeSelector_select");
 
 let progress = document.getElementById('progress');
 main.addEventListener("click", function(e){
-    if (e.target.parentNode.id == "waveform1"){
+    if (e.target.parentNode.id == "waveform1" || e.target.parentNode.id == "instrument_container1"){
         wavesurfer1.playPause();
     }
-    if (e.target.parentNode.id == "waveform2"){
+    if (e.target.parentNode.id == "waveform2" || e.target.parentNode.id == "instrument_container2"){
         wavesurfer2.playPause();
     }
-    if (e.target.parentNode.id == "waveform3"){
+    if (e.target.parentNode.id == "waveform3" || e.target.parentNode.id == "instrument_container3"){
         wavesurfer3.playPause();
     }
-    if (e.target.parentNode.id == "waveform4"){
+    if (e.target.parentNode.id == "waveform4" || e.target.parentNode.id == "instrument_container4"){
         wavesurfer4.playPause();
     }
     if (e.target.parentNode.id == "partitura1"){
@@ -103,9 +110,9 @@ main.addEventListener("click", function(e){
     if (e.target.parentNode.id == "partitura3"){
         wavePartitura3.playPause();
     }
-    if (e.target.parentNode.id == "partitura4"){
-        wavePartitura4.playPause();
-    }
+    // if (e.target.parentNode.id == "partitura4"){
+    //     wavePartitura4.playPause();
+    // }
     if (e.target.id == "themeSelector_select"){
         var chosenTheme = themeOptionSelector[themeOptionSelector.selectedIndex].value;
         applyTheme(chosenTheme);

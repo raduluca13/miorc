@@ -7,99 +7,144 @@
     --Fonts: #858185;
     font-size: 10px;
   }
+body{
+    background-color: rgb(245, 245, 245);
+    overflow: scroll;
+}
+body::-webkit-scrollbar {
+    width: 1em;
+}
+ 
+body::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+ 
+body::-webkit-scrollbar-thumb {
+  background-color: #000025;
+  outline: 1px solid rgb(35, 66, 97);
+}
 #main{
+    /* paralax*/
+    width: 100%;
+    height: 100%;
+    /* overflow-x: hidden;
+    overflow-y: scroll;
+    perspective: 1px;
+    perspective-origin: 0 0; */
+    /*---------*/
     display:grid;
+    
+
     grid-gap: 1%;
-    grid-template-rows: 10% 55% 30% 2%;
+    grid-template-rows: 3% 54% 43%;
     grid-template-columns: 4% 88% 4%;
 }
+#main__dark-theme{
+    background-color: #000025;
+}
+#main__light-theme{
+    background-color: #435363
+}
 #header{
+    /* transform-origin: 0 0; */
+    /* transform: translateZ(-2px) scale(3); */
+
     grid-row:1/2;
     grid-column:2/3;
 
     display:grid;
-    grid-gap: 20px;
-    grid-template-columns: 19% 79%;
+    grid-gap: 2%;
+    grid-template-columns: 1fr 4fr;
 }
 #themeSelector{
-    margin: auto;
+    flex-direction: column;
+    align-content: space-around;
+    display: flex;
     grid-column: 1/2;
+    color:#ffcb0c;
 }
-#header > progress{
+
+/* #header > progress{
     grid-column:2/3;
     width: 100%;
     display: block;
     margin: auto;
     z-index:2;
-}
+} */
 
-#headerMovingDiv{
+/* #headerMovingDiv{
     grid-column:2/3;
     display:none;
     z-index:1;
     animation: slidein 3s linear 1s infinite running;
     /*grid-column:2/3;
-    margin:auto;*/
-}
-#headerMovingCursor{
+    margin:auto;
+} */
+/* #headerMovingCursor{
     position:absolute;
-}
+} */
 #mainContainer{
+    /* transform-origin: 0 0; */
+    /* transform: translateZ(-2px) scale(3); */
+
     grid-row: 2/3;
-    grid-column: 2/3;
-    
+    grid-column: 2/3;    
     display: grid;
-    grid-gap: 20px;
-    /* grid-column-gap: 2%; */
-    grid-template-columns: 19% 79%;
+    grid-gap: 2%;
+    grid-template-columns: 1fr 4fr;
+    grid-template-rows: repeat(5, 1fr);
+    /* grid-auto-rows: minmax(100px, auto); */
 }
-aside{
-    background-color: white;
-    border: 2px solid rgb(193, 190, 203);
-    border-radius:10px;
-    /* grid-gap: 20px; */
-    grid-column: 1/2;
-    display: grid;
-    grid-template-rows: repeat(5,1fr);
-}
-aside > img{
-    /* min-height:100px;
-    min-width:100px; */
+
+#main_container img{
+    max-height: 100px;
     background-color: red;  
 }
-#music_channels{
-    background: #D5D5D5;
+
+.waveformDiv{
     border: 2px solid rgb(193, 190, 203);
-    border-radius:10px;
-    grid-column:2/3;
-    display: grid;
-    grid-template-rows: repeat(5,1fr);
+    background: #000025;
+    border-radius: 10px;
 }
 .instrumentDiv{
     /* position:relative; */
-    justify-content:center;
-    border-bottom: 2px solid rgb(193, 190, 203);
-    /* border-radius: 10px; */
-    display: grid;
-    grid-template-rows: 70% 30%;
+    background-color:transparent;
+    border: 2px solid rgb(193, 190, 203);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    /* grid-template-rows: 70% 30%; */
+    background: #6b6d76;
+}
+.instrumentDiv__light-theme{
     background: #D5D5D5;
 }
 #volume1, #volume2, #volume3, #volume4{
     grid-row:2/3;
 }
 #addInstrumentDiv{
-    margin: auto;
+    border-radius:10px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color : #6b6d76;
     /* grid-row:5/6; */
 }
 #summary{
-    min-height: 100px;
-    background-color:#d5d5d5;
-    grid-row:5/6;
+   border : 4px dashed rgb(193, 190, 203);
+   border-radius: 10px;
+   /* background-color: rgba(107, 107, 107, 0.356); */
+}
+#summary__light-theme{
+    /* background-color:#d5d5d5; */
 }
 #summary p{
     text-align: center;
 }
-
+#addInstrumentDiv:hover{
+    background-color: #DADFE1;
+}
 .poza_instrument, .volum_instrument{
     padding-top:10px;
     padding-bottom:10px;
@@ -114,33 +159,47 @@ aside > img{
 
 #instrument_options{
     padding-top: 10px;
-    /* margin: 0  auto; */
+    /* margin: 0; */
+    margin-bottom: 10%;
     display: grid;
     grid-row:3/4;
     grid-column: 2/3;
-    grid-template-rows: 25% 75%;
-    grid-template-columns: 19% 79%;
+    grid-template-columns: 2fr 7fr;
     grid-gap:15px;
 }
+
 #instrument_options_title{
     grid-row:1/2;
     grid-column: 1/3;
     margin: auto;
     margin-left: 15%;
 }
-#lista_instrumente{
-    margin: auto;
-    /*important*/
-    padding-inline-start: unset;
-    grid-column:1/2;
-    grid-row:2/3;
-    display:grid;
-    grid-template-rows: repeat(8,1fr);
+
+#instrument_container1, #instrument_container2, #instrument_container3, #instrument_container4{
+    
 }
+
+/* TOP RADIUS
+#instrument_container1, #waveform1, #partitura1{
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+#instrument_container4, #waveform4, #partitura4{
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-bottom: 2px solid rgb(193, 190, 203);
+}
+/* BORDERS 
+#waveform1, #waveform2, #waveform3, #waveform4{
+    border-right: 2px solid rgb(193, 190, 203);
+    border-left: 2px solid rgb(193, 190, 203);
+    border-top: 2px solid rgb(193, 190, 203);
+} */
+
 #partituri_instrument{
     /*margin: auto;*/
-    border: 2px solid rgb(193, 190, 203);
-    border-radius: 10px;
+    /* border: 2px solid rgb(193, 190, 203);
+    border-radius: 10px; */
     position:relative;
     grid-column: 2/3;
     grid-row:2/3;
@@ -149,13 +208,28 @@ aside > img{
     /* min-width: 100px; */
     cursor: grab;
 }
+#partitura1, #partitura2, #partitura3{
+    border-bottom: 2px solid rgb(193, 190, 203);
+} 
 /* list */
+#lista_instrumente{
+    margin: 0;
+    height: 100%;
+    /*important*/
+    padding-inline-start: unset;
+
+    grid-column:1/2;
+    grid-row:2/3;
+    display:grid;
+    grid-template-rows: repeat(7,1fr);
+}
 .instrument_options_list li {
     cursor: pointer;
     position: relative;
     /* padding: 12px 8px 12px 20px; */
     list-style-type: none;
-    background: rgb(210, 207, 220);
+    /* background: rgb(210, 207, 220); */
+    background: #000025;
     font-size: 18px;
     transition: 0.2s;
   
@@ -168,14 +242,19 @@ aside > img{
   
   /* Set all odd list items to a different color (zebra-stripes) */
 .instrument_options_list li:nth-child(odd) {
-    background: rgb(193, 190, 203);
+    /* background: rgb(193, 190, 203); */
+    /* background: #020222a4; */
 }
   
   /* Darker background-color on hover */
 .instrument_options_list li:hover {
-    background: rgb(222, 224, 241);
+    /* background: rgb(222, 224, 241); */
+    background: #ffcb0c;
 }
-  
+.instrument_options_list li:active {
+    /* background: rgb(222, 224, 241); */
+    background-color: red;
+}
   /* When clicked on, add a background color and strike out text */
 .instrument_options_list li.checked {
     background: #3498db;
@@ -201,6 +280,12 @@ aside > img{
     text-decoration:none;
     font-family: 'Ubuntu', sans-serif;
 }
+h1{
+    color: #99a4ae;
+    font-size: 3rem;
+    font-family: 'Ubuntu', sans-serif;
+}
+
 .info-link {
     text-align: center;
     text-decoration: none;
@@ -210,6 +295,9 @@ aside > img{
     font-size: 3rem;
 }
 #option1_li{
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom: 1px solid #99a4ae;
     grid-row:1/5;
     display: flex;
     justify-content: center;
@@ -217,24 +305,64 @@ aside > img{
 }
 #option2_li{
     grid-row:5/6;
+    border-bottom: 1px solid #99a4ae;
 }
 #option3_li{
     grid-row:6/7;
+    border-bottom: 1px solid #99a4ae;
 }
 #option4_li{
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+
     grid-row:7/8;
 }
-/* .instrumentDiv, .waveformDiv{
-    max-height: 100px;
-} */
-.waveformDiv{
-    background: #d5d5d5;
-    
-    /* border-bottom: 2px solid rgb(193, 190, 203); */
-}
 .colorchanger{
-    color: #858185;
+    color: #99a4ae;
 }
+.select {
+    position: relative;
+    display: block;
+    /* background:#D5D5D5; */
+    background: #000025;
+    height: 40px;
+    overflow: hidden;
+    border-radius: .3em;
+  }
+  .select select {
+    appearance: none;
+    outline: 0;
+    box-shadow: none;
+    border: 0 !important;
+    /* background:#D5D5D5; */
+    background: #000025;
+    background-image: none;
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    padding: 0 0 0 .5em;
+    color: #fff;
+    cursor: pointer;
+  }
+  
+  
+  .select::after {
+    content: '\25BC';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    padding: 0 1em;
+    /* background: #D5D5D5; */
+    background: #000025;
+    pointer-events: none;
+  }
+  .select:hover::after {
+    color: #f39c12;
+  }
+  .select::after {
+    transition: .25s all ease;
+  }
 @media (max-width: 640px){
     .info-link{
         font-size: 1.4rem;

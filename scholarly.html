@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Miorc scholarly</title>
+    <link rel="stylesheet" href="scholarly.css">
+  </head>
+  <body>
+    <article resource="#" typeof="schema:ScholarlyArticle">
+      <header>
+        <h1 property="schema:name">Miorc</h1>
+        <h2 role="doc-subtitle" property="schema:alternateName">Midi orchestra</h2>
+      </header>
+      <meta property="schema:accessibilityFeature" content="alternativeText">
+
+      <section typeof="sa:AuthorsList">
+        <h2>Authors</h2>
+        <ul>
+          <li typeof="sa:ContributorRole" property="schema:author">
+            <span typeof="schema:Person"
+              resource="https://www.facebook.com/radu.97">
+              <meta property="schema:givenName" content="Radu">
+              <meta property="schema:additionalGivenName" content="Iulian">
+              <meta property="schema:familyName" content="Luca">
+              <span property="schema:name">Luca Radu-Iulian</span>
+            </span>
+            <a href="#sf" property="sa:roleAffiliation" resource="https://www.info.uaic.ro/bin/Main/">Student @Faculty of computer science</a>
+            <ul>
+              <li property="schema:roleContactPoint" typeof="schema:ContactPoint">
+                <a href="mailto:radu.luca13@yahoo.com"
+                property="schema:email">Mail @Radu</a>
+              </li>
+            </ul>
+          </li>
+
+          <li typeof="sa:ContributorRole" property="schema:author">
+            <span typeof="schema:Person"
+              resource="https://www.facebook.com/marian.morcotet.9">
+              <meta property="schema:givenName" content="Ionut">
+              <meta property="schema:additionalGivenName" content="Iulian">
+              <meta property="schema:familyName" content="Bleoju">
+              <span property="schema:name">Ionut-Bogdan Bleoju</span>
+            </span>
+            <a href="#sf" property="sa:roleAffiliation" resource="https://www.info.uaic.ro/bin/Main/">Student @Faculty of computer science</a>
+            <ul>
+              <li property="schema:roleContactPoint" typeof="schema:ContactPoint">
+                <a href="mailto:ionutyop@gmail.com"
+                property="schema:email">Mail @Ionut</a>
+              </li>
+
+            </ul>
+          </li>
+        </ul>
+      </section>
+
+      <section typeof="sa:Affiliations">
+        <h2>Affiliations</h2>
+        <ul>
+          <li id="sa">
+            <span typeof="schema:Organization" resource="https://science.ai/">
+              <span property="schema:name">Faculty of computer science</span>,
+              <span property="schema:parentOrganization">
+                <span typeof="schema:Organization">
+                  <span property="schema:name">"Alexandru Ioan Cuza" University of Iași</span>
+                  —
+                  <span property="schema:location" typeof="schema:Place">
+                    <span property="schema:address" typeof="schema:PostalAddress">
+                      <span property="schema:addressLocality">Iași</span>,
+                      <span property="schema:addressRegion">Iași</span>,
+                      <span property="schema:addressCountry">România</span>
+                    </span>
+                  </span>
+                </span>
+              </span>
+            </span>
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Concepts</h2>
+        <section typeof="schema:SoftwareSourceCode">
+          <h3>HTML</h3>
+          <ul>
+            <li typeof="schema:WebPage" role="doc-biblioentry"
+              resource="http://semver.org/"
+              property="schema:citation" id="some-id">
+              <cite property="schema:name">
+                <a href="https://en.wikipedia.org/wiki/HTML">HTML</a>
+              </cite>, by
+              <span property="schema:author" typeof="schema:Person">
+                  <span property="schema:givenName">Tim</span>
+                  <span property="schema:familyName">Berners-Lee</span>
+                </span>; published in
+                <time property="schema:datePublished" datatype="xsd:gYear"
+                  datetime="1980">1980</time>
+                <span property="schema:potentialAction" typeof="schema:ReadAction">
+                  <meta property="schema:actionStatus" content="CompletedActionStatus">
+                  (accessed on
+                  <time property="schema:endTime" datatype="xsd:date"datetime="2018-10-30">
+                    30 Oct 2018
+                  </time>)
+                </span>.
+              </li>
+
+              <li>
+                <p>Hypertext Markup Language (HTML) is the standard markup language for creating web pages and web applications. With Cascading Style Sheets (CSS) and JavaScript, it forms a triad of cornerstone technologies for the World Wide Web</p>
+              </li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>CSS</h3>
+          <ul>
+            <li typeof="schema:WebPage" role="doc-biblioentry"
+              resource="http://semver.org/"
+              property="schema:citation" id="some-id">
+              <cite property="schema:name">
+                <a href="https://en.wikipedia.org/wiki/Cascading_Style_Sheets">CSS</a>
+              </cite>, by
+              <span property="schema:author" typeof="schema:Person">
+                  <span property="schema:givenName">Håkon</span>
+                  <span property="schema:familyName">Wium-Lie</span>
+              </span>; first proposed in
+                <time property="schema:datePublished" datatype="xsd:gYear"
+                  datetime="1994">1994</time>
+                <span property="schema:potentialAction" typeof="schema:ReadAction">
+                  <meta property="schema:actionStatus" content="CompletedActionStatus">
+                  (accessed on
+                  <time property="schema:endTime" datatype="xsd:date"datetime="2018-10-30">
+                    30 Oct 2018
+                  </time>)
+                </span>.
+              </li>
+
+              <li>
+                <p>Cascading Style Sheets (CSS) is a style sheet language used for describing the presentation of a document written in a markup language like HTML. CSS is a cornerstone technology of the World Wide Web, alongside HTML and JavaScript.</p>
+              </li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>JavaScript</h3>
+          <ul>
+            <li typeof="schema:WebPage" role="doc-biblioentry"
+              resource="http://semver.org/"
+              property="schema:citation" id="some-id">
+              <cite property="schema:name">
+                <a href="https://en.wikipedia.org/wiki/JavaScript">JS</a>
+              </cite>, by
+              <span typeof="schema:Organization" resource="https://en.wikipedia.org/wiki/National_Center_for_Supercomputing_Applications">
+                <span property="schema:name">National Center for Supercomputing Applications</span>,
+                <span property="schema:parentOrganization">
+                  <span typeof="schema:Organization">
+                    <span property="schema:name">University of Illinois at Urbana-Champaign</span>
+                    —
+                    <span property="schema:location" typeof="schema:Place">
+                      <span property="schema:address" typeof="schema:PostalAddress">
+                        <span property="schema:addressLocality">Urbana and Champaign</span>,
+                        <span property="schema:addressRegion">Illinois</span>,
+                        <span property="schema:addressCountry">U.S.</span>
+                      </span>
+                    </span>
+                  </span>
+                </span>
+              </span>; published in
+                <time property="schema:datePublished" datatype="xsd:gYear"
+                  datetime="1993">1993</time>
+                <span property="schema:potentialAction" typeof="schema:ReadAction">
+                  <meta property="schema:actionStatus" content="CompletedActionStatus">
+                  (accessed on
+                  <time property="schema:endTime" datatype="xsd:date"datetime="2018-10-30">
+                    30 Oct 2018
+                  </time>)
+                </span>.
+              </li>
+
+              <li>
+                <p>JavaScript, often abbreviated as JS, is a high-level, interpreted programming language. It is a language which is also characterized as dynamic, weakly typed, prototype-based and multi-paradigm. Alongside HTML and CSS, JavaScript is one of the three core technologies of the World Wide Web.</p>
+              </li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>GitHub</h3>
+          <ul>
+            <li typeof="schema:WebPage" role="doc-biblioentry"
+              resource="http://semver.org/"
+              property="schema:citation" id="some-id">
+              <cite property="schema:name">
+                <a href="https://github.com/">GitHub</a>
+              </cite>, by
+              <span typeof="schema:Organization" resource="https://github.com/">
+                <span property="schema:name">GitHub Inc.</span>,
+                <span property="schema:parentOrganization">
+                  <span typeof="schema:Organization">
+                    <span property="schema:name"> Microsoft Corporation</span>
+                    —
+                    <span property="schema:location" typeof="schema:Place">
+                      <span property="schema:address" typeof="schema:PostalAddress">
+                        <span property="schema:addressLocality">San Francisco</span>,
+                        <span property="schema:addressRegion">California</span>,
+                        <span property="schema:addressCountry">U.S.</span>
+                      </span>
+                    </span>
+                  </span>
+                </span>
+              </span>; started in
+                <time property="schema:datePublished" datatype="xsd:gYear"
+                  datetime="2008">2008</time>
+                <span property="schema:potentialAction" typeof="schema:ReadAction">
+                  <meta property="schema:actionStatus" content="CompletedActionStatus">
+                  (accessed on
+                  <time property="schema:endTime" datatype="xsd:date"datetime="2018-10-30">
+                    30 Oct 2018
+                  </time>)
+                </span>.
+              </li>
+
+              <li>
+                <p>GitHub Inc. is a web-based hosting service for version control using Git. It is mostly used for computer code. It offers all of the distributed version control and source code management (SCM) functionality of Git as well as adding its own features. It provides access control and several collaboration features such as bug tracking, feature requests, task management, and wikis for every project.</p>
+              </li>
+          </ul>
+        </section>
+      </section>
+
+      <section typeof="sa:MaterialsAndMethods">
+        <h2>Our implementation using these concepts</h2>
+        <ul>
+          <li>
+            <h3>First steps</h3>
+            <ul>
+              <li>
+                Down here you can see 2 sketches we made before starting to work.
+              </li>
+              <figure typeof = "sa:Image">
+                  <img src="for_progress/sketch.jpg" alt="sketch">
+                  <figcaption> Sketch for how the alerts should be previewed </figcaption>
+              </figure>
+
+              <figure typeof = "sa:Image">
+                  <img src="for_progress/another_sketch.jpg" alt="another_sketch">
+                  <figcaption> Sketch for home page </figcaption>
+              </figure>
+            </ul>
+          </li>
+          
+          <li>
+            <h3>For code management we chose <u>Git</u> and the tool we used <u>GitHub</u></h3>
+          </li>
+
+          <li>
+            <h3>Now some sneaky peaks inside our code</h3>
+            <figure typeof = "sa:Image">
+                <img src="for_progress/html-example.png" alt="html-example">
+                <figcaption>Index page only with navigator menu</figcaption>
+            </figure>
+            <figure typeof = "sa:Image">
+                <img src="for_progress/css-responsive-example.png" alt="css-responsive-example">
+                <figcaption>Here is the css responsible with the responsiveness of the navigator</figcaption>
+            </figure>
+            <figure typeof = "sa:Image">
+                <img src="for_progress/javascript-example.png" alt="javascript-example">
+                <figcaption>And the javascript function wich transforms the navigator into a dropdown on small screens</figcaption>
+            </figure>
+          </li>
+
+          <li>
+            <h3>Final product</h3>
+            <p>Users will be able to login/register with or without facebook(quick method).</p>
+            <p>And the ultimate goal for this project is to develop an application that sends real time alerts/notifications about common/uncommon allergies.</p>
+            <p>All medical informations will be extracted from Webmd.com</p>
+            <figure typeof = "sa:Image">
+                <img src="for_progress/login.png" alt="login-example">
+                <figcaption>Login page</figcaption>
+            </figure>
+
+            <figure typeof = "sa:Image">
+                <img src="for_progress/index.png" alt="index-example">
+                <figcaption>Home page</figcaption>
+            </figure>
+
+            <figure typeof = "sa:Image">
+                <img src="for_progress/news-1.png" alt="news-example">
+                <figcaption>Newsfeed page(all alerts/notifications prioritized different for every user)</figcaption>
+            </figure>
+
+            <figure typeof = "sa:Image">
+                <img src="for_progress/profile.png" alt="profile-example">
+                <figcaption>Profile page where users can edit info</figcaption>
+            </figure>
+
+            <figure typeof = "sa:Image">
+                <img src="for_progress/footer-from-profile.png" alt="footer-from-profile-example">
+                <figcaption>Footer visible in every page</figcaption>
+            </figure>
+          </li>
+        </ul>
+      </section>
+    </article>
+  </body>
+</html>
