@@ -9,12 +9,12 @@
   }
 #main{
     display:grid;
-    grid-gap:20px;
-    grid-template-rows: 4% 13% 38% 28% 4%;
+    grid-gap: 1%;
+    grid-template-rows: 10% 55% 30% 2%;
     grid-template-columns: 4% 88% 4%;
 }
 #header{
-    grid-row:2/3;
+    grid-row:1/2;
     grid-column:2/3;
 
     display:grid;
@@ -45,7 +45,7 @@
     position:absolute;
 }
 #mainContainer{
-    grid-row: 3/4;
+    grid-row: 2/3;
     grid-column: 2/3;
     
     display: grid;
@@ -57,7 +57,7 @@ aside{
     background-color: white;
     border: 2px solid rgb(193, 190, 203);
     border-radius:10px;
-    grid-gap: 20px;
+    /* grid-gap: 20px; */
     grid-column: 1/2;
     display: grid;
     grid-template-rows: repeat(5,1fr);
@@ -73,7 +73,7 @@ aside > img{
     grid-template-rows: repeat(5,1fr);
 }
 .instrumentDiv{
-    position:relative;
+    /* position:relative; */
     justify-content:center;
     border-bottom: 2px solid rgb(193, 190, 203);
     display: grid;
@@ -84,7 +84,7 @@ aside > img{
 }
 #addInstrumentDiv{
     margin: auto;
-    grid-row:5/6;
+    /* grid-row:5/6; */
 }
 #summary{
     min-height: 100px;
@@ -109,8 +109,9 @@ aside > img{
 
 #instrument_options{
     padding-top: 10px;
+    /* margin: 0  auto; */
     display: grid;
-    grid-row:4/5;
+    grid-row:3/4;
     grid-column: 2/3;
     grid-template-rows: 25% 75%;
     grid-template-columns: 19% 79%;
@@ -123,7 +124,7 @@ aside > img{
     margin-left: 15%;
 }
 #lista_instrumente{
-    /*margin: auto;*/
+    margin: auto;
     /*important*/
     padding-inline-start: unset;
     grid-column:1/2;
