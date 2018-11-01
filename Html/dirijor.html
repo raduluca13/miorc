@@ -32,16 +32,16 @@
             <span class="login_modal_close" id="login_modal_close"><i class="far fa-times-circle"></i></span>
             <div class="form_container">
                 <form class="login_form" id="sign_in">
-                    <input id="email_login" type="email" placeholder="Email"  />
-                    <input id="password_login" type="password" placeholder="Password"  />
+                    <input id="email_login" type="email" placeholder="Email" />
+                    <input id="password_login" type="password" placeholder="Password" />
                     <button type="submit">Log In</button>
                     <p class="form_extra" id="log_button">Not registered? <a href="#">Create an account</a></p>
 
                 </form>
                 <form class="register_form" id="sign_up">
-                    <input type="email" placeholder="Email"  />
-                    <input type="password" placeholder="Password"  />
-                    <input type="password" placeholder="Repeat Password"  />
+                    <input type="email" placeholder="Email" />
+                    <input type="password" placeholder="Password" />
+                    <input type="password" placeholder="Repeat Password" />
                     <button type="submit">Sign Up</button>
                     <p class="form_extra" id="register_button">Already registered? <a href="#">Sign In</a></p>
                 </form>
@@ -52,12 +52,14 @@
     <main id="main">
         <div id="header">
             <div id="themeSelector">
-                <select id="themeSelector_select">Select your theme:
-                    <option id="lightThemeOption">Light</option>
-                    <option id="darkThemeOption">Dark</option>
-                    <option id="strangeThemeOption">Strange</option>
-                    <option id="dumbThemeOption">Dumb</option>
-                </select>
+                <div class="select">
+                    <select id="themeSelector_select">Select your theme:
+                        <option id="lightThemeOption">Light</option>
+                        <option id="darkThemeOption">Dark</option>
+                        <option id="strangeThemeOption">Strange</option>
+                        <option id="dumbThemeOption">Dumb</option>
+                    </select>
+                </div>
             </div>
             <div id="headerMovingDiv"><span id="headerMovingCursor">|</span></div>
             <progress id="progress" max="100" min="0" value="0"></progress>

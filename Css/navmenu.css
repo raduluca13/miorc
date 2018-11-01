@@ -121,7 +121,7 @@
   opacity: 1;
   visibility: visible;
   transform: scale(1.2);
-  transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
+  transition: all 0.3s;
 }
 .form_container {
   max-height: 95vh;
@@ -155,7 +155,7 @@
   padding: 15px;
   color: white;
   font-size: 1.1em;
-  transition: all 0.3s ease;
+  transition: all 0s;
   cursor: pointer;
 }
 
