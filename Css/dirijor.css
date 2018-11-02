@@ -360,12 +360,12 @@ h1{
     transition: .25s all ease;
   }
 @media (max-width: 640px){
-    .info-link{
+    .info-link, .select select{
         font-size: 1.4rem;
     }  
 }
 @media (max-width: 380px){
-    .info-link{
+    .info-link, .select select{
         font-size: 0.7rem;
     }
 }
