@@ -54,10 +54,10 @@
         <div id="header">
             <div id="themeSelector">
                 <div class="select">
-                    <select id="themeSelector_select">Select your theme:
+                    <select id="themeSelector_select">
                         <option id="lightThemeOption">Light</option>
                         <option id="darkThemeOption">Dark</option>
-                        <option id="strangeThemeOption">Strange</option>
+                        <option id="strangeThemeOption" selected>Strange</option>
                         <option id="dumbThemeOption">Dumb</option>
                     </select>
                 </div>
@@ -66,38 +66,37 @@
             <progress id="progress" max="100" min="0" value="0"></progress> -->
         </div>
         <div id="mainContainer">
-                <div id="instrument_container1" class="instrumentDiv">
-                    <img id="instrument1" class="poza_instrument" src="../assets/synth.png" />
-                    <input id="volume1" class="volum_instrument" type="range" orient="circular" min="0" max="20" value="8" />
-                </div>
-                <div id="waveform1" class="waveformDiv"></div>
-                
-                <div id="instrument_container2" class="instrumentDiv">
-                    <img id="instrument2" class="poza_instrument" src="../assets/violin.png" />
-                    <input id="volume2" class="volum_instrument" type="range" orient="circular" />
-                </div>
-                <div id="waveform2" class="waveformDiv"></div>
-                <div id="instrument_container3" class="instrumentDiv">
-                    <img id="instrument3" class="poza_instrument" src="../assets/drums.png" />
-                    <input id="volume3" class="volum_instrument" type="range" orient="circular" />
-                </div>
-                <div id="waveform3" class="waveformDiv"></div>
-                <div id="instrument_container4" class="instrumentDiv">
-                    <img id="instrument4" class="poza_instrument" src="../assets/violin.png" />
-                    <input id="volume4" class="volum_instrument" type="range" orient="circular" />
-                </div>
-                <div id="waveform4" class="waveformDiv"></div>
-                <div id="addInstrumentDiv" class="addButtonHover">
-                    <a id="addInstrumentBtn" class="btn"><i class="far fa-plus-square fa-4x colorchanger"></i></a>
-                </div>
-                <div id="summary" class="addButtonHover">
+            <div id="instrument_container1" class="instrumentDiv">
+                <img id="instrument1" class="poza_instrument" src="../assets/synth.png" alt="png sintetizator" />
+                <input id="volume1" class="volum_instrument" type="range" min="0" max="20" value="8" />
+            </div>
+            <div id="waveform1" class="waveformDiv"></div>
+            
+            <div id="instrument_container2" class="instrumentDiv">
+                <img id="instrument2" class="poza_instrument" src="../assets/violin.png" alt="png vioara"/>
+                <input id="volume2" class="volum_instrument" type="range"/>
+            </div>
+            <div id="waveform2" class="waveformDiv"></div>
+            <div id="instrument_container3" class="instrumentDiv">
+                <img id="instrument3" class="poza_instrument" src="../assets/drums.png" alt="png drums"/>
+                <input id="volume3" class="volum_instrument" type="range"/>
+            </div>
+            <div id="waveform3" class="waveformDiv"></div>
+            <div id="instrument_container4" class="instrumentDiv">
+                <img id="instrument4" class="poza_instrument" src="../assets/violin.png" alt="png vioara"/>
+                <input id="volume4" class="volum_instrument" type="range"/>
+            </div>
+            <div id="waveform4" class="waveformDiv"></div>
+            <div id="addInstrumentDiv" class="addButtonHover">
+                <a id="addInstrumentBtn" class="btn"><i class="far fa-plus-square fa-4x colorchanger"></i></a>
+            </div>
+            <div id="summary" class="addButtonHover">
 
-                </div>
             </div>
         </div>
         <div id="instrument_options">
             <div id="instrument_options_title">
-                <h1>Alege partitura pentru fiecare instrument<h1>
+                <h1>Alege partitura pentru fiecare instrument</h1>
             </div>
             <ul id="lista_instrumente" class="instrument_options_list">
                 <li id="option1_li"><a class="info-link" href="#option1_li">Pian</a></li>
