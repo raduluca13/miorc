@@ -65,7 +65,8 @@ var wavePartitura3 = WaveSurfer.create({
 var wavePartitura4 = WaveSurfer.create({
     container: '#partitura4',
     waveColor: '#ffcb0c',
-    progressColor: 'purple',
+    cursorColor: '#ffcb0c',
+    progressColor: 'green',
     autoCenter: 'true',
     barWidth: "6"
 });
@@ -110,9 +111,9 @@ main.addEventListener("click", function(e){
     if (e.target.parentNode.id == "partitura3"){
         wavePartitura3.playPause();
     }
-    // if (e.target.parentNode.id == "partitura4"){
-    //     wavePartitura4.playPause();
-    // }
+    if (e.target.parentNode.id == "partitura4"){
+        wavePartitura4.playPause();
+    }
     if (e.target.id == "themeSelector_select"){
         var chosenTheme = themeOptionSelector[themeOptionSelector.selectedIndex].value;
         applyTheme(chosenTheme);

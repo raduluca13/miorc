@@ -279,13 +279,101 @@
 
           <li>
             <h3>Project Structure</h3>
-            <p>A basic flowchart of our application</p>
+            <h4>A basic flowchart of our application</h4>
             <figure typeof = "sa:Image">
                 <img src="./Flowchart.png" alt="flowchart-example">
                 <figcaption>Application flowchart</figcaption>
             </figure>
+            <h4>Login</h4>
+            <figure typeof = "sa:Image">
+                <img src="./Login.png" alt="login-diagram">
+                <figcaption>Login diagram</figcaption>
+            </figure>
+            <h4>Database</h4>
+            <figure typeof = "sa:Image">
+                <img src="./Database.png" alt="database-diagram">
+                <figcaption>Database diagram</figcaption>
+            </figure>
+            <p>There will be 2 tables:</p>
+            <ul>
+              <li>
+                Users: <span>composer, orchestra master</span>
+              </li>
+              <li>
+                Songs: 2 possible representations (as a "song" / as notes project - unprocessed audio )
+              </li>
+            </ul>
+            <h4>UML</h4>
+            <figure typeof = "sa:Image">
+                <img src="./UML.png" alt="uml-diagram">
+                <figcaption>UML Diagram</figcaption>
+            </figure>
           </li>
 
+          <li>
+            <h3>UML in detail</h3>
+            <h4>Mixer component</h4>
+            <p> 💨 It keeps a list of user's scores and a list of instruments from which the user can select</p>
+            <h5>Methods:</h5>
+            <ul style="list-style: none;">
+              <li>✔ AddScore()  ➡ extends the scores with 8 note columns</li>
+              <li>✔ Play() ➡ renders current state of the project and plays it</li>
+              <li>✔ Pause() ➡ pauses playing</li>
+              <li>✔ changeBpm() ➡ changes the BPM for each note</li>
+              <li>✔ Save(String songName, String instrumentName) ➡ saves the state of the project to the database and renders the song so that it can be loaded in the orchestra</li>
+              <li>✔ Load(String songName) ➡ takes the project state of the selected song from database</li>
+              <li>✔ ChangeName(String name) ➡ changes song name</li>
+              <li>✔ ChangeInstrument(String instrumentName) ➡ changes the notes according to the instrument</li>
+            </ul>
+          
+            <h4>Score component</h4>
+            <p> 💨 Keeps a representation of each note, repeated 8 times</p>
+            <h5>Methods:</h5>
+            <ul style="list-style: none;">
+              <li>✔ Add()  ➡ event firing note selection</li>
+              <li>✔ Remove() ➡ event firing note deselection</li>
+            </ul>
+          
+            <h4>Orchestra component</h4>
+            <p> 💨 It keeps a list of user selected tracks for playing together</p>
+            <h5>Methods:</h5>
+            <ul style="list-style: none;">
+              <li>✔ AddTrack(String trackName)  ➡ adds new track to the list</li>
+              <li>✔ RemoveTrack(trackName) ➡ removes track from the list</li>
+              <li>✔ PlayAll()/PauseAll() ➡ plays/pauses the orchestra (all tracks simultaneously</li>
+              <li>✔ Play(trackName)/Pause(trackName) ➡ plays/pauses the preview of a track</li>
+              <li>✔ changeBpm() ➡ changes the volume at which the track plays</li>
+              <li>✔ changeVolume(trackName) ➡ changes the volume at which the track plays</li>
+              <li>✔ changeTheme(trackName) ➡ changes the theme of the application (these could be a service for the whole app)</li>
+            </ul>
+         
+            <h4>Track component</h4>
+            <p>✔ Audio "object"/ render result after Save() from the mixer</p>
+         
+            <h4>TrackList component</h4>
+            <p> 💨 It keeps a <b>list</b> of all available tracks from the <b>instrument list</b></p>
+            <h5>Methods:</h5>
+            <ul style="list-style: none;">
+              <li>✔ ChangeInstrument(instrumentName)  ➡ when the user chooses another insturment it fires an event which changes the list of tracks visible</li>
+            </ul>
+          </li>
+          <li>
+              <h3>Patterns used</h3>
+              <h4> 👀 IIFE ➡ immediately invoked functions used for models creating</h4>
+              <p> Mostly, them will create our components where needed. Examples: </p>
+              <ul>
+                <li>✔ createTrackList()</li>
+                <li>✔ createCard()</li>
+              </ul>
+
+              <h4> 👀 Observer ➡ observes the modifications of tracks (new track saved, existing track edited, deleting track) and notifies TrackList</h4>
+              <h4> 👀 Module Pattern ➡ for Score component and any other only function editable component</h4>
+          </li>
+          <li>
+              <h3>Storage</h3>
+              <h4> 👀 Cloud ➡ Microsoft Azure, NoSQL</h4>
+              <h4> 👀 localStorage/sessionStorage ➡ keeps the state of the currently produced song in mixer</h4>
+          </li>
         </ul>
       </section>
     </article>

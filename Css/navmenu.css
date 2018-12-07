@@ -170,7 +170,9 @@
 .login_form {
   z-index: 2;
 }
-
+.login_form > button:hover, .register_form > button:hover {
+  background-color: #ffcb0c;
+}
 .register_form {
   z-index: 1;
   opacity: 0;
