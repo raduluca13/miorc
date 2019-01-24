@@ -205,6 +205,7 @@ body {
     right: 0;
 }
 
+
 .text_input input:focus~.focus-border:after {
     width: 100%;
     transition: 0.3s;
@@ -212,7 +213,9 @@ body {
 #text_input1 {
    margin-left: 10%;
 }
-
+#mixer_container img{
+    display: none;
+}
 
 
 @media (max-width: 640px),

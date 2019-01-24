@@ -65,10 +65,10 @@
         <nav>
             <div class="button_container">
                 <button class="play_button" id="playSong"><i class="fas fa-play-circle"></i></button>
-                <button class="play_button"><i class="far fa-save"></i></button>
+                <button class="play_button" id="saveButton"><i class="far fa-save"></i></button>
             </div>
             <div class="text_input" id="text_input1">
-                <input type="text" id="songName" placeholder="Song name">
+                <input type="text" id="songName" placeholder="Song name" required>
                 <span class="focus-border">
                     <i></i>
                 </span>
@@ -187,7 +187,7 @@
         </nav>
         <div class="mixer">
             <div class="mixer_notes">
-                <div>a</div>
+                <div>C</div>
                 <div>b</div>
                 <div>c</div>
                 <div>d</div>
@@ -206,12 +206,12 @@
             </div>
 
             <div class="container" id="mixer_container">
+                <img src="../assets/ajax-loader.gif" alt="" srcset="">
                 <canvas id="canvas" height="478" width="239"></canvas>
             </div>
         </div>
     </div>
     <script src="../Js/index.js"></script>
-    <script src="../Js/mixer.js"></script>
     <script src="../Js/mid.js"></script>
 </body>
 
