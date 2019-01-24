@@ -1,229 +1,258 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
+
+<head>
     <meta charset="utf-8">
     <title>Miorc scholarly</title>
     <link rel="stylesheet" href="scholarly.css">
-  </head>
-  <body>
+</head>
+
+<body>
     <article resource="#" typeof="schema:ScholarlyArticle">
-      <header>
-        <h1 property="schema:name">Miorc</h1>
-        <h2 role="doc-subtitle" property="schema:alternateName">Midi orchestra</h2>
-      </header>
-      <meta property="schema:accessibilityFeature" content="alternativeText">
+        <header>
+            <h1 property="schema:name">Miorc</h1>
+            <h2 role="doc-subtitle" property="schema:alternateName">Midi orchestra</h2>
+        </header>
+        <meta property="schema:accessibilityFeature" content="alternativeText">
 
-      <section typeof="sa:AuthorsList">
-        <h2 itemtype="http://schema.org/title">Authors</h2>
-        <ul>
-          <li typeof="sa:ContributorRole" property="schema:author">
-            <span typeof="schema:Person"
-              resource="https://www.facebook.com/radu.97">
-              <meta property="schema:givenName" content="Radu">
-              <meta property="schema:additionalGivenName" content="Iulian">
-              <meta property="schema:familyName" content="Luca">
-              <span property="schema:name">Luca Radu-Iulian</span>
-            </span>
-            <a href="#sf" property="sa:roleAffiliation" resource="https://www.info.uaic.ro/bin/Main/">Student @Faculty of computer science</a>
+        <section typeof="sa:AuthorsList">
+            <h2 itemtype="http://schema.org/title">Authors</h2>
             <ul>
-              <li property="schema:roleContactPoint" typeof="schema:ContactPoint">
-                <a href="mailto:radu.luca13@yahoo.com"
-                property="schema:email">Mail @Radu</a>
-              </li>
-            </ul>
-          </li>
+                <li typeof="sa:ContributorRole" property="schema:author">
+                    <span typeof="schema:Person" resource="https://www.facebook.com/radu.97">
+                        <meta property="schema:givenName" content="Radu">
+                        <meta property="schema:additionalGivenName" content="Iulian">
+                        <meta property="schema:familyName" content="Luca">
+                        <span property="schema:name">Luca Radu-Iulian</span>
+                    </span>
+                    <a href="#sf" property="sa:roleAffiliation" resource="https://www.info.uaic.ro/bin/Main/">Student
+                        @Faculty of computer science</a>
+                    <ul>
+                        <li property="schema:roleContactPoint" typeof="schema:ContactPoint">
+                            <a href="mailto:radu.luca13@yahoo.com" property="schema:email">Mail @Radu</a>
+                        </li>
+                    </ul>
+                </li>
 
-          <li typeof="sa:ContributorRole" property="schema:author">
-            <span typeof="schema:Person"
-              resource="https://www.facebook.com/marian.morcotet.9">
-              <meta property="schema:givenName" content="Ionut">
-              <meta property="schema:additionalGivenName" content="Iulian">
-              <meta property="schema:familyName" content="Bleoju">
-              <span property="schema:name">Ionut-Bogdan Bleoju</span>
-            </span>
-            <a href="#sf" property="sa:roleAffiliation" resource="https://www.info.uaic.ro/bin/Main/">Student @Faculty of computer science</a>
+                <li typeof="sa:ContributorRole" property="schema:author">
+                    <span typeof="schema:Person" resource="https://www.facebook.com/marian.morcotet.9">
+                        <meta property="schema:givenName" content="Ionut">
+                        <meta property="schema:additionalGivenName" content="Iulian">
+                        <meta property="schema:familyName" content="Bleoju">
+                        <span property="schema:name">Ionut-Bogdan Bleoju</span>
+                    </span>
+                    <a href="#sf" property="sa:roleAffiliation" resource="https://www.info.uaic.ro/bin/Main/">Student
+                        @Faculty of computer science</a>
+                    <ul>
+                        <li property="schema:roleContactPoint" typeof="schema:ContactPoint">
+                            <a href="mailto:ionutyop@gmail.com" property="schema:email">Mail @Ionut</a>
+                        </li>
+
+                    </ul>
+                </li>
+            </ul>
+        </section>
+
+        <section typeof="sa:Affiliations">
+            <h2 itemtype="http://schema.org/title">Affiliations</h2>
             <ul>
-              <li property="schema:roleContactPoint" typeof="schema:ContactPoint">
-                <a href="mailto:ionutyop@gmail.com"
-                property="schema:email">Mail @Ionut</a>
-              </li>
-
+                <li id="sa">
+                    <span typeof="schema:Organization" resource="https://science.ai/">
+                        <span property="schema:name">Faculty of computer science</span>,
+                        <span property="schema:parentOrganization">
+                            <span typeof="schema:Organization">
+                                <span property="schema:name">"Alexandru Ioan Cuza" University of Iași</span>
+                                —
+                                <span property="schema:location" typeof="schema:Place">
+                                    <span property="schema:address" typeof="schema:PostalAddress">
+                                        <span property="schema:addressLocality">Iași</span>,
+                                        <span property="schema:addressRegion">Iași</span>,
+                                        <span property="schema:addressCountry">România</span>
+                                    </span>
+                                </span>
+                            </span>
+                        </span>
+                    </span>
+                </li>
             </ul>
-          </li>
-        </ul>
-      </section>
-
-      <section typeof="sa:Affiliations">
-        <h2 itemtype="http://schema.org/title">Affiliations</h2>
-        <ul>
-          <li id="sa">
-            <span typeof="schema:Organization" resource="https://science.ai/">
-              <span property="schema:name">Faculty of computer science</span>,
-              <span property="schema:parentOrganization">
-                <span typeof="schema:Organization">
-                  <span property="schema:name">"Alexandru Ioan Cuza" University of Iași</span>
-                  —
-                  <span property="schema:location" typeof="schema:Place">
-                    <span property="schema:address" typeof="schema:PostalAddress">
-                      <span property="schema:addressLocality">Iași</span>,
-                      <span property="schema:addressRegion">Iași</span>,
-                      <span property="schema:addressCountry">România</span>
-                    </span>
-                  </span>
-                </span>
-              </span>
-            </span>
-          </li>
-        </ul>
-      </section>
-
-      <section typeof="sa:Concepts">
-        <h2 itemtype="http://schema.org/title">Concepts</h2>
-        <section typeof="schema:SoftwareSourceCode">
-          <h3 itemtype="http://schema.org/title">HTML</h3>
-          <ul>
-            <li typeof="schema:WebPage" role="doc-biblioentry"
-              resource="http://semver.org/"
-              property="schema:citation" id="some-id">
-              <cite property="schema:name">
-                <a href="https://en.wikipedia.org/wiki/HTML">HTML</a>
-              </cite>, by
-              <span property="schema:author" typeof="schema:Person">
-                  <span property="schema:givenName">Tim</span>
-                  <span property="schema:familyName">Berners-Lee</span>
-                </span>; published in
-                <time property="schema:datePublished" datatype="xsd:gYear"
-                  datetime="1980">1980</time>
-                <span property="schema:potentialAction" typeof="schema:ReadAction">
-                  <meta property="schema:actionStatus" content="CompletedActionStatus">
-                  (accessed on
-                  <time property="schema:endTime" datatype="xsd:date"datetime="2018-10-30">
-                    30 Oct 2018
-                  </time>)
-                </span>.
-              </li>
-
-              <li itemtype="http://schema.org/ListItem">
-                <p itemtype="http://schema.org/description">Hypertext Markup Language (HTML) is the standard markup language for creating web pages and web applications. With Cascading Style Sheets (CSS) and JavaScript, it forms a triad of cornerstone technologies for the World Wide Web</p>
-              </li>
-          </ul>
         </section>
 
-        <section>
-          <h3 itemtype="http://schema.org/title">CSS</h3>
-          <ul>
-            <li typeof="schema:WebPage" role="doc-biblioentry"
-              resource="http://semver.org/"
-              property="schema:citation" id="some-id">
-              <cite property="schema:name">
-                <a href="https://en.wikipedia.org/wiki/Cascading_Style_Sheets">CSS</a>
-              </cite>, by
-              <span property="schema:author" typeof="schema:Person">
-                  <span property="schema:givenName">Håkon</span>
-                  <span property="schema:familyName">Wium-Lie</span>
-              </span>; first proposed in
-                <time property="schema:datePublished" datatype="xsd:gYear"
-                  datetime="1994">1994</time>
-                <span property="schema:potentialAction" typeof="schema:ReadAction">
-                  <meta property="schema:actionStatus" content="CompletedActionStatus">
-                  (accessed on
-                  <time property="schema:endTime" datatype="xsd:date"datetime="2018-10-30">
-                    30 Oct 2018
-                  </time>)
-                </span>.
-              </li>
+        <section typeof="sa:Concepts">
+            <h2 itemtype="http://schema.org/title">Concepts</h2>
+            <section typeof="schema:SoftwareSourceCode">
+                <h3 itemtype="http://schema.org/title">What is
+                    <cite property="schema:name">
+                        <a href="https://en.wikipedia.org/wiki/MIDI">MIDI</a>
+                    </cite></h3>
 
-              <li itemtype="http://schema.org/ListItem">
-                <p itemtype="http://schema.org/description">Cascading Style Sheets (CSS) is a style sheet language used for describing the presentation of a document written in a markup language like HTML. CSS is a cornerstone technology of the World Wide Web, alongside HTML and JavaScript.</p>
-              </li>
-          </ul>
-        </section>
-
-        <section>
-          <h3 itemtype="http://schema.org/title">JavaScript</h3>
-          <ul>
-            <li typeof="schema:WebPage" role="doc-biblioentry"
-              resource="http://semver.org/"
-              property="schema:citation" id="some-id">
-              <cite property="schema:name">
-                <a href="https://en.wikipedia.org/wiki/JavaScript">JS</a>
-              </cite>, by
-              <span typeof="schema:Organization" resource="https://en.wikipedia.org/wiki/National_Center_for_Supercomputing_Applications">
-                <span property="schema:name">National Center for Supercomputing Applications</span>,
-                <span property="schema:parentOrganization">
-                  <span typeof="schema:Organization">
-                    <span property="schema:name">University of Illinois at Urbana-Champaign</span>
-                    —
-                    <span property="schema:location" typeof="schema:Place">
-                      <span property="schema:address" typeof="schema:PostalAddress">
-                        <span property="schema:addressLocality">Urbana and Champaign</span>,
-                        <span property="schema:addressRegion">Illinois</span>,
-                        <span property="schema:addressCountry">U.S.</span>
-                      </span>
-                    </span>
-                  </span>
-                </span>
-              </span>; published in
-                <time property="schema:datePublished" datatype="xsd:gYear"
-                  datetime="1993">1993</time>
-                <span property="schema:potentialAction" typeof="schema:ReadAction">
-                  <meta property="schema:actionStatus" content="CompletedActionStatus">
-                  (accessed on
-                  <time property="schema:endTime" datatype="xsd:date"datetime="2018-10-30">
-                    30 Oct 2018
-                  </time>)
-                </span>.
-              </li>
-
-              <li itemtype="http://schema.org/ListItem">
-                <p itemtype="http://schema.org/description">JavaScript, often abbreviated as JS, is a high-level, interpreted programming language. It is a language which is also characterized as dynamic, weakly typed, prototype-based and multi-paradigm. Alongside HTML and CSS, JavaScript is one of the three core technologies of the World Wide Web.</p>
-              </li>
-          </ul>
-        </section>
-
-        <section>
-          <h3 itemtype="http://schema.org/title">GitHub</h3>
-          <ul>
-            <li typeof="schema:WebPage" role="doc-biblioentry"
-              resource="http://semver.org/"
-              property="schema:citation" id="some-id">
-              <cite property="schema:name">
-                <a href="https://github.com/">GitHub</a>
-              </cite>, by
-              <span typeof="schema:Organization" resource="https://github.com/">
-                <span property="schema:name">GitHub Inc.</span>,
-                <span property="schema:parentOrganization">
-                  <span typeof="schema:Organization">
-                    <span property="schema:name"> Microsoft Corporation</span>
-                    —
-                    <span property="schema:location" typeof="schema:Place">
-                      <span property="schema:address" typeof="schema:PostalAddress">
-                        <span property="schema:addressLocality">San Francisco</span>,
-                        <span property="schema:addressRegion">California</span>,
-                        <span property="schema:addressCountry">U.S.</span>
-                      </span>
-                    </span>
-                  </span>
-                </span>
-              </span>; started in
-                <time property="schema:datePublished" datatype="xsd:gYear"
-                  datetime="2008">2008</time>
-                <span property="schema:potentialAction" typeof="schema:ReadAction">
-                  <meta property="schema:actionStatus" content="CompletedActionStatus">
-                  (accessed on
-                  <time property="schema:endTime" datatype="xsd:date"datetime="2018-10-30">
-                    30 Oct 2018
-                  </time>)
-                </span>.
-              </li>
-
-              <li itemtype="http://schema.org/ListItem">
-                <p itemtype="http://schema.org/description">GitHub Inc. is a web-based hosting service for version control using Git. It is mostly used for computer code. It offers all of the distributed version control and source code management (SCM) functionality of Git as well as adding its own features. It provides access control and several collaboration features such as bug tracking, feature requests, task management, and wikis for every project.</p>
-              </li>
-          </ul>
-        </section>
-      </section>
+                <ul>
 
 
-  </body>
+                    <li itemtype="http://schema.org/ListItem">
+                        <p itemtype="http://schema.org/description">MIDI (short for Musical Instrument
+                            Digital Interface) is a technical standard that describes a communications protocol,
+                            digital interface, and electrical connectors that connect a wide variety of electronic
+                            musical instruments, computers, and related audio devices. A single MIDI link can
+                            carry up to sixteen channels of information, each of which can be routed to a separate
+                            device. <br><br>
+
+                            MIDI carries event messages that specify notation, pitch, velocity, vibrato, panning,
+                            and clock signals (which set tempo). For example, a MIDI keyboard or other controller
+                            might trigger a sound module to generate sound produced by a keyboard amplifier. MIDI
+                            data can be transferred via midi cable, or recorded to a sequencer to be edited or
+                            played back. <br><br>
+
+                            A file format that stores and exchanges the data is also defined. Advantages of MIDI
+                            include small file size, ease of modification and manipulation and a wide choice of
+                            electronic instruments and synthesizer or digitally-sampled sounds. <br>
+                    </li>
+                </ul>
+            </section>
+
+            <section typeof="sa:Concepts">
+                <h2 itemtype="http://schema.org/title">About the application</h2>
+                <section typeof="schema:SoftwareSourceCode">
+                    <h3 itemtype="http://schema.org/title">What is
+                        <cite property="schema:name">
+                            <a href="https://en.wikipedia.org/wiki/Orchestration">MIORC</a>
+                        </cite></h3>
+
+                    <ul>
+                        <li itemtype="http://schema.org/ListItem">
+                            <p itemtype="http://schema.org/description">
+                                MIORC is a web application that allows you to create an online
+                                <span property="https://schema.org/MusicGroup">orchestra</span> <br>
+                                You can chose from a list of over 70
+                                <span property="http://schema.org/instrument">instruments</span>
+                                and create your own
+                                <span property="http://schema.org/track">composition.</span> <br>
+                                After you`ve created your <span property="http://schema.org/track">song</span> you can
+                                start forming an
+                                <span property="https://schema.org/MusicGroup">orchestra</span> , with your
+                                composionion and many others written by other
+                                <span property=" http://schema.org/performer"> players </span> .
+                        </li>
+                    </ul>
+                </section>
+                <section typeof="schema:SoftwareSourceCode">
+                    <h3 itemtype="http://schema.org/title">How to use
+                        <cite property="schema:name">
+                            <a href="https://en.wikipedia.org/wiki/Orchestration">MIORC</a>
+                        </cite></h3>
+
+                    <ul>
+                        <li itemtype="http://schema.org/ListItem">
+                            <p itemtype="http://schema.org/description">
+                                The application has 2 main pages:
+                                <ul>
+                                    <li itemtype="http://schema.org/ListItem">The mixer page
+                                        <p itemtype="http://schema.org/description">Here you will compose your songs</p>
+                                    <li itemtype="http://schema.org/ListItem">
+                                        <h3 itemtype="http://schema.org/title">Mixer Structure</h3>
+                                        <h4 itemtype="http://schema.org/title">A basic description of the page</h4>
+                                        <figure typeof="sa:Image">
+                                            <img src="./mixer1.png" alt="mixer-page">
+                                            <figcaption>Mixer page</figcaption>
+                                        </figure>
+                                        <p itemtype="http://schema.org/description">Here you will see 3 main components</p>
+                                        <ul>
+                                            <li itemtype="http://schema.org/ListItem">
+                                                <h4 itemtype="http://schema.org/title">Navigation menu</h4>
+                                                <figure typeof="sa:Image">
+                                                    <img src="./main_menu_in.png" alt="navigation-menu">
+                                                    <figcaption>Main menu closed</figcaption>
+                                                    <p itemtype="http://schema.org/description">The menu which will
+                                                        help you navigate through the application . By clicking it ,
+                                                        the menu will expand </p>
+                                                </figure>
+                                                <figure typeof="sa:Image">
+                                                    <img src="./main_menu_out.png" alt="navigation-menu">
+                                                    <figcaption>Main menu opend</figcaption>
+                                                    <p itemtype="http://schema.org/description">
+                                                        By opening it you will see 4 buttons (ATM)
+                                                        <ul>
+                                                            <li itemtype="http://schema.org/ListItem">1-Home button -
+                                                                will take you back to the main page</li>
+                                                            <li itemtype="http://schema.org/ListItem">2-Mixer button -
+                                                                will take you to the mixer page</li>
+                                                            <li itemtype="http://schema.org/ListItem">3-Conductor
+                                                                button - will take you back to the orchestra page</li>
+                                                            <li itemtype="http://schema.org/ListItem">4-Log-out/Log-in
+                                                                - will allow you to login/logout</li>
+                                                        </ul>
+                                                    </p>
+                                                </figure>
+                                            </li>
+                                            <li itemtype="http://schema.org/ListItem">
+                                                <h4 itemtype="http://schema.org/title">Mixer controls</h4>
+                                                <figure typeof="sa:Image">
+                                                    <img src="./mixer_controls.png" alt="mixer-menu">
+                                                    <figcaption>Mixer main controls</figcaption>
+                                                    <p itemtype="http://schema.org/description">Those will help you to
+                                                        interact with your song. Here you will see 5 main controls</p>
+                                                    <ul>
+                                                        <li itemtype="http://schema.org/ListItem">1-Play button - want
+                                                            to hear how your
+                                                            <span itemtype=" http://schema.org/MusicComposition">song</span>
+                                                            sound , just
+                                                            <span itemtype="http://schema.org/Action"> click</span>
+                                                            it
+                                                        </li>
+                                                        <li itemtype="http://schema.org/ListItem">2-Save button - will
+                                                            save your song to our server</li>
+                                                        <li itemtype="http://schema.org/ListItem">3-Song name - the
+                                                            name which your song will be saved by</li>
+                                                        <li itemtype="http://schema.org/ListItem">4-BPM - play is to
+                                                            slow , rise the BPM ( Max of 10)</li>
+                                                        <li itemtype="http://schema.org/ListItem">5-Instruments - bored
+                                                            of the old piano try a new funky instrument</li>
+                                                    </ul>
+                                                </figure>
+                                            </li>
+                                            <li itemtype="http://schema.org/ListItem">
+                                                <h4 itemtype="http://schema.org/title">Note sheet</h4>
+                                                <figure typeof="sa:Image">
+                                                    <img src="./mixer_notes.png" alt="note-sheet">
+                                                    <figcaption>Note sheet</figcaption>
+                                                    <p itemtype="http://schema.org/description">The main actor of this
+                                                        play. Here you can chose your notes
+                                                        <ul>
+                                                            <li itemtype="http://schema.org/ListItem">First you will
+                                                                see the sqares , each represents a note , by clicking
+                                                                it you cant liste the note , dont like it just click it
+                                                                again</li>
+                                                            <li itemtype="http://schema.org/ListItem">As you can see
+                                                                the sheet is pretty small , what about that ? If you
+                                                                want to make it bigger sipley add a note (square with a
+                                                                * symbol) on the last collumn and <b>BAM</b> more notes
+                                                                to add </li>
+                                                        </ul>
+                                                        <figure typeof="sa:Image">
+                                                            <img src="./mixer_notes_on.png" alt="note-sheet">
+                                                            <figcaption>Note sheet expanded</figcaption>
+                                                        </figure>
+                                                </figure>
+                                            </li>
+                                        </ul>
+                                    </li>
+                        </li>
+                        <li itemtype="http://schema.org/ListItem">The orchestra page
+                            <p itemtype="http://schema.org/description">Here you will mix all the song you want</p>
+                        <li itemtype="http://schema.org/ListItem">
+                            <h3 itemtype="http://schema.org/title">Orchestra Structure</h3>
+                            <h4 itemtype="http://schema.org/title">A basic description of the orchestra page</h4>
+
+                        </li>
+                        </li>
+                    </ul>
+                    </li>
+                    </ul>
+                </section>
+            </section>
+
+
+
+
+</body>
+
 </html>
