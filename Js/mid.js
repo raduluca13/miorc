@@ -83,7 +83,6 @@ function saveSong() {
         alert("Please chose a name for the composition!");
     } else {
         makeJson();
-        console.log(JSON.stringify(matrix));
         postData(`http://localhost:3000`, {
             notes: matrix,
             name: sName
@@ -102,7 +101,7 @@ function saveSong() {
                     referrer: "no-referrer",
                     body: JSON.stringify(data),
                 })
-                .then(response => alert("Song Saved"));
+                .then(response => console.log(response));
         }
     }
 }

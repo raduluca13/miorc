@@ -1,9 +1,7 @@
 const http = require('http');
 var MidiWriter = require('midi-writer-js');
 var fs = require('fs');
-const {
-    parse
-} = require('querystring');
+const {parse} = require('querystring');
 
 const server = http.createServer((req, res) => {
     if (req.method === 'POST') {
@@ -22,6 +20,8 @@ function collectRequestData(request, res, callback) {
     });
     request.on('end', () => {
         let name = JSON.parse(body)["name"] + ".json"
+        res.setHeader('Content-Type', 'text/plain');
+        res.setHeader('Access-Control-Allow-Origin', '*');
         if (fs.existsSync(name)) {
             i = 1;
             while (fs.existsSync(name)) {
@@ -29,11 +29,13 @@ function collectRequestData(request, res, callback) {
                 fs.writeFile(name, body, 'utf8', callback);
                 i++;
             }
-            res.end();
+            res.statusCode = 300;
+            res.end('Song with this name already exist');
         } else {
             fs.writeFile(name, body, 'utf8', callback);
             res.statusCode = 200;
-            res.end();
+            res.end('Song saved');
         }
+        
     });
 }
