@@ -4,19 +4,19 @@
 <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <!-- polyfill -->
-	<script src="../MIDI.js/inc/shim/Base64.js" type="text/javascript"></script>
-	<script src="../MIDI.js/inc/shim/Base64binary.js" type="text/javascript"></script>
-	<script src="../MIDI.js/inc/shim/WebAudioAPI.js" type="text/javascript"></script>
-	<!-- midi.js package -->
-	<script src="../MIDI.js/js/midi/audioDetect.js" type="text/javascript"></script>
-	<script src="../MIDI.js/js/midi/gm.js" type="text/javascript"></script>
-	<script src="../MIDI.js/js/midi/loader.js" type="text/javascript"></script>
-	<script src="../MIDI.js/js/midi/plugin.audiotag.js" type="text/javascript"></script>
-	<script src="../MIDI.js/js/midi/plugin.webaudio.js" type="text/javascript"></script>
-	<script src="../MIDI.js/js/midi/plugin.webmidi.js" type="text/javascript"></script>
-	<!-- utils -->
-	<script src="../MIDI.js/js/util/dom_request_xhr.js" type="text/javascript"></script>
-	<script src="../MIDI.js/js/util/dom_request_script.js" type="text/javascript"></script>
+    <script src="../MIDI.js/inc/shim/Base64.js" type="text/javascript"></script>
+    <script src="../MIDI.js/inc/shim/Base64binary.js" type="text/javascript"></script>
+    <!-- <script src="../MIDI.js/inc/shim/WebAudioAPI.js" type="text/javascript"></script> -->
+    <!-- midi.js package -->
+    <script src="../MIDI.js/js/midi/audioDetect.js" type="text/javascript"></script>
+    <script src="../MIDI.js/js/midi/gm.js" type="text/javascript"></script>
+    <script src="../MIDI.js/js/midi/loader.js" type="text/javascript"></script>
+    <script src="../MIDI.js/js/midi/plugin.audiotag.js" type="text/javascript"></script>
+    <script src="../MIDI.js/js/midi/plugin.webaudio.js" type="text/javascript"></script>
+    <script src="../MIDI.js/js/midi/plugin.webmidi.js" type="text/javascript"></script>
+    <!-- utils -->
+    <script src="../MIDI.js/js/util/dom_request_xhr.js" type="text/javascript"></script>
+    <script src="../MIDI.js/js/util/dom_request_script.js" type="text/javascript"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -45,16 +45,16 @@
             <span class="login_modal_close" id="login_modal_close"><i class="far fa-times-circle"></i></span>
             <div class="form_container">
                 <form class="login_form" id="sign_in">
-                    <input id="email_login" type="email" placeholder="Email" autocomplete="username"/>
-                    <input id="password_login" type="password" placeholder="Password"  autocomplete="current-password"/>
+                    <input id="email_login" type="email" placeholder="Email" autocomplete="username" />
+                    <input id="password_login" type="password" placeholder="Password" autocomplete="current-password" />
                     <button type="submit">Log In</button>
                     <p class="form_extra" id="log_button">Not registered? <a href="#">Create an account</a></p>
 
                 </form>
                 <form class="register_form" id="sign_up">
                     <input type="email" placeholder="Email" autocomplete="username" />
-                    <input type="password" placeholder="Password"  autocomplete="new-password"/>
-                    <input type="password" placeholder="Repeat Password"  autocomplete="new-password"/>
+                    <input type="password" placeholder="Password" autocomplete="new-password" />
+                    <input type="password" placeholder="Repeat Password" autocomplete="new-password" />
                     <button type="submit">Sign Up</button>
                     <p class="form_extra" id="register_button">Already registered? <a href="#">Sign In</a></p>
                 </form>
@@ -63,69 +63,127 @@
     </div>
     <div class="main_container">
         <nav>
-        <div class="button_container">
-            <button class="play_button" id="playSong"><i class="fas fa-play-circle"></i></button>
-            <button class="play_button"><i class="far fa-save"></i></button>
-        </div>
+            <div class="button_container">
+                <button class="play_button" id="playSong"><i class="fas fa-play-circle"></i></button>
+                <button class="play_button"><i class="far fa-save"></i></button>
+            </div>
             <div class="text_input" id="text_input1">
-                <input  type="text" id="songName" placeholder="Song name">
-                  <span class="focus-border">
-                    <i></i>
-                  </span>
-              </div>
-            <div class="text_input" id="text_input2">
-                <input type="text" id="bpm"  placeholder="BPM">
+                <input type="text" id="songName" placeholder="Song name">
                 <span class="focus-border">
                     <i></i>
-                  </span>
+                </span>
             </div>
-                <div class="select">
+            <div class="text_input" id="text_input2">
+                <input type="text" id="bpm" placeholder="BPM">
+                <span class="focus-border">
+                    <i></i>
+                </span>
+            </div>
+            <div class="select">
                 <select id="instrument_select" size="1">
                     <optgroup label="Piano">
-                        <option value="0">Electric Piano</option>
-                        <option value="8">Grand Piano</option>
-                        <option value="17">Harpsichord</option>
-                        <option value="25">Ragtime Piano</option>
-                        <option value="26">Music Box</option>
+                        <option value="0">Acoustic Grand Piano</option>
+                        <option value="1">Bright Acoustic Piano</option>
+                        <option value="2">Electric Grand Piano</option>
+                        <option value="3">Honky-tonk Piano</option>
+                        <option value="4">Electric Piano 1</option>
+                        <option value="5">Electric Piano 2</option>
+                        <option value="6">Harpischord</option>
+                        <option value="7">Clavinet</option>
                     </optgroup>
-                    <optgroup label="Percussion">
-                        <option value="2">Drum Kit</option>
-                        <option value="31">Electric Drum Kit</option>
-                        <option value="19">Xylophone</option>
-                        <option value="34">Vibraphone</option>
-                        <option value="21">Steel Drums</option>
+                    <optgroup label="Chromatic Percussion">
+                        <option value="8">Celesta </option>
+                        <option value="9">Glockenspiel </option>
+                        <option value="10">Music Box </option>
+                        <option value="11">Vibraphone </option>
+                        <option value="12">Marimba </option>
+                        <option value="13">Xylophone </option>
+                        <option value="14">Tubular Bells </option>
+                        <option value="15">Dulcimer </option>
+                    </optgroup>
+                    <optgroup label="Organ">
+                        <option value="16">Drawbar Organ </option>
+                        <option value="17">Percussive Organ </option>
+                        <option value="18">Rock Organ </option>
+                        <option value="19">Church Organ </option>
+                        <option value="20">Reed Organ </option>
+                        <option value="21">Accordion </option>
+                        <option value="22">Harmonica </option>
+                        <option value="23">Tango Accordion </option>
                     </optgroup>
                     <optgroup label="Guitar">
-                        <option value="1">Acoustic Guitar</option>
-                        <option value="4">Electric Guitar</option>
-                        <option value="5">Bass</option>
-                        <option value="29">Slap Bass</option>
-                        <option value="32">Jazz Guitar</option>
-                        <option value="35">Muted E-Guitar</option>
-                        <option value="38">Distortion Guitar</option>
-                        <option value="22">Sitar</option>
-                        <option value="33">Koto</option>
+                        <option value="24">Acoustic Guitar (nylon) </option>
+                        <option value="25">Acoustic Guitar (steel) </option>
+                        <option value="26">Electric Guitar (jazz) </option>
+                        <option value="27">Electric Guitar (clean) </option>
+                        <option value="28">Electric Guitar (muted) </option>
+                        <option value="29">Overdriven Guitar </option>
+                        <option value="30">Distortion Guitar </option>
+                        <option value="31">Guitar Harmonics </option>
                     </optgroup>
-                    <optgroup label="Electronic">
-                        <option value="3">Smooth Synth</option>
-                        <option value="6">Synth Pluck</option>
-                        <option value="7">Scifi</option>
-                        <option value="13">8-Bit Sine</option>
-                        <option value="14">8-Bit Square</option>
-                        <option value="15">8-Bit Sawtooth</option>
-                        <option value="16">8-Bit Triangle</option>
+                    <optgroup label="Bass">
+                        <option value="32">Acoustic Bass </option>
+                        <option value="33">Electric Bass (finger) </option>
+                        <option value="34">Electric Bass (pick) </option>
+                        <option value="35">Fretless Bass </option>
+                        <option value="36">Slap Bass 1 </option>
+                        <option value="37">Slap Bass 2 </option>
+                        <option value="38">Synth Bass 1 </option>
+                        <option value="39">Synth Bass 2 </option>
                     </optgroup>
-                    <optgroup label="Orchestra">
-                        <option value="9">French Horn</option>
-                        <option value="10">Trombone</option>
-                        <option value="11">Violin</option>
-                        <option value="12">Cello</option>
-                        <option value="18">Concert Harp</option>
-                        <option value="20">Pizzicato</option>
+                    <optgroup label="Viola">
+                        <option value="40">Violin </option>
+                        <option value="41">Viola </option>
+                        <option value="42">Cello </option>
+                        <option value="43">Contrabass </option>
+                        <option value="44">Tremolo Strings </option>
+                        <option value="45">Pizzicato Strings </option>
+                        <option value="46">Orchestral Harp </option>
+                        <option value="47">Timpani </option>
+                    </optgroup>
+                    <optgroup label="Ensemble">
+                        <option value="48">String Ensemble 1 </option>
+                        <option value="49">String Ensemble 2 </option>
+                        <option value="50">Synth Strings 1 </option>
+                        <option value="51">Synth Strings 2 </option>
+                        <option value="52">Choir Aahs </option>
+                        <option value="53">Voice Oohs </option>
+                        <option value="54">Synth Choir </option>
+                        <option value="55">Orchestra Hit </option>
+                    </optgroup>
+                    <optgroup label="Brass">
+                        <option value="56">Trumpet </option>
+                        <option value="57">Trombone </option>
+                        <option value="58">Tuba </option>
+                        <option value="59">Muted Trumpet </option>
+                        <option value="60">French Horn </option>
+                        <option value="61">Brass Section </option>
+                        <option value="62">Synth Brass 1 </option>
+                        <option value="63">Synth Brass 2 </option>
+                    </optgroup>
+                    <optgroup label="Reed">
+                        <option value="64">Soprano Sax </option>
+                        <option value="65">Alto Sax </option>
+                        <option value="66">Tenor Sax </option>
+                        <option value="67">Baritone Sax </option>
+                        <option value="68">Oboe </option>
+                        <option value="69">English Horn </option>
+                        <option value="70">Bassoon </option>
+                        <option value="71">Clarinet </option>
+                    </optgroup>
+                    <optgroup label="Pipe">
+                        <option value="72">Piccolo </option>
+                        <option value="73">Flute </option>
+                        <option value="74">Recorder </option>
+                        <option value="75">Pan Flute </option>
+                        <option value="76">Blown bottle </option>
+                        <option value="77">Shakuhachi </option>
+                        <option value="78">Whistle </option>
+                        <option value="79">Ocarina </option>
                     </optgroup>
                 </select>
-                 </div>
-         
+            </div>
+
         </nav>
         <div class="mixer">
             <div class="mixer_notes">
@@ -148,7 +206,7 @@
             </div>
 
             <div class="container" id="mixer_container">
-                    <canvas id="canvas" height="478" width="239"></canvas>
+                <canvas id="canvas" height="478" width="239"></canvas>
             </div>
         </div>
     </div>
