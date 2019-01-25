@@ -1,7 +1,33 @@
+//howler 
+// var sound = new Howl({
+//     src: ['../Amorf-ManifoldSurface.flac'],
+//     autoplay: true,
+//     loop: true,
+//     volume: 0.5,
+//     onend: function() {
+//       console.log('Finished!');
+//     }
+// });
+// var sound2 = new Howl({
+// src: ['../Amorf-Reflections.flac'],
+// autoplay: true,
+// loop: true,
+// volume: 0.5,
+// onend: function() {
+//     console.log('Finished!');
+// }
+// });
+
+
+const AudioContext = window.AudioContext || window.webkitAudioContext;
+const audioContext = new AudioContext();
+
+
 function applyTheme(themeOption){
     // change css styles ?
     console.log(themeOption);
 }
+
 var wavesurfer1 = WaveSurfer.create({
     container: '#waveform1',
     waveColor: '#ffcb0c',
@@ -89,7 +115,52 @@ var themeOptionSelector = document.getElementById("themeSelector_select");
 // );
 
 let progress = document.getElementById('progress');
+
 main.addEventListener("click", function(e){
+    console.log(e.target.id)
+    switch(e.target.id){
+        case "instrument_container1":
+        // case "instrument1":
+            let instr1 = document.getElementById("instrument_container1")
+            console.log(instr1.dataset)
+            if(instr1.dataset.playing === "false"){
+                console.log(instr1.dataset.playing)
+                instr1.dataset.playing = "true"
+            }
+            break
+        case "instrument_container1":
+        case "instrument2":
+            let instr2 = document.getElementById("instrument_container1")
+            if(instr2.dataset.playing === "false"){
+                
+                instr2.dataset.playing = "true"
+            }
+            break
+        default:
+            break
+    }
+
+    if(e.target.id==="play-all-btn"){
+        if (audioContext.state === 'suspended') {
+            audioContext.resume();
+        }
+        
+        const audioElements = document.querySelectorAll('audio');
+
+        function addToContext(trk){
+            try{
+                const track = audioContext.createMediaElementSource(trk)
+                track.connect(audioContext.destination)
+            }
+            catch(error){
+                console.log(error)
+            }
+        }
+        audioElements.forEach(element => {
+            addToContext(element)
+        });
+    }
+    /*
     if (e.target.parentNode.id == "waveform1" || e.target.parentNode.id == "instrument_container1"){
         wavesurfer1.playPause();
     }
@@ -114,6 +185,7 @@ main.addEventListener("click", function(e){
     if (e.target.parentNode.id == "partitura4"){
         wavePartitura4.playPause();
     }
+    */
     if (e.target.id == "themeSelector_select"){
         var chosenTheme = themeOptionSelector[themeOptionSelector.selectedIndex].value;
         applyTheme(chosenTheme);

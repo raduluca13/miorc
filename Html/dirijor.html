@@ -8,14 +8,11 @@
     <title>Compozitie</title>
     <link rel="stylesheet" type="text/css" href="../Css/navmenu.css">
     <link rel="stylesheet" type="text/css" href="../Css/dirijor.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns"
-        crossorigin="anonymous">
-    <script src="https://unpkg.com/wavesurfer.js"></script>
+    <!-- <link rel="stylesheet" href="../fontawesome/fontawesome/css/all.css" crossorigin="anonymous"> -->
+    <!-- <script src="https://unpkg.com/wavesurfer.js"></script> -->
 </head>
 
 <body>
-
-    
 
     <main id="main">
         <div id="round_menu" class="main_menu">
@@ -62,6 +59,8 @@
                     </select>
                 </div>
             </div>
+            <button id="play-all-btn">Play</button>
+            <button id="stop-all-btn">Pause</button>
             <!-- <div id="headerMovingDiv"><span id="headerMovingCursor">|</span></div>
             <progress id="progress" max="100" min="0" value="0"></progress> -->
         </div>
@@ -70,23 +69,34 @@
                 <img id="instrument1" class="poza_instrument" src="../assets/synth.png" alt="png sintetizator" />
                 <input id="volume1" class="volum_instrument" type="range" min="0" max="20" value="8" />
             </div>
-            <div id="waveform1" class="waveformDiv"></div>
+            
+            <div id="waveform1" class="waveformDiv">
+                <audio id="aud1" src="../sorry.wav" type="audio/wav"></audio>
+            </div>
             
             <div id="instrument_container2" class="instrumentDiv">
                 <img id="instrument2" class="poza_instrument" src="../assets/violin.png" alt="png vioara"/>
                 <input id="volume2" class="volum_instrument" type="range"/>
             </div>
-            <div id="waveform2" class="waveformDiv"></div>
+
+            <div id="waveform2" class="waveformDiv">
+                <audio id="aud2"></audio>
+            </div>
+            
             <div id="instrument_container3" class="instrumentDiv">
                 <img id="instrument3" class="poza_instrument" src="../assets/drums.png" alt="png drums"/>
                 <input id="volume3" class="volum_instrument" type="range"/>
             </div>
-            <div id="waveform3" class="waveformDiv"></div>
+            <div id="waveform3" class="waveformDiv">
+                <audio id="aud3" data-playing="false"></audio>
+            </div>
             <div id="instrument_container4" class="instrumentDiv">
                 <img id="instrument4" class="poza_instrument" src="../assets/violin.png" alt="png vioara"/>
                 <input id="volume4" class="volum_instrument" type="range"/>
             </div>
-            <div id="waveform4" class="waveformDiv"></div>
+            <div id="waveform4" class="waveformDiv">
+                <audio id="aud4"></audio>
+            </div>
             <div id="addInstrumentDiv" class="addButtonHover">
                 <a id="addInstrumentBtn" class="btn"><i class="far fa-plus-square fa-4x colorchanger"></i></a>
             </div>
@@ -105,15 +115,21 @@
                 <li id="option4_li"><a class="info-link">Mixer</a></li>
             </ul>
             <div id="partituri_instrument">
-                <div id="partitura1" class="waveformDiv"></div>
-                <div id="partitura2" class="waveformDiv"></div>
-                <div id="partitura3" class="waveformDiv"></div>
-                <div id="partitura4" class="waveformDiv"></div>
+                <div id="partitura1" draggable="true" 
+                ondragstart="event.dataTransfer.setData('text/plain', 'This text may be dragged')" class="waveformDiv"></div>
+                <div id="partitura2" draggable="true" class="waveformDiv"></div>
+                <div id="partitura3" draggable="true" class="waveformDiv"></div>
+                <div id="partitura4" draggable="true" class="waveformDiv"></div>
             </div>
         </div>
     </main>
-    <script src="../Js/dirijor.js"></script>
+    <!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.0.4/howler.js"></script> -->
+    <!-- <script src="../Js/dirijor.js"></script> -->
     <script src="../Js/index.js"></script>
+    <!-- <script src="../Js/noteValues.js"></script> -->
+    <!-- <script src="../Js/stream.js"></script> -->
+    <!-- <script src="../Js/midiParser.js"></script> -->
+    <script src="../Js/dirijor2.js"></script>
 </body>
 
 </html>

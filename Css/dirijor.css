@@ -54,7 +54,7 @@ body::-webkit-scrollbar-thumb {
 
     display:grid;
     grid-gap: 2%;
-    grid-template-columns: 1fr 4fr;
+    grid-template-columns: 1fr 2fr 2fr;
 }
 #themeSelector{
     flex-direction: column;
@@ -175,9 +175,9 @@ body::-webkit-scrollbar-thumb {
     margin-left: 15%;
 }
 
-#instrument_container1, #instrument_container2, #instrument_container3, #instrument_container4{
+/* #instrument_container1, #instrument_container2, #instrument_container3, #instrument_container4{
     
-}
+} */
 
 /* TOP RADIUS
 #instrument_container1, #waveform1, #partitura1{
@@ -205,7 +205,7 @@ body::-webkit-scrollbar-thumb {
     grid-row:2/3;
 }
 #partitura1, #partitura2, #partitura3, #partitura4{
-    /* min-width: 100px; */
+    min-height: 100px;
     cursor: grab;
 }
 #partitura1, #partitura2, #partitura3{
