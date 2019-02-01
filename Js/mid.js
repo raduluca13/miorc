@@ -25,7 +25,6 @@ var cInstrument = document.getElementById("instrument_select")
 var loading = document.querySelector("#mixer_container img");
 var playSong = document.getElementById("playSong");
 var saveButton = document.getElementById("saveButton");
-var saveButton = document.getElementById("saveButton");
 cInstrument.addEventListener("change", instrumentChange, {
     passive: true
 });
@@ -178,10 +177,17 @@ function animate() {
 }
 
 function init() {
+    if (firebase.auth().currentUser) {
+        trigger.style.display = "none";
+        logOut.style.display = "block";
+    } else {
+        trigger.style.display = "block";
+        logOut.style.display = "none";
+    }
     wait = 1;
     MIDI.loadPlugin({
         soundfontUrl: "../assets/Soundfont/",
-        instrument: "acoustic_grand_piano",
+        instrument: "music_box",
 
         onsuccess: function () {
             wait = 0;
