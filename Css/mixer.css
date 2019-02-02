@@ -19,7 +19,7 @@ body {
     margin: auto;
     line-height: 35px;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 6fr;
+    grid-template-columns: 1fr 1fr 1fr 3fr 3fr;
     grid-column-gap: 3px;
     white-space: nowrap;
 }
@@ -33,7 +33,7 @@ body {
     color: white;
 }
 
-.add_container{
+.add_container {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -42,7 +42,7 @@ body {
     border-color: white;
 }
 
-.play_button.add_table{
+.play_button.add_table {
     display: flex;
     justify-content: center;
     font-size: 3em;
@@ -210,10 +210,25 @@ body {
     width: 100%;
     transition: 0.3s;
 }
+
 #text_input1 {
-   margin-left: 10%;
+    max-width: 80px;
+    margin-left: 10%;
 }
-#mixer_container img{
+
+#text_input2 {
+    max-width: 80px;
+}
+
+#songName {
+    max-width: inherit;
+}
+
+#bpm {
+    max-width: inherit;
+}
+
+#mixer_container img {
     display: none;
 }
 
@@ -284,10 +299,12 @@ body {
         margin: 0;
         left: 2%;
     }
-    
-    .text_input, .text_input input{
+
+    .text_input,
+    .text_input input {
         width: 90%;
     }
+
     .select {
         grid-area: d;
         margin: 0;
@@ -303,6 +320,7 @@ body {
         height: 100%;
         grid-template-rows: 25% 75%;
     }
+
     .mixer {
         height: 95%;
         overflow: auto;

@@ -10,7 +10,7 @@ var signIn = document.getElementById("signIn");
 var logOut = document.getElementById("logOut");
 var signInError = document.getElementById('signin_error');
 var logInError = document.getElementById('login_error');
-const app = firebase.app();
+var app = firebase.app();
 
 logOut.addEventListener("click", logOutEmail);
 trigger.addEventListener("click", toggleModal);
@@ -22,17 +22,15 @@ logIn.addEventListener("click", logInEmail);
 signIn.addEventListener("click", signInEmail);
 
 firebase.auth().onAuthStateChanged(function (user) {
-  console.log(user);
   if (user) {
-    console.log("avem");
     trigger.style.display = "none";
     logOut.style.display = "block";
   } else {
-    console.log("navem");
     trigger.style.display = "block";
     logOut.style.display = "none";
   }
 });
+
 
 function logOutEmail() {
   firebase.auth().signOut().then(function () {
@@ -70,15 +68,21 @@ function logInEmail() {
         }
       })
       .then(() => {
-        console.log(firebase.auth().currentUser);
-        if (firebase.auth().currentUser) {
-          logInError.style.background = "green";
-          logInError.innerText = "Welcome";
-          setTimeout(function () {
-            toggleModal();
-            logInError.innerText = "";
-          }, 1000);
-        }
+        firebase.auth().onAuthStateChanged(function (user) {
+          if (user) {
+            trigger.style.display = "none";
+            logOut.style.display = "block";
+            logInError.style.background = "green";
+            logInError.innerText = "Welcome";
+            setTimeout(function () {
+              toggleModal();
+              logInError.innerText = "";
+            }, 1000);
+          } else {
+            trigger.style.display = "block";
+            logOut.style.display = "none";
+          }
+        });
       })
   }
 }
@@ -115,14 +119,24 @@ function signInEmail() {
         }
       })
       .then(() => {
-        if (firebase.auth().currentUser) {
-          signInError.style.background = "green";
-          signInError.innerText = "Register successful";
-          setTimeout(function () {
-            toggleModal();
-            signInError.innerText = "";
-          }, 1000);
-        }
+        firebase.auth().onAuthStateChanged(function (user) {
+          if (user) {
+            firebase.auth().currentUser.updateProfile({
+              displayName: res[0]
+            })
+            signInError.style.background = "green";
+            signInError.innerText = "Register successful";
+            trigger.style.display = "none";
+            logOut.style.display = "block";
+            setTimeout(function () {
+              toggleModal();
+              signInError.innerText = "";
+            }, 1000);
+          } else {
+            trigger.style.display = "block";
+            logOut.style.display = "none";
+          }
+        });
       })
 
   }
