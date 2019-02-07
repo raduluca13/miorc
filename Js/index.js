@@ -119,6 +119,7 @@ function signInEmail() {
         }
       })
       .then(() => {
+        var res = email.split("@");
         firebase.auth().onAuthStateChanged(function (user) {
           if (user) {
             firebase.auth().currentUser.updateProfile({
