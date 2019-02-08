@@ -7,17 +7,17 @@ let response = {
         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 70, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 72, 0, 0, 0, 0, 0, 0, 72, 0, 72, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 74, 74, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 76, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [78, 78, 0, 0, 0, 0, 78, 0, 0, 78, 0, 78, 78, 0, 78, 78]
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 62],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 64, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 66, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 64, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 66, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 68, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [70, 70, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 72, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 74, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 76, 0, 0, 0, 0, 0, 0, 0, 0, 76, 0, 0, 0],
+        [78, 0, 78, 0, 0, 0, 78, 0, 0, 0, 78, 0, 0, 0, 78, 0]
     ],
     "name": "Stair",
     "duration": 12
@@ -51,7 +51,7 @@ class Track {
         this.gainNodes = []
         this.isPlaying = false;
         this.length = 2;
-        this.eps = 0.01;
+        this.eps = 0.2;
     }
 
     init(nrOsc){
@@ -66,8 +66,7 @@ class Track {
     loadDefaultOscillators(defaultFrequenciesList){ //set the frequency of each osc
         for (let i = 0; i < 16; i++) {
             this.oscillators[i].frequency.value = defaultFrequenciesList[i];
-            this.gainNodes[i].gain.setValueAtTime(0, this.context.currentTime);
-            this.gainNodes[i].gain.linearRampToValueAtTime(1, this.context.currentTime + 0.01);
+            
         }
     }
 
@@ -109,10 +108,12 @@ class Track {
         console.log(time, duration, singleDuration)
 
         for (let i = 0; i < 16; i++) {
+            this.oscillators[i].start(time)
+            this.gainNodes[i].gain.setValueAtTime(0, this.context.currentTime-this.eps);
             if (notes[i][0] != 0) {
                 console.log(`osc${i} started at ${this.context.currentTime}`)
                 try {
-                    this.oscillators[i].start(time)
+                    this.gainNodes[i].gain.linearRampToValueAtTime(1, this.context.currentTime);
                     this.ongoing[i] = 1
                     
                     if (this.ongoing.some((el) => { return el != 0 }))
@@ -132,12 +133,14 @@ class Track {
         // SCHEDULER 
         for (let i = 0; i < 16; i++) {
             for (let j = 1; j < notes[i].length; j++) {
-                console.log("next column : ", this.ongoing)
                 if (notes[i][j] === 0 && this.ongoing[i] == 1) {
                     console.log("i,j: ", i, j)
                     console.log(`osc${i} stopped at ${time + singleDuration * j}`)
                     try {
-                        this.oscillators[i].stop(time + singleDuration * j)
+                        // this.oscillators[i].stop(time + singleDuration * j)
+                        // this.gainNodes[i].gain.setValueAtTime(1, time+singleDuration*j-this.eps);
+                        this.gainNodes[i].gain.linearRampToValueAtTime(0, time + singleDuration * j);
+
                         this.ongoing[i] = 0
                         if (!this.ongoing.some((el) => { return el != 0 })) {
                             this.isPlaying = false
@@ -152,7 +155,11 @@ class Track {
                         console.log("merge pe ", i)
                         console.log(`osc${i} started at ${singleDuration * j}`)
                         try {
-                            this.oscillators[i].start(singleDuration * j)
+                            // this.oscillators[i].start(singleDuration * j)
+                            
+                            this.gainNodes[i].gain.setValueAtTime(0, time + singleDuration * j - this.eps);
+                            this.gainNodes[i].gain.linearRampToValueAtTime(1, time + singleDuration * j);
+                           
                             if (!this.isPlaying) this.isPlaying = true
                             this.ongoing[i] = 1
                         }
@@ -166,11 +173,12 @@ class Track {
         }
         // stop all remaining
         for (let i = 0; i < 16; i++) {
-            console.log("stopping : ", this.ongoing)
             if (this.ongoing[i] === 1) {
                 console.log(`osc${i} stopped at ${time + duration}`)
                 try {
-                    this.oscillators[i].stop(time + duration)
+                    // this.oscillators[i].stop(time + duration)
+                    this.gainNodes[i].gain.setValueAtTime(0, time+duration - this.eps);
+                    this.gainNodes[i].gain.linearRampToValueAtTime(0, time+duration);
                 }
                 catch (error) {
                     console.log(error)
