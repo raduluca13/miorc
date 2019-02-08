@@ -176,7 +176,7 @@
 }
 
 .login_form {
-  z-index: 2;
+  z-index: 11;
 }
 
 .login_form>button:hover,
