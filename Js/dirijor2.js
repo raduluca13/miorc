@@ -1,5 +1,41 @@
-const AudioContext = window.AudioContext || window.webkitAudioContext;
-const audioContext = new AudioContext();
+
+// $("#btn").click(function(){
+//   var binary= convertDataURIToBinary(data);
+//   var blob=new Blob([binary], {type : 'audio/ogg'});
+//   var blobUrl = URL.createObjectURL(blob);
+//   $('body').append('<br> Blob URL : <a href="'+blobUrl+'" target="_blank">'+blobUrl+'</a><br>');
+//   $("#source").attr("src", blobUrl);
+//   $("#audio")[0].pause();
+//   $("#audio")[0].load();//suspends and restores all audio element
+//   $("#audio")[0].oncanplaythrough =  $("#audio")[0].play();
+// });
+
+const blobbie = "data:audio/midi;base64,TVRoZAAAAAYAAAABAIBNVHJrAAAAlQCQQECBAIBAQACQPkCBAIA+QACQPECCAIA8QACQQECBAIBAQACQPkCBAIA+QACQPECCAIA8QACQPEBAgDxAAJA8QECAPEAAkDxAQIA8QACQPEBAgDxAAJA+QECAPkAAkD5AQIA+QACQPkBAgD5AAJA+QECAPkAAkEBAgQCAQEAAkD5AgQCAPkAAkDxAggCAPEAA/y8A"
+let binary = convertDataURIToBinary(blobbie)
+let blob = new Blob([binary], {type: 'audio/midi'})
+var blobUrl = URL.createObjectURL(blob);
+console.log("binary bl: ", binary)
+console.log("blob: ", blob)
+console.log("bloburl: ", blobUrl)
+
+function convertDataURIToBinary(dataURI) {
+    var BASE64_MARKER = ';base64,';
+    var base64Index = dataURI.indexOf(BASE64_MARKER) + BASE64_MARKER.length;
+    var base64 = dataURI.substring(base64Index);
+    var raw = window.atob(base64);
+    var rawLength = raw.length;
+    var array = new Uint8Array(new ArrayBuffer(rawLength));
+  
+    for(i = 0; i < rawLength; i++) {
+      array[i] = raw.charCodeAt(i);
+    }
+    return array;
+  }
+let binary = convertDataURIToBinary(blobbie)
+console.log("binary bl: ", binary)
+console.log("blob: ", blob)
+let blob = new Blob([binary], {type: 'audio/midi'})
+let blobUrl = URL.createObjectURL(blob);
 
 // latin
 let noteValues = {
@@ -91,7 +127,7 @@ let response = {
         [78, 78, 78, 78, 78, 78, 78, 78, 78, 78, 78, 78, 78, 78, 78, 78]
     ],
     "name": "Stair",
-    "duration": 12
+    "duration": 8
 }
 
 let response2 = {
@@ -204,168 +240,15 @@ function AudioManager(audioContext) {
     }
 }
 
-function Track(audioContext) {
-    let _audioContext = audioContext
-    let _oscillators = []
-    let _gains = []
-    let _ongoing = []
-    let _isPlaying = false;
 
-    return {
-        checkContextState: () => {
-            return _audioContext.state
-        },
-        checkOscillatorState: () => {
-            // console.log("checking osc / ongoing ", _ongoing)
-            // for (let i = 0; i < 16; i++) {
-            //     if (_ongoing[i] === 1) return true
-            // }
-            // return false
-            return _isPlaying
-        },
-        createOscillators: () => {
-            for (let i = 0; i < 16; i++) {
-                let osc = _audioContext.createOscillator()
-                osc.type = "sine"
-                _oscillators.push(osc)
-            }
-        },
-        createGains: () => {
-            for (let i = 0; i < 16; i++) {
-                let gain = _audioContext.createGain()
-                _gains.push(gain)
-            }
-        },
-        connectGains: () => {
-            for (let i = 0; i < 16; i++) {
-                _oscillators[i].connect(_gains[i])
-                _gains[i].connect(_audioContext.destination)
-            }
-        },
-        loadDefaultOscillators: (defaultFrequenciesList) => {
-            for (let i = 0; i < 16; i++) {
-                _oscillators[i].frequency.value = defaultFrequenciesList[i]
-            }
-        },
-        loadPartiture: (partiture, skipInit = 0) => {
-            console.log(partiture)
-            let time = _audioContext.currentTime
-            let totalDuration = partiture["duration"]
-            let singleDuration = totalDuration / partiture["notes"][0].length
-
-            //start all
-            if (skipInit == 0) {
-                for (let i = 0; i < response["notes"].length; i++) {
-                    if (response["notes"][i][0] != 0) {
-                        console.log(`osc${i} started at ${_audioContext.currentTime}`)
-                        try {
-                            _oscillators[i].start(time)
-                            _ongoing[i] = 1
-                            
-                            if (_ongoing.some((el) => { return el != 0 }))
-                                _isPlaying = true
-
-                        }
-                        catch (error) {
-                            console.log(error)
-                        }
-
-                        console.log("started")
-                    }
-                    else {
-                        _ongoing[i] = 0;
-                        _isPlaying = false
-                    }
-                }
-            }
-
-
-            // SCHEDULER 
-            for (let i = 0; i < 16; i++) {
-                for (let j = 1; j < partiture["notes"][i].length; j++) {
-                    if (partiture["notes"][i][j] === 0 && _ongoing[i] == 1) {
-                        console.log("i,j: ", i, j)
-                        console.log(`osc${i} stopped at ${time + singleDuration * j}`)
-                        try {
-                            _oscillators[i].stop(time + singleDuration * j)
-                            // modify
-                            _ongoing[i] = 0
-                            if (!_ongoing.some((el) => { return el != 0 })) {
-                                _isPlaying = false
-                            }
-                        }
-                        catch (error) {
-                            console.log(error)
-                        }
-                    }
-                    else {
-                        if (partiture["notes"][i][j] !== 0 && _ongoing[i] == 0) {
-                            console.log("merge pe ", i)
-                            console.log(`osc${i} started at ${singleDuration * j}`)
-                            try {
-                                _oscillators[i].start(singleDuration * j)
-                                if (!_isPlaying) _isPlaying = true
-                                _ongoing[i] = 1
-                            }
-                            catch (error) {
-                                console.log(error)
-                            }
-                            // _ongoing[i] = 1
-                        }
-                    }
-                }
-
-            }
-
-            // stop all remaining
-            for (let i = 0; i < 16; i++) {
-                if (_ongoing[i] === 1) {
-                    console.log(`osc${i} stopped at ${time + totalDuration}`)
-                    try {
-                        _oscillators[i].stop(time + totalDuration)
-                    }
-                    catch (error) {
-                        console.log(error)
-                    }
-                    _isPlaying = false
-                    _ongoing[i] = 0
-                }
-            }
-
-            // for (let i = 0; i < trackFrequencies.length; i++) {
-            //     osc.frequency.setValueAtTime(trackFrequencies[i], time + i * singleDuration)
-            // }
-
-        },
-        stopPartiture: () => {
-            let time = _audioContext.currentTime
-            for (let i = 0; i < _oscillators.length; i++) {
-                try {
-                    _oscillators[i].stop(time)
-                }
-                catch (error) {
-                    console.log(error)
-                }
-            }
-        },
-        isTrackStarted: (track) => {
-            console.log(_oscillators[0].state)
-        },
-        show: () => {
-            console.log(_oscillators)
-            console.log(_gains)
-        }
-    }
-}
-
-let AM = new AudioManager(audioContext)
-AM.addTrack()
+// let AM = new AudioManager(audioContext)
+// AM.addTrack()
 
 var audios = document.querySelectorAll('audio');
-console.log(audios)
-audios.forEach(element => {
-    AM.addAudio(element)
-});
+// console.log(audios)
+// audios.forEach(element => {
+//     AM.addAudio(element)
+// });
 
 
 
@@ -374,22 +257,33 @@ audios.forEach(element => {
 let main = document.getElementById("main");
 main.addEventListener("click", function (e) {
     console.log(e.target)
-    if (AM.checkContextState() === 'suspended') {
-        AM.resume();
-    }
+    // if (AM.checkContextState() === 'suspended') {
+        // AM.resume();
+    // }
+    const audioContext = new AudioContext();
+
     switch (e.target.id) {
         case "addInstrumentDiv":
             // here should be audio file/ json representation coming from ajax call or something
-            let insertedId = AM.addTrack()
+            // let insertedId = AM.addTrack()
             console.log("inserted with track id : ", insertedId)
             break;
 
         case "waveform1":
-            if (AM.exists(0)) AM.playPause(0, response)
+            // if (AM.exists(0)) AM.playPause(0, response)
             break;
 
         case "waveform2":
-            if (AM.exists(1)) AM.playPause(1, response2)
+            let doc = document.querySelector(`#${e.target.id} audio`);
+            // let _blobbie = URL.createObjectURL(blobbie)
+            doc.setAttribute("src", blob)
+            doc.play()
+            // console.log("audio: ", doc)
+            // let gain = audioContext.createGain()
+            // doc.connect(gain)
+            // gain.connect(audioContext.destination)
+            // console.log("play")
+            // if (AM.exists(1)) AM.playPause(1, response2)
             break;
 
 
@@ -414,7 +308,7 @@ main.addEventListener("click", function (e) {
 
         case "stop-all-btn":
             audios.forEach(el => {
-                if (!el.paused) el.pause()
+                if (!el.paused) el.stop()
             })
             break;
         default:

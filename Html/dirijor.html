@@ -9,7 +9,7 @@
     <link rel="stylesheet" type="text/css" href="../Css/navmenu.css">
     <link rel="stylesheet" type="text/css" href="../Css/dirijor.css">
     <!-- <link rel="stylesheet" href="../fontawesome/fontawesome/css/all.css" crossorigin="anonymous"> -->
-    <!-- <script src="https://unpkg.com/wavesurfer.js"></script> -->
+    <script src="https://unpkg.com/wavesurfer.js"></script>
 </head>
 
 <body>
@@ -59,8 +59,8 @@
                     </select>
                 </div>
             </div>
-            <button id="play-all-btn">Play</button>
-            <button id="stop-all-btn">Pause</button>
+            <button id="play-pause-btn">Resume</button>
+            <button id="loadall">LOAD ALL</button>
             <!-- <div id="headerMovingDiv"><span id="headerMovingCursor">|</span></div>
             <progress id="progress" max="100" min="0" value="0"></progress> -->
         </div>
@@ -71,7 +71,7 @@
             </div>
             
             <div id="waveform1" class="waveformDiv">
-                <audio id="aud1" src="../sorry.wav" type="audio/wav"></audio>
+                <audio id="aud1" type="audio/midi"></audio>
             </div>
             
             <div id="instrument_container2" class="instrumentDiv">
@@ -123,13 +123,31 @@
             </div>
         </div>
     </main>
+
+
+    <script src="https://www.gstatic.com/firebasejs/5.8.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.8.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.8.2/firebase-firestore.js"></script>
+    <script>
+        var config = {
+            apiKey: "AIzaSyDyvj4-wgxg-uGOwsxQ3OX1EWsUdH7XSJ0",
+            authDomain: "miorc-c154e.firebaseapp.com",
+            databaseURL: "https://miorc-c154e.firebaseio.com",
+            projectId: "miorc-c154e",
+            storageBucket: "miorc-c154e.appspot.com",
+            messagingSenderId: "1049532323452"
+        };
+        firebase.initializeApp(config);
+    </script>
+    <script src="../Js/dirijor.js"></script>
     <!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.0.4/howler.js"></script> -->
     <!-- <script src="../Js/dirijor.js"></script> -->
-    <script src="../Js/index.js"></script>
+    <!-- <script src="../Js/index.js"></script> -->
     <!-- <script src="../Js/noteValues.js"></script> -->
     <!-- <script src="../Js/stream.js"></script> -->
     <!-- <script src="../Js/midiParser.js"></script> -->
-    <script src="../Js/dirijor2.js"></script>
+    
+    
 </body>
 
 </html>
