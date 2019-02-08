@@ -20,7 +20,7 @@ let response = {
         [78, 78, 0, 0, 0, 0, 78, 0, 0, 78, 0, 78, 78, 0, 78, 78]
     ],
     "name": "Stair",
-    "duration": 8
+    "duration": 12
 }
 let defaultFrequenciesList = [];
 for (let midiNote = 48; midiNote < 80; midiNote += 2) {
@@ -60,12 +60,14 @@ class Track {
             this.gainNodes.push(this.context.createGain());
             this.oscillators[i].connect(this.gainNodes[i])
             this.gainNodes[i].connect(this.context.destination)
-            this.oscillators[i].type = 'sine';
+            // this.oscillators[i].type = 'sine'; // 'sine' by default
         }
     }
     loadDefaultOscillators(defaultFrequenciesList){ //set the frequency of each osc
         for (let i = 0; i < 16; i++) {
-            this.oscillators[i].frequency.value = defaultFrequenciesList[i]
+            this.oscillators[i].frequency.value = defaultFrequenciesList[i];
+            this.gainNodes[i].gain.setValueAtTime(0, this.context.currentTime);
+            this.gainNodes[i].gain.linearRampToValueAtTime(1, this.context.currentTime + 0.01);
         }
     }
 
