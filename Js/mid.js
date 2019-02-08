@@ -70,7 +70,29 @@ saveButton.addEventListener("click", saveSong, {
 playSong.addEventListener("click", playMusic, {
     passive: true
 });
-canvas.addEventListener("click", check);
+canvas.addEventListener("click",
+    function (event) {
+        if (wait == 0) {
+            var rect = canvas.getBoundingClientRect();
+            var x = Math.floor((event.clientX - rect.left) / 30);
+            var y = Math.floor((event.clientY - rect.top) / 30);
+            notes[y][x].active = !notes[y][x].active;
+            if (notes[y][x].active == true) {
+                MIDI.noteOn(0, notes[y][x].value, 127, 0);
+            }
+            if (x + 1 == cols) {
+                expand();
+                animate();
+            } else {
+                animate();
+            }
+        } else {
+            Toast.fire({
+                type: 'error',
+                title: 'Unknown error!!'
+            })
+        }
+    });
 
 
 
@@ -132,7 +154,7 @@ function saveSong() {
                     })
                     .then(function () {
                         Toast.fire({
-                            type: 'succes',
+                            type: 'success',
                             title: 'Composition saved'
                         })
                     })
@@ -170,28 +192,6 @@ function instrumentChange() {
 
 }
 
-function check() {
-    if (wait == 0) {
-        var rect = canvas.getBoundingClientRect();
-        var x = Math.floor((event.clientX - rect.left) / 30);
-        var y = Math.floor((event.clientY - rect.top) / 30);
-        notes[y][x].active = !notes[y][x].active;
-        if (notes[y][x].active == true) {
-            MIDI.noteOn(0, notes[y][x].value, 127, 0);
-        }
-        if (x + 1 == cols) {
-            expand();
-            animate();
-        } else {
-            animate();
-        }
-    } else {
-        Toast.fire({
-            type: 'error',
-            title: 'Unknown error!!'
-        })
-    }
-}
 
 function expand() {
     for (let i = 0; i < 16; i++) {

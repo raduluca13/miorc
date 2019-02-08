@@ -23,6 +23,13 @@ signIn.addEventListener("click", signInEmail);
 
 firebase.auth().onAuthStateChanged(function (user) {
   if (user) {
+    if(user.displayName==null){
+      email = document.getElementById("email_signin").value;
+      var res = email.split("@");
+      firebase.auth().currentUser.updateProfile({
+        displayName: res[0]
+      })
+    }
     trigger.style.display = "none";
     logOut.style.display = "block";
   } else {
