@@ -18,6 +18,30 @@ class chord {
     }
 }
 
+const Toast = Swal.mixin({
+    toast: true,
+    position: 'top-start',
+    showConfirmButton: false,
+    timer: 3000
+});
+
+firebase.auth().onAuthStateChanged(function (user) {
+    if (user) {
+        const quary = songsRef.where("user", "==", user.displayName);
+        quary.get()
+            .then(songs => {
+                songs.forEach(doc => {
+                    var data = doc.data();
+                    var song = document.createElement("option");
+                    song.value = data.title;
+                    song.innerText = data.title;
+                    songList.appendChild(song);
+                })
+
+            })
+    }
+});
+
 var play = 0;
 var matrix;
 var files = ["acoustic_grand_piano", "bright_acoustic_piano", "electric_grand_piano", "honkytonk_piano", "electric_piano_1", "electric_piano_2", "harpsichord", "clavinet", "celesta", "glockenspiel", "music_box", "vibraphone", "marimba", "xylophone", "tubular_bells", "dulcimer", "drawbar_organ", "percussive_organ", "rock_organ", "church_organ", "reed_organ", "accordion", "harmonica", "tango_accordion", "acoustic_guitar_nylon", "acoustic_guitar_steel", "electric_guitar_jazz", "electric_guitar_clean", "electric_guitar_muted", "overdriven_guitar", "distortion_guitar", "guitar_harmonics", "acoustic_bass", "electric_bass_finger", "electric_bass_pick", "fretless_bass", "slap_bass_1", "slap_bass_2", "synth_bass_1", "synth_bass_2", "violin", "viola", "cello", "contrabass", "tremolo_strings", "pizzicato_strings", "orchestral_harp", "timpani", "string_ensemble_1", "string_ensemble_2", "synth_strings_1", "synth_strings_2", "choir_aahs", "voice_oohs", "synth_choir", "orchestra_hit", "trumpet", "trombone", "tuba", "muted_trumpet", "french_horn", "brass_section", "synth_brass_1", "synth_brass_2", "soprano_sax", "alto_sax", "tenor_sax", "baritone_sax", "oboe", "english_horn", "bassoon", "clarinet", "piccolo", "flute", "recorder", "pan_flute", "blown_bottle", "shakuhachi", "whistle", "ocarina"]
@@ -90,8 +114,13 @@ function playMusic() {
 function saveSong() {
     let sName = document.getElementById('songName').value;
 
+
     if (sName == "") {
-        alert("Please chose a name for the composition!");
+        Toast.fire({
+            type: 'error',
+            title: 'Please chose a name for your composition'
+        })
+
     } else {
         firebase.auth().onAuthStateChanged(function (cuser) {
             if (cuser) {
@@ -102,13 +131,22 @@ function saveSong() {
                         user: cuser.displayName
                     })
                     .then(function () {
-                        console.log("Document successfully written!");
+                        Toast.fire({
+                            type: 'succes',
+                            title: 'Composition saved'
+                        })
                     })
                     .catch(function (error) {
-                        console.error("Error writing document: ", error);
+                        Toast.fire({
+                            type: 'error',
+                            title: 'Unknown error!!'
+                        })
                     });
             } else {
-                alert("Please login first!");
+                Toast.fire({
+                    type: 'error',
+                    title: 'You need to logIn first!'
+                })
             }
         });
     }
@@ -122,9 +160,6 @@ function instrumentChange() {
     loading.style.display = "block";
     MIDI.loadResource({
         instrument: files[cInstrument.value],
-        onprogress: function (state, percent) {
-            console.log(state, percent);
-        },
         onsuccess: function () {
             MIDI.programChange(0, cInstrument.value);
             canvas.style.display = "block";
@@ -151,7 +186,10 @@ function check() {
             animate();
         }
     } else {
-        console.log("Wait");
+        Toast.fire({
+            type: 'error',
+            title: 'Unknown error!!'
+        })
     }
 }
 
@@ -169,7 +207,7 @@ function expand() {
 
 function animate() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    canvas.width =(cols/8)*240;
+    canvas.width = (cols / 8) * 240;
     for (let i = 0; i < 16; i++) {
         for (let j = 0; j < cols; j++) {
             ctx.beginPath();
@@ -189,9 +227,9 @@ function makeMatrix(data) {
     for (let i = 0; i < 16; i++) {
         notes[i] = [];
         for (let j = 0; j < cols; j++) {
-            if(data[i][j]!=0){
-            notes[i][j] = new note(i * 2 + 48,1);
-            }else{
+            if (data[i][j] != 0) {
+                notes[i][j] = new note(i * 2 + 48, 1);
+            } else {
                 notes[i][j] = new note(i * 2 + 48);
             }
         }
@@ -210,10 +248,16 @@ function loadSong() {
                     makeMatrix(JSON.parse(doc.data().notes));
                     document.getElementById('songName').value = doc.data().title;
                 } else {
-                    console.log("No such document!");
+                    Toast.fire({
+                        type: 'error',
+                        title: 'The composition was deleted!'
+                    })
                 }
             }).catch(function (error) {
-                console.log("Error getting document:", error);
+                Toast.fire({
+                    type: 'error',
+                    title: error + " occurred"
+                })
             });
         }
     });
@@ -221,24 +265,7 @@ function loadSong() {
 
 }
 
-function loadSongList() {
-    firebase.auth().onAuthStateChanged(function (user) {
-        if (user) {
-            const quary = songsRef.where("user", "==", user.displayName);
-            quary.get()
-                .then(songs => {
-                    songs.forEach(doc => {
-                        var data = doc.data();
-                        var song = document.createElement("option");
-                        song.value = data.title;
-                        song.innerText = data.title;
-                        songList.appendChild(song);
-                    })
 
-                })
-        }
-    });
-}
 
 function init() {
     wait = 1;
@@ -262,7 +289,6 @@ function init() {
             }
         }
     });
-    loadSongList();
 }
 
 init();
