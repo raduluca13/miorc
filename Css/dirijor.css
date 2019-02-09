@@ -99,8 +99,8 @@ body::-webkit-scrollbar-thumb {
     display: grid;
     grid-gap: 2%;
     grid-template-columns: 1fr 4fr;
-    grid-template-rows: repeat(5, 1fr);
-    /* grid-auto-rows: minmax(100px, auto); */
+    /* grid-template-rows: repeat(5, 1fr); */
+    grid-auto-rows: minmax(100px, auto);
 }
 
 #main_container img {

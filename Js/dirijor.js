@@ -67,6 +67,7 @@ class Track {
             // this.oscillators[i].type = 'sine'; // 'sine' by default
             this.oscillators[i].onended = function() {
                 console.log('Your tones has now stopped playing!');
+                document.getElementById('loadall-btn').textContent = "START"
                 //change from STOP to START
             }
             
@@ -84,7 +85,8 @@ class Track {
         let len = this.gainNodes.length;
 
         for(let i =0; i<len; i++){ // pt fiecare oscilator
-            this.gainNodes[i].gain.linearRampToValueAtTime(0, this.context.currentTime)
+            // this.gainNodes[i].gain.linearRampToValueAtTime(0, this.context.currentTime)
+            this.gainNodes[i].gain.setValueAtTime(0, this.context.currentTime)
         }
         this.isMuted = true;
     }
@@ -385,6 +387,7 @@ window.onload = function(){
         waveColor: '#ffcb0c',
         cursorColor: '#ffcb0c',
         progressColor: 'green',
+        hideScrollbar: 'true',
         autoCenter: 'true'
     });
     
@@ -429,11 +432,22 @@ window.onload = function(){
         autoCenter: 'true',
         barWidth: "6"
     });
-    
+    wavePartitura1.load("http://ia902606.us.archive.org/35/items/shortpoetry_047_librivox/song_cjrg_teasdale_64kb.mp3");
+    wavePartitura2.load("http://ia902606.us.archive.org/35/items/shortpoetry_047_librivox/song_cjrg_teasdale_64kb.mp3");
+    wavePartitura3.load("http://ia902606.us.archive.org/35/items/shortpoetry_047_librivox/song_cjrg_teasdale_64kb.mp3");
+    wavePartitura4.load("http://ia902606.us.archive.org/35/items/shortpoetry_047_librivox/song_cjrg_teasdale_64kb.mp3");
+
+
     let main = document.getElementById("main");
     main.addEventListener("click", function(e){
-        console.log(e.target.id)
+        console.log("(target may have no id): ", e.target.id)
+        
         switch(e.target.id){
+            case "":
+                if(e.target.className.indexOf("mute_volume_btn")!== -1){
+                    AM.mute(e.target.dataset.id)
+                }
+                break;
             case "instrument1":
                 AM.playPause(0)
                 break;
@@ -451,6 +465,7 @@ window.onload = function(){
                     muteBtn.textContent = "Unmute"
                 }    
                 break;
+                
             case "waveform1":
                 break;
             case "instrument2":
@@ -458,24 +473,27 @@ window.onload = function(){
             case "loadall-btn":
                 let loadallBtn = document.getElementById("loadall-btn")
                 let volum = document.getElementById("volume1")
-
+                let volumes = document.querySelectorAll(".volum_instrument")
+                
                 if(AM.isStarted()){
                     AM.stopAll()
                     loadallBtn.textContent = "START"
-                    //do this for all volumes
-                    volum.disabled = true;
+                    volumes.forEach((volum)=>{
+                        volum.disabled = true
+                    })
                 }
                 else{
                     loadallBtn.textContent = "STOP"
-                    //do this for all volumes
-                    volum.disabled = false;
-                    // next function has a bug if i place the line above after it
+                    volumes.forEach((volum)=>{
+                        volum.disabled = false
+                    })
+                    // next function has a bug if i place the lines above after it
                     AM.addTrack(defaultFrequenciesList, response) // params hardcoded atm                
                 }
                 break;
             default:
                 break
-        }  
+        }
     });
 
     var dragged;
@@ -530,16 +548,31 @@ window.onload = function(){
         if(clsNames.indexOf("dropzone") !== -1){
             console.log(clsNames)
             console.log(event.target)
+            // drag event finished on the "+" button
             if(clsNames.indexOf("addBtn")!== -1 || clsNames.indexOf("btn")!== -1){
                 // create new row
                 console.log("creating card")
                 function createInstrumentPanel(){
                     let div = document.createElement("DIV")
                     div.classList.add("instrumentDiv")
+                    
                     let input = document.createElement("INPUT")
                     input.classList.add("volum_instrument")
                     input.type = "range"
+                    input.disabled = true;
+                    
+                    let img = document.createElement("IMG")
+                    img.classList.add("poza_instrument")
+                    img.src="../assets/drums.png";
+                    
+                    let btn = document.createElement("BUTTON")
+                    btn.classList.add("mute_volume_btn")
+                    btn.textContent = "Mute"
+
+
+                    div.appendChild(img)
                     div.appendChild(input)
+                    div.append(btn)
                     return div
                 }
                 function createWaveformPanel(){
@@ -551,15 +584,22 @@ window.onload = function(){
                 }
 
                 let mainContainer = document.getElementById("mainContainer")
+                console.log(mainContainer.style)
                 let div = createInstrumentPanel()
                 let div2 = createWaveformPanel()
                 dragged.draggable = false
                 div2.appendChild(dragged)
-                mainContainer.appendChild(div)
-                mainContainer.appendChild(div2)
-            }else{
+
+                let addDiv = document.getElementById('addInstrumentDiv')
+                let parent = addDiv.parentNode
+                
+                parent.insertBefore(div,addDiv)
+                parent.insertBefore(div2,addDiv)
+                // mainContainer.appendChild(div)
+                // mainContainer.appendChild(div2)
+            }else{ // target is the panel in the right side
                 // event.target.style.background = "";
-                // dragged.parentNode.removeChild( dragged );
+                dragged.parentNode.removeChild( dragged );
                 console.log("dragged", dragged)
                 dragged.draggable = false
                 event.target.appendChild( dragged );
