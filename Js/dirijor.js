@@ -47,12 +47,13 @@ class Track {
     constructor(audioCtx){
         this.context = audioCtx
         this.oscillators = []
-        this.ongoing = [] // list of 1 (started) and 0 (stopped) oscillators
         this.gainNodes = []
         this.length = 2;
         this.eps = 0.2;
         this.isMuted = false;
         this.transitions = []
+        this.startedAt = 0;
+        this.singleNoteDuration = 0;
         // this.panners = []
     }
 
@@ -64,7 +65,11 @@ class Track {
             this.oscillators[i].connect(this.gainNodes[i])
             this.gainNodes[i].connect(this.context.destination)
             // this.oscillators[i].type = 'sine'; // 'sine' by default
-
+            this.oscillators[i].onended = function() {
+                console.log('Your tones has now stopped playing!');
+                //change from STOP to START
+            }
+            
             let obj = {
                 "id": i,
                 "timeActivated": [],
@@ -76,10 +81,10 @@ class Track {
     }
     mute(){
         console.log("current time at muting: ", this.context.currentTime)
-        console.log("ongoing: ", this.ongoing)
         let len = this.gainNodes.length;
-        for(let i =0; i<len; i++){
-            this.gainNodes[i].gain.setValueAtTime(0, this.context.currentTime)
+
+        for(let i =0; i<len; i++){ // pt fiecare oscilator
+            this.gainNodes[i].gain.linearRampToValueAtTime(0, this.context.currentTime)
         }
         this.isMuted = true;
     }
@@ -98,7 +103,9 @@ class Track {
     }
     loadOldPartiture(notes, duration){ // old scheduler.. working
         let time = this.context.currentTime // + this.eps
+        this.startedAt = time;
         let singleDuration = duration / notes[0].length
+        this.singleNoteDuration = singleDuration
         console.log(time, duration, singleDuration)
 
         for (let i = 0; i < 16; i++) {
@@ -106,7 +113,7 @@ class Track {
             this.gainNodes[i].gain.setValueAtTime(0, time-this.eps);
             
             if (notes[i][0] != 0) {
-                console.log(`osc${i} started at ${this.time}`)
+                // console.log(`osc${i} started at ${this.time}`)
                 try {
                     this.gainNodes[i].gain.linearRampToValueAtTime(1, time);
                     this.transitions[i]["timeActivated"].push(time)
@@ -114,13 +121,12 @@ class Track {
                 catch (error) {
                     console.log(error)
                 }
-                console.log("started")
+                console.log(`started ${i}`)
             }
         }
         // SCHEDULER 
         for (let i = 0; i < 16; i++) {
             for (let j = 1; j < notes[i].length; j++) {
-                console.log("this moment transitions : ", this.transitions)
                 if (notes[i][j] === 0) {
                     let len = this.transitions[i]["timeActivated"].length
                     if(this.transitions[i]["timeActivated"].length > 0 
@@ -128,7 +134,7 @@ class Track {
                         this.transitions[i]["timeDeactivated"].push(time + singleDuration * j)
                     }
 
-                    console.log(`osc${i} decreased to 0 at ${time + singleDuration * j}`)
+                    // console.log(`osc${i} decreased to 0 at ${time + singleDuration * j}`)
                     try {
                         // this.oscillators[i].stop(time + singleDuration * j)
                         // this.gainNodes[i].gain.setValueAtTime(1, time+singleDuration*j-this.eps);
@@ -139,7 +145,7 @@ class Track {
                     }
                 }
                 else {
-                    console.log(`osc${i} started at ${singleDuration * j}`)
+                    // console.log(`osc${i} started at ${singleDuration * j}`)
                     try {
                         this.gainNodes[i].gain.setValueAtTime(0, time + singleDuration * j - this.eps);
                         this.gainNodes[i].gain.linearRampToValueAtTime(1, time + singleDuration * j);
@@ -159,11 +165,24 @@ class Track {
             this.oscillators[i].stop(time+duration + this.eps)
         }
     }
-    
-    isStarted(){
-        return this.isPlaying
+    checkContext(){
+        return this.context.state
     }
-    stopPartiture(){
+    resume() {
+        this.context.resume()
+    }
+    suspend() {
+        this.context.suspend()
+    }
+    changeVolume(value){
+        for(let i=0; i<this.gainNodes.length; i++){
+            console.log(this.context.currentTime, `gainNode ${i}`, this.gainNodes[i].gain.value, this.oscillators)
+            // let newval = this.gainNodes[i].gain.value*value/3
+            // console.log("newval: ", newval)
+            // this.gainNodes[i].gain.linearRampToValueAtTime(newval, this.context.currentTime)
+        }
+    }
+    stopPartiture(){ // ?
         let time = _audioContext.currentTime
         for (let i = 0; i < _oscillators.length; i++) {
             try {
@@ -234,14 +253,6 @@ class AudioManager {
 
         return this.tracks.length - 1
     }
-    resume() {
-        this.audioCtx.resume()
-        console.log("context resumed with state: ")
-    }
-    suspend() {
-        this.audioCtx.suspend()
-        console.log("context suspended with state: ")
-    }
     getContext(){
         return this.audioCtx
     }
@@ -270,6 +281,9 @@ class AudioManager {
     unmute(trackId){
         console.log("unmuting :", this.tracks[trackId])
         this.tracks[trackId].unmute()
+    }
+    changeVolume(trackId, value){
+        this.tracks[trackId].changeVolume(value)
     }
     addAudio(audio){
         this.audios.push(audio)
@@ -316,26 +330,16 @@ class AudioManager {
     exists(trackId){ // ?
         return this.tracks.length > track
     }
-    playPause(id, partiture){ // ?
-        console.log(`oscillator state for ${id} : `, _managers[id].checkOscillatorState())
-        if (_managers[id].checkOscillatorState() === false) {
-            try {
-                _managers[id].loadPartiture(partiture);
-            }
-            catch (error) {
-                console.log(error)
-            }
-
-        }
-        else {
-            console.log("is it stopping?")
-            try {
-                _managers[id].stopPartiture()
-            }
-            catch (error) {
-                console.log(error)
-            }
-
+    playPause(id){ // ?
+        let ctxState = this.tracks[id].checkContext()
+        console.log(this.tracks[id].transitions)
+        switch(ctxState){
+            case "running":
+                this.tracks[id].suspend()
+                break;
+            case "suspended":
+                this.tracks[id].resume()
+                break;
         }
     }
 }
@@ -419,46 +423,13 @@ window.onload = function(){
         autoCenter: 'true',
         barWidth: "6"
     });
-
+    
     let main = document.getElementById("main");
     main.addEventListener("click", function(e){
         console.log(e.target.id)
         switch(e.target.id){
             case "instrument1":
-                // Create an empty three-second stereo buffer at the sample rate of the AudioContext
-                var myArrBuffer = _audioContext.createBuffer(2, _audioContext.sampleRate * 3, _audioContext.sampleRate);
-                // Fill the buffer with white noise;
-                // just random values between -1.0 and 1.0
-                for (var channel = 0; channel < myArrBuffer.numberOfChannels; channel++) {
-                    // This gives us the actual array that contains the data
-                    var nowBuffering = myArrBuffer.getChannelData(channel);
-                    for (var i = 0; i < myArrBuffer.length; i++) {
-                    // Math.random() is in [0; 1.0]
-                    // audio needs to be in [-1.0; 1.0]
-                    nowBuffering[i] = Math.random() * 2 - 1;
-                    }
-                }
-                // Get an AudioBufferSourceNode.
-                // This is the AudioNode to use when we want to play an AudioBuffer
-                source = _audioContext.createBufferSource();
-                // set the buffer in the AudioBufferSourceNode
-                source.buffer = myArrBuffer
-                source.connect(_audioContext.destination)
-                source.start()
-                // _audioContext.decodeAudioData(binary.buffer, 
-                //     function(buffer) {
-                //         source.buffer = buffer;
-                //         source.connect(_audioContext.destination);            
-                //     },
-                //     function(e){ console.log("Error with decoding audio data" + e.err);}
-                // )
-                // wavesurfer1.loadArrayBuffer(binary.buffer);
-                // wavesurfer1.loadDecodedBuffer(binary.buffer)
-                // wavesurfer1.loadBlob(blobUrl)
-                // wavesurfer1.on('ready', function () {
-                //     console.log("READY")
-                // //     wavesurfer1.play();
-                // });
+                AM.playPause(0)
                 break;
             case "mute1":
                 let muteBtn = document.getElementById("mute1")
@@ -478,23 +449,22 @@ window.onload = function(){
                 break;
             case "instrument2":
                 break
-            case "play-pause-btn":
-                let playPauseBtn = document.getElementById('play-pause-btn')
-                break;
             case "loadall-btn":
                 let loadallBtn = document.getElementById("loadall-btn")
-                console.log("status:", AM.isStarted())
+                let volum = document.getElementById("volume1")
+
                 if(AM.isStarted()){
                     AM.stopAll()
                     loadallBtn.textContent = "START"
+                    //do this for all volumes
+                    volum.disabled = true;
                 }
                 else{
                     loadallBtn.textContent = "STOP"
-                    let volum = document.getElementById("volume1")
+                    //do this for all volumes
                     volum.disabled = false;
                     // next function has a bug if i place the line above after it
                     AM.addTrack(defaultFrequenciesList, response) // params hardcoded atm                
-                    
                 }
                 break;
             default:
@@ -502,13 +472,99 @@ window.onload = function(){
         }  
     });
 
+    var dragged;
+
+    /* events fired on the draggable target */
+    main.addEventListener("drag", function( event ) {
+
+    }, false);
+
+    main.addEventListener("dragstart", function( event ) {
+        // store a ref. on the dragged elem
+        dragged = event.target;
+        console.log(dragged)
+        // make it half transparent
+        event.target.style.opacity = .5;
+    }, false);
+
+    main.addEventListener("dragend", function( event ) {
+        // reset the transparency
+        event.target.style.opacity = "";
+    }, false);
+
+    /* events fired on the drop targets */
+    document.addEventListener("dragover", function( event ) {
+        // prevent default to allow drop
+        event.preventDefault();
+    }, false);
+
+    main.addEventListener("dragenter", function( event ) {
+        // highlight potential drop target when the draggable element enters it
+        let clsNames = event.target.className
+        if(clsNames.indexOf("dropzone") !== -1){
+            //can be dropped
+            event.target.style.background = "#DADFE1";
+        }
+
+    }, false);
+
+    main.addEventListener("dragleave", function( event ) {
+        // reset background of potential drop target when the draggable element leaves it
+        let clsNames = event.target.className
+        if(clsNames.indexOf("dropzone") !== -1){
+            event.target.style.background = "#6b6d76";
+        }
+
+    }, false);
+
+    main.addEventListener("drop", function( event ) {
+        // prevent default action (open as link for some elements)
+        event.preventDefault();
+        // move dragged elem to the selected drop target
+        let clsNames = event.target.className
+        if(clsNames.indexOf("dropzone") !== -1){
+            console.log(clsNames)
+            if(clsNames.indexOf("addButtonHover")!== -1 ||clsNames.indexOf("btn")!== -1){
+                // create new row
+                function createInstrumentPanel(){
+                    let div = document.createElement("DIV")
+                    div.classList.add("instrumentDiv")
+                    let input = document.createElement("INPUT")
+                    input.classList.add("volum_instrument")
+                    input.type = "range"
+                    div.appendChild(input)
+                    return div
+                }
+                function createWaveformPanel(){
+                    let div = document.createElement("DIV")
+                    div.classList.add("waveformDiv")
+                    let audio = document.createElement("AUDIO")
+                    div.appendChild(audio)
+                    return div
+                }
+
+                let mainContainer = document.getElementById("mainContainer")
+                let div = createInstrumentPanel()
+                let div2 = createWaveformPanel()
+                div2.appendChild(dragged)
+                mainContainer.appendChild(div)
+                mainContainer.appendChild(div2)
+            }else{
+                // event.target.style.background = "";
+                // dragged.parentNode.removeChild( dragged );
+                event.target.appendChild( dragged );
+            }
+        }
+    
+    }, false);
+
     let volumes = document.querySelector(".volum_instrument")
     console.log("volumes: ", volumes)
     
     let volume = document.getElementById("volume1")
     volume.addEventListener("input", function(){
         console.log("newval: ", this.value)
-        console.log(AM)
+        AM.changeVolume(0, this.value)
     })
 }
 
