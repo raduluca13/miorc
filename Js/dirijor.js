@@ -498,7 +498,7 @@ window.onload = function(){
     }, false);
 
     /* events fired on the drop targets */
-    document.addEventListener("dragover", function( event ) {
+    main.addEventListener("dragover", function( event ) {
         // prevent default to allow drop
         event.preventDefault();
     }, false);
