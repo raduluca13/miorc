@@ -360,6 +360,7 @@ window.onload = function(){
         waveColor: '#ffcb0c',
         cursorColor: '#ffcb0c',
         progressColor: 'green',
+        hideScrollbar: true,
         // crossOrigin: 'anonymous',
         autoCenter: 'true'
     });
@@ -368,12 +369,14 @@ window.onload = function(){
         waveColor: '#ffcb0c',
         cursorColor: '#ffcb0c',
         progressColor: 'green',
+        hideScrollbar: true,
         autoCenter: 'true'
     });
     var wavesurfer3 = WaveSurfer.create({
         container: '#waveform3',
         waveColor: '#ffcb0c',
         cursorColor: '#ffcb0c',
+        hideScrollbar: true,
         progressColor: 'green',
         autoCenter: 'true'
     });
@@ -396,6 +399,7 @@ window.onload = function(){
         progressColor: 'green',
         cursorColor: '#ffcb0c',
         crossOrigin: 'anonymous',
+        hideScrollbar: true,
         autoCenter: 'true',
         barWidth: "6"
     });
@@ -411,6 +415,7 @@ window.onload = function(){
         container: '#partitura3',
         waveColor: '#ffcb0c',
         cursorColor: '#ffcb0c',
+        hideScrollbar: true,
         progressColor: 'green',
         autoCenter: 'true',
         barWidth: "6"
@@ -420,6 +425,7 @@ window.onload = function(){
         waveColor: '#ffcb0c',
         cursorColor: '#ffcb0c',
         progressColor: 'green',
+        hideScrollbar: true,
         autoCenter: 'true',
         barWidth: "6"
     });
