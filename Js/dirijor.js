@@ -488,7 +488,6 @@ window.onload = function(){
     main.addEventListener("dragstart", function( event ) {
         // store a ref. on the dragged elem
         dragged = event.target;
-        console.log(dragged)
         // make it half transparent
         event.target.style.opacity = .5;
     }, false);
@@ -530,8 +529,10 @@ window.onload = function(){
         let clsNames = event.target.className
         if(clsNames.indexOf("dropzone") !== -1){
             console.log(clsNames)
-            if(clsNames.indexOf("addButtonHover")!== -1 ||clsNames.indexOf("btn")!== -1){
+            console.log(event.target)
+            if(clsNames.indexOf("addBtn")!== -1 || clsNames.indexOf("btn")!== -1){
                 // create new row
+                console.log("creating card")
                 function createInstrumentPanel(){
                     let div = document.createElement("DIV")
                     div.classList.add("instrumentDiv")
@@ -552,12 +553,15 @@ window.onload = function(){
                 let mainContainer = document.getElementById("mainContainer")
                 let div = createInstrumentPanel()
                 let div2 = createWaveformPanel()
+                dragged.draggable = false
                 div2.appendChild(dragged)
                 mainContainer.appendChild(div)
                 mainContainer.appendChild(div2)
             }else{
                 // event.target.style.background = "";
                 // dragged.parentNode.removeChild( dragged );
+                console.log("dragged", dragged)
+                dragged.draggable = false
                 event.target.appendChild( dragged );
             }
         }
