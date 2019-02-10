@@ -15,7 +15,7 @@ firebase.auth().onAuthStateChanged(function (user) {
                     song.draggable = true;
                     song.innerText = data.user + " - " + data.title;
                     song.dataset.notes = data.notes
-                    song.dataset.instrumentName = "grand_piano"
+                    song.dataset.instrumentName = data.instrument
                     song.classList.add("waveformDiv");
                     song.classList.add("partitura");
                     songList.appendChild(song);
