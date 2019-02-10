@@ -113,6 +113,9 @@ class AudioManager {
         this.matrixes = []; // partitures for each track
         this.mutedPrevs = [];
 
+        this.startedAt = 0; // rework this for the case when user hits "STOP" (inexistent button) - should replace deprecated button
+        this.intervals = [];
+
         this.instruments = 0;
         this.isLoaded = false;
         this.isPaused = false;
@@ -157,13 +160,52 @@ class AudioManager {
         this.createdAudios = []
         this.isLoaded = true;
     }
-    
+    reload(){
+        let playPauseBtn = document.getElementById("play-pause-btn")
+        let volumes = document.querySelectorAll(".volum_instrument")
+        if(this.isLoaded){
+            switch(playPauseBtn.textContent){
+                // case "START":
+                //     playPauseBtn.textContent = "PAUSE"
+                //     volumes.forEach((volum)=>{
+                //         volum.addEventListener("mouseup", changeVolume)
+                //         // onRangeChange(volum, AM.changeVolume());
+                //         volum.disabled = false  
+                //         // how to disable this ?
+                //         console.log(volum)
+                //     })
+                //     if(AM.isPaused){
+                //         AM.resumeAll()
+                //     }
+                //     else{
+                //         AM.playAll()
+                //     }
+                //     break;
+                case "PAUSE":
+                    playPauseBtn.textContent = "START"
+                    volumes.forEach((volum)=>{
+                        volum.disabled = true
+                    })
+                    this.stopAll()
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
+    stopAll(){
+        this.intervals.forEach((int)=>{
+            clearInterval(int)
+        })
+    }
     playAll(){
         switch(this.audioCtx.state){
             case "suspended":
                 this.audioCtx.resume()
                 break;
         }
+        this.startedAt = Date.now()
+        alert(this.startedAt)
         for(let i = 0; i< this.tracks.length; i++){
             this.play(i)
         }
@@ -191,6 +233,7 @@ class AudioManager {
                 }
             }            
         },500, created, trackMatrix, trackMatrix[0].length);
+        this.intervals.push(int)
     }
     resumeAll(){ // interval bugs this
         this.audioCtx.resume()
@@ -199,7 +242,7 @@ class AudioManager {
     pauseAll(){
         this.audioCtx.suspend()
         this.isPaused = true;
-    }    
+    }
 }
 
 window.onload = function(){
@@ -212,20 +255,21 @@ window.onload = function(){
         // alert(`${event.target.dataset.id}, ${event.target.value}`)
         let x = event.target.dataset.id
         for(let i= 0 + 16*x; i < 16 + 16*x; i++){
-            AM.gainNodes[i].gain.value = event.target.value
+            // AM.gainNodes[i].gain.value = event.target.value
+            AM.gainNodes[i].gain.linearRampToValueAtTime(event.target.value, 0.1)
         }
     }
     function mute(id){
         for(let i= 0 + 16*id; i < 16 + 16*id; i++){
-            // use expo / linear ramp ?
             AM.mutedPrevs[i] = AM.gainNodes[i].gain.value
             AM.gainNodes[i].gain.value = 0
+            // AM.gainNodes[i].gain.linearRampToValueAtTime(0, 0.2) // not sure if working
         }
     }
     function unmute(id, previousValuesList){
         for(let i= 0 + 16*id; i < 16 + 16*id; i++){
-            // use expo / linear ramp ?
-            AM.gainNodes[i].gain.value = AM.mutedPrevs[i]
+            // AM.gainNodes[i].gain.value = AM.mutedPrevs[i]
+            AM.gainNodes[i].gain.linearRampToValueAtTime(AM.mutedPrevs[i], 0.2)
         }
     }
     main.addEventListener("click", function(e){
@@ -403,6 +447,8 @@ window.onload = function(){
                 
                 parent.insertBefore(div,addDiv)
                 parent.insertBefore(dragged, addDiv)
+
+                if(AM.startedAt !== 0) AM.reload()
             }
         }
     
