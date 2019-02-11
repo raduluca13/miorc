@@ -53,6 +53,7 @@
 
         <div id="header">
             <button id="play-pause-btn">START</button>
+            <input type="range" value="700" min="100" max="900" step="100" id="rangeBpm">
         </div>
         <div id="mainContainer">
             
@@ -68,13 +69,10 @@
                 <h1>Alege partitura pentru fiecare instrument</h1>
             </div>
             <ul id="lista_instrumente" class="instrument_options_list">
-                <li id="option1_li"><a class="info-link" href="#option1_li">Pian</a></li>
-                <li id="option2_li"><a class="info-link">Chitara</a></li>
-                <li id="option3_li"><a class="info-link">Vioara</a></li>
-                <li id="option4_li"><a class="info-link">Mixer</a></li>
+                <li id="option1_li" onclick="changeSongList(1)"><a class="info-link" href="#option1_li">Piano</a></li>
+                <li id="option2_li" onclick="changeSongList(2)"><a class="info-link">Xylophone</a></li>
+                <li id="option3_li" onclick="changeSongList(3)"><a class="info-link">MusicBox</a></li>
             </ul>
-            <div id="partituri_instrument">
-            </div>
         </div>
     </main>
 
