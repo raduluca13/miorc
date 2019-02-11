@@ -184,7 +184,6 @@ body {
     background: #2c3e50;
     transition: 0.2s;
     box-sizing: border-box;
-    letter-spacing: 1px;
 }
 
 .text_input input~.focus-border:after {
@@ -232,6 +231,9 @@ body {
     display: none;
 }
 
+.stopButton{
+    display: none;
+}
 
 @media (max-width: 640px),
 (max-height: 640px) {

@@ -48,6 +48,9 @@ var files = ["acoustic_grand_piano", "bright_acoustic_piano", "electric_grand_pi
 var notes = [];
 var cols = 8;
 var wait = 0;
+var stopBtn = document.getElementById("stopBtn");
+stopBtn.style.display="none";
+var startBtn = document.getElementById("startBtn");
 var canvas = document.getElementById('canvas');
 var ctx = canvas.getContext('2d');
 var cInstrument = document.getElementById("instrument_select")
@@ -67,7 +70,7 @@ cInstrument.addEventListener("change", instrumentChange, {
 saveButton.addEventListener("click", saveSong, {
     passive: true
 });
-playSong.addEventListener("click", playMusic, {
+playSong.addEventListener("click", checkAction, {
     passive: true
 });
 canvas.addEventListener("click",
@@ -94,7 +97,18 @@ canvas.addEventListener("click",
         }
     });
 
-
+function checkAction(){
+    if(stopBtn.style.display === "none"){
+        startBtn.style.display = "none";
+        stopBtn.style.display = "block";
+        playMusic();
+    }else{
+        startBtn.style.display = "block";
+        stopBtn.style.display = "none";
+        MIDI.stopAllNotes();
+    }
+    
+}
 
 function makeJson() {
     matrix = new Array(16);
@@ -114,9 +128,9 @@ function makeJson() {
 
 }
 
+
 function playMusic() {
-    if (play == 0) {
-        play = 1;
+        MIDI.stopAllNotes()
         let bpm = document.getElementById('bpm').value;
         var delay = 0.4;
         MIDI.setVolume(0, 147);
@@ -125,12 +139,17 @@ function playMusic() {
                 for (let i = 0; i < 16; i++)
                     if (notes[i][j].active == true) {
                         MIDI.noteOn(0, notes[i][j].value, 127, delay);
+                        MIDI.noteOff(0, notes[i][j].value, delay+0.5);
                     }
                 delay += 1 - bpm / 10;
             }
         }
-        play = 0;
-    }
+        setTimeout(function(){
+            if(stopBtn.style.display != "none"){
+                startBtn.style.display = "block";
+                stopBtn.style.display = "none";
+            }
+        },delay*1000+100)
 }
 
 function saveSong() {
@@ -150,7 +169,8 @@ function saveSong() {
                 songsRef.doc(cuser.displayName + "-" + sName).set({
                         notes: JSON.stringify(matrix),
                         title: sName,
-                        user: cuser.displayName
+                        user: cuser.displayName,
+                        instrument: cInstrument.value
                     })
                     .then(function () {
                         Toast.fire({
@@ -196,7 +216,7 @@ function instrumentChange() {
 function expand() {
     for (let i = 0; i < 16; i++) {
         for (let j = cols; j < (cols + 8); j++) {
-            notes[i][j] = new note(i * 3 + 50);
+            notes[i][j] = new note(i * 2 + 48);
 
         }
     }

@@ -69,7 +69,8 @@
     <div class="main_container">
         <nav>
             <div class="button_container">
-                <button class="play_button" id="playSong"><i class="fas fa-play-circle" itemscope="http://schema.org/audio"></i></button>
+                <button class="play_button" id="playSong"><i class="fas fa-play-circle playButton" id="startBtn" itemscope="http://schema.org/audio"></i>
+                    <i class="fas fa-stop-circle stopButton" id="stopBtn"></i></button>
                 <button class="play_button" id="saveButton"><i class="far fa-save"></i></button>
             </div>
             <div class="text_input" id="text_input1">
@@ -79,7 +80,7 @@
                 </span>
             </div>
             <div class="text_input" id="text_input2">
-                <input type="text" id="bpm" placeholder="BPM" type="number" itemscope itemtype="http://schema.org/speed">
+                <input type="text" id="bpm" placeholder="BPM" type="number" value="8" min="1" max="9" itemscope itemtype="http://schema.org/speed">
                 <span class="focus-border">
                     <i></i>
                 </span>
