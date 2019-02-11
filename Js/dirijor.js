@@ -205,7 +205,6 @@ class AudioManager {
                 break;
         }
         this.startedAt = Date.now()
-        alert(this.startedAt)
         for(let i = 0; i< this.tracks.length; i++){
             this.play(i)
         }
@@ -236,6 +235,7 @@ class AudioManager {
         this.intervals.push(int)
     }
     resumeAll(){ // interval bugs this
+        // alert(`ctx state: ${this.audioCtx.state}`)
         this.audioCtx.resume()
         this.isPaused = false;
     }
@@ -297,6 +297,7 @@ window.onload = function(){
             case "play-pause-btn":
                 let playPauseBtn = document.getElementById("play-pause-btn")
                 let volumes = document.querySelectorAll(".volum_instrument")
+                // alert(`AM is loaded: ${AM.isLoaded}`)
                 if(AM.isLoaded){
                     switch(playPauseBtn.textContent){
                         case "START":
@@ -321,6 +322,15 @@ window.onload = function(){
                                 volum.disabled = true
                             })
                             AM.pauseAll()
+                            break;
+                        case "RESUME":
+                            playPauseBtn.textContent = "PAUSE"
+                                volumes.forEach((volum)=>{
+                                    volum.disabled = false
+                                })
+                            if(AM.isPaused){
+                                AM.resumeAll()
+                            }
                             break;
                         default:
                             break;
