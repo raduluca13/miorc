@@ -113,7 +113,7 @@ class AudioManager {
         this.matrixes = []; // partitures for each track
         this.mutedPrevs = [];
 
-        this.startedAt = 0; // rework this for the case when user hits "STOP" (inexistent button) - should replace deprecated button
+        this.startedAt = 0; 
         this.intervals = [];
 
         this.instruments = 0;
