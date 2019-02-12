@@ -234,7 +234,7 @@
           <h3 itemtype="http://schema.org/title">First steps</h3>
           <ul>
             <li itemtype="http://schema.org/ListItem">
-              Down here you can see a sketche we made before starting to work.
+              Down here you can see a sketch we made before starting to work.
             </li>
             <figure typeof="sa:Image">
               <img src="./schita.jpg" alt="sketch">
@@ -293,7 +293,7 @@
           <figure typeof="sa:Image">
             <img src="./Login.png" alt="login-diagram">
             <figcaption>Login diagram</figcaption>
-            <p itemtype="http://schema.org/description">Will be based on token authentification and re-seed</p>
+            <p itemtype="http://schema.org/description">Will be based on token authentication and re-seed</p>
           </figure>
           <h4 itemtype="http://schema.org/title">Database</h4>
           <figure typeof="sa:Image">
@@ -408,7 +408,7 @@
       </ul>
     </section>
     <section>
-      <h3 itemtype="http://schema.org/title">Implementetion</h3>
+      <h3 itemtype="http://schema.org/title">Implementation</h3>
       <ul>
         <li itemtype="http://schema.org/ListItem">
           <p itemtype="http://schema.org/description">
@@ -418,32 +418,40 @@
                 <p itemtype="http://schema.org/description">Implementetion:</p>
                 <ul>
                   <p>Problems:</p>
-                  <li>Midi.js libray is quite old , and hasnt been updated in over 4 years so there are a lot of
+                  <li>Midi.js library is quite old , and hasn't been updated in over 4 years so there are a lot of
                     deprecated stuff in it , from loading an audiocontext immediately after load to non working
                     functions</li>
-                  <li>The note sheet representation changed 2 times , untill i stuck with the current one which is a
+                  <li>The note sheet representation changed 2 times , until i stuck with the current one which is a
                     canvas . Why i chose a canvas ? Because i found it really easy to get the coordinates of mouseclick
                     rather then see which element the user clicked </li>
                   <li>Even thou the 2 mentioned raised some difficulties , they can't compare with the REST api , for
                     which i decided to use <b> node js </b> , without any experience on the backend side this proved to
-                    be quite difficult</li>
+                    be quite difficult , so we ditched it and used firebase which proved to be quite a good solution</li>
                 </ul>
-
+              </li>
               <li itemtype="http://schema.org/ListItem">The orchestra page
+
+
               </li>
 
               <li itemtype="http://schema.org/ListItem">
                 <p itemtype="http://schema.org/description">Testing:</p>
-                All test were done manually , from application responsiveness on mobile devices to comosing , playing
+                All test were done manually , from application responsiveness on mobile devices to composing , playing
                 and uploading songs;
               </li>
               <li itemtype="http://schema.org/ListItem">
-                <p itemtype="http://schema.org/description"><h3 itemtype="http://schema.org/title">Now the big question</h3></p>
+                <p itemtype="http://schema.org/description">
+                  <h3 itemtype="http://schema.org/title">Now the big question</h3>
+                </p>
                 <h2>CAN IT BE USED??</h2>
-                In its current form we can bearly say it can; <br>
-                Yes you can compose a song , listen to it , and save it for later but the process is prone to bugs . <br>
-                There is a lot that can be improved , most important among which is the REST api. <br>
-                The application doesnt give any feedback to the user on many important actions.
+                Yes the application works just fine but there are a few bugs which can ruin the experience <br>
+                Mixer page:
+                <ul>
+                  <p>Problems:</p>
+                  <li>The interface is although working just fine , quite ugly to look at</li>
+                  <li>There are a limited number of notes which can be played</li>
+                  <li>You cant pause the song just stop it</li>
+                </ul>
               </li>
         </li>
       </ul>
