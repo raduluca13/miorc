@@ -304,10 +304,13 @@ window.onload = function () {
                 break;
             case "play-pause-btn":
                 let playPauseBtn = document.getElementById("play-pause-btn")
+                let stop = document.getElementById("stopall-btn")
+                stop.disabled = true
                 let volumes = document.querySelectorAll(".volum_instrument")
                 let mutes = document.querySelectorAll('.mute_volume_btn')
                 // alert(`AM is loaded: ${AM.isLoaded}`)
                 if (AM.isLoaded) {
+                    stop.disabled = false;
                     switch (playPauseBtn.textContent) {
                         case "START":
                             playPauseBtn.textContent = "PAUSE"
@@ -350,9 +353,12 @@ window.onload = function () {
                 break;
             case "stopall-btn":
                 let playPause = document.getElementById("play-pause-btn")
+                let stoppie = document.getElementById("stopall-btn")
+                stoppie.disabled = true;
                 let volumess = document.querySelectorAll(".volum_instrument")
                 let mutess = document.querySelectorAll('.mute_volume_btn')
                 playPause.textContent = "START"
+                playPause.disabled = false;
                 bpm.disabled = false;
                 volumess.forEach((volum) => {
                     volum.addEventListener("mouseup", changeVolume)
@@ -426,12 +432,24 @@ window.onload = function () {
                     let div = document.createElement("DIV")
                     div.classList.add("instrumentDiv")
                     console.log("volumes", AM.instruments)
+                    switch(instrumentName){
+                        case "grand_piano":
+                            div.style.background = "red";
+                            break;
+                        case "xylophone":
+                            div.style.background = "green";
+                            break;
+                        case "music_box":
+                            div.style.background = "purple"
+                            break;
+                        default:
+                            break;
+                    }
 
                     // image
                     let img = document.createElement("IMG")
                     img.classList.add("poza_instrument")
-                    // img.src=`../assets/${instrumentName}.png`;
-                    img.src = `../assets/synth.png`;
+                    img.src=`../assets/${instrumentName}.png`;
                     img.alt = `png ${instrumentName}`;
 
 
@@ -468,7 +486,7 @@ window.onload = function () {
                     div.appendChild(btn)
                     return div
                 }
-                let div = createInstrumentPanel()
+                let div = createInstrumentPanel(dragged.dataset.instrumentName)
 
                 dragged.draggable = false
 
@@ -480,6 +498,31 @@ window.onload = function () {
                 parent.insertBefore(div, addDiv)
                 parent.insertBefore(dragged, addDiv)
 
+
+
+                let wave_wrap = document.getElementsByClassName("wave_wrap");
+                let progress_over = document.getElementsByClassName("progress_over");
+                let rand_prog = document.getElementsByClassName("rand_prog");
+                let curr_scrub = 0;
+                for(let i =0; i<wave_wrap.length; i++){
+                    wave_wrap[i].addEventListener("mousemove", function(e) {
+                        this.className = "active";
+                        curr_scrub = (e.pageX - this.offsetLeft);
+                        progress_over.style.width = curr_scrub + "px";
+                      }, false);
+                
+                
+                    wave_wrap[i].addEventListener("mouseout", function(e) {
+                        this.className = "";
+                        progress_over.style.width = 0 + "px";
+                    }, false);
+                    
+                    wave_wrap[i].addEventListener("mousedown", function(e) {
+                        this.className = "";
+                        rand_prog.style.width = curr_scrub + "px";
+                        curr_scrub = 0;
+                    }, false);
+                }
                 if (AM.startedAt !== 0) AM.reload()
             }
         }
