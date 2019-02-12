@@ -126,10 +126,10 @@
                                 <span property="http://schema.org/instrument">instruments</span>
                                 and create your own
                                 <span property="http://schema.org/track">composition.</span> <br>
-                                After you`ve created your <span property="http://schema.org/track">song</span> you can
+                                After you've created your <span property="http://schema.org/track">song</span> you can
                                 start forming an
                                 <span property="https://schema.org/MusicGroup">orchestra</span> , with your
-                                composionion and many others written by other
+                                composition and many others written by other
                                 <span property=" http://schema.org/performer"> players </span> .
                         </li>
                     </ul>
@@ -167,7 +167,7 @@
                                                 </figure>
                                                 <figure typeof="sa:Image">
                                                     <img src="./main_menu_out.png" alt="navigation-menu">
-                                                    <figcaption>Main menu opend</figcaption>
+                                                    <figcaption>Main menu open</figcaption>
                                                     <p itemtype="http://schema.org/description">
                                                         By opening it you will see 4 buttons (ATM)
                                                         <ul>
@@ -189,7 +189,7 @@
                                                     <img src="./mixer_controls.png" alt="mixer-menu">
                                                     <figcaption>Mixer main controls</figcaption>
                                                     <p itemtype="http://schema.org/description">Those will help you to
-                                                        interact with your song. Here you will see 5 main controls</p>
+                                                        interact with your song. Here you will see 6 controls</p>
                                                     <ul>
                                                         <li itemtype="http://schema.org/ListItem">1-Play button - want
                                                             to hear how your
@@ -208,6 +208,10 @@
                                                             of the old piano try a new funky
                                                             <span itemprop itemtype="http://schema.org/instrument">instrument</span>
                                                         </li>
+                                                        <li itemtype="http://schema.org/ListItem">
+                                                            6- List with all your old compositions , feel you could've
+                                                            done better? just load it up and edit it.
+                                                        </li>
                                                     </ul>
                                                 </figure>
                                             </li>
@@ -220,13 +224,15 @@
                                                         play. Here you can chose your notes
                                                         <ul>
                                                             <li itemtype="http://schema.org/ListItem">First you will
-                                                                see the sqares , each represents a note , by clicking
-                                                                it you cant liste the note , dont like it just click it
+                                                                see the squares , each represents a note , by clicking
+                                                                it you cant listen the note , dont like it just click
+                                                                it
                                                                 again</li>
                                                             <li itemtype="http://schema.org/ListItem">As you can see
                                                                 the sheet is pretty small , what about that ? If you
-                                                                want to make it bigger sipley add a note (square with a
-                                                                * symbol) on the last collumn and <b>BAM</b> more notes
+                                                                want to make it bigger it's simple add a note (square
+                                                                with a
+                                                                * symbol) on the last columns and <b>BAM</b> more notes
                                                                 to add </li>
                                                         </ul>
                                                         <figure typeof="sa:Image">
@@ -243,11 +249,72 @@
                         <li itemtype="http://schema.org/ListItem">
                             <h3 itemtype="http://schema.org/title">Orchestra Structure</h3>
                             <h4 itemtype="http://schema.org/title">A basic description of the orchestra page</h4>
+                            <figure typeof="sa:Image">
+                                <img src="./orchestra.png" alt="Orchestra-page">
+                                <figcaption>Orchestra page</figcaption>
+                            </figure>
+                            <p itemtype="http://schema.org/description">Here you will see 2 components</p>
+                            <ul>
+                                <li itemtype="http://schema.org/ListItem">
+                                    <h4 itemtype="http://schema.org/title">Active song list</h4>
+                                    <figure typeof="sa:Image">
+                                        <img src="./active.png" alt="active-list">
+                                        <figcaption>Active songs</figcaption>
+                                        <p itemtype="http://schema.org/description">The list contains the active songs
+                                            which can be played <br>
+                                            Components:
+                                        </p>
 
+                                        <ul>
+                                            <li itemtype="http://schema.org/ListItem">1-Start/Pause button -
+                                                will play/pause all the active songs</li>
+                                            <li itemtype="http://schema.org/ListItem">2-Stop button -
+                                                will stop all playing songs</li>
+                                            <li itemtype="http://schema.org/ListItem">3-BPM slider
+                                                - will the speed at which the songs are played</li>
+                                            <li itemtype="http://schema.org/ListItem">4-Log-out/Log-in
+                                                - will allow you to login/logout</li>
+                                            <li itemtype="http://schema.org/ListItem">5-List with the name of the
+                                                active songs
+                                            </li>
+                                            <li itemtype="http://schema.org/ListItem">6-Side card with information about the song <br>
+                                                <figure typeof="sa:Image">
+                                                    <img src="./side.png" alt="side-card">
+                                                    <figcaption>Song info</figcaption>
+                                                    <ul>
+                                                        <li itemtype="http://schema.org/ListItem">1-Visual representation of the songs instrument</li>
+                                                        <li itemtype="http://schema.org/ListItem">2-Volume slider</li>
+                                                        <li itemtype="http://schema.org/ListItem">3-Mute button</li>
+                                                    </ul>
+                                                </figure>
+                                            </li>
+                                        </ul>
+                                    </figure>
+                                </li>
+                                <li itemtype="http://schema.org/ListItem">
+                                    <h4 itemtype="http://schema.org/title">List with all the songs in the database</h4>
+                                    <figure typeof="sa:Image">
+                                        <img src="./songs.png" alt="mixer-menu">
+                                        <figcaption>All the songs</figcaption>
+                                        <p itemtype="http://schema.org/description">Here you can chose which song you add to the active list
+                                        <br>
+                                        Has 2 components:
+                                        </p>
+                                        <ul>
+                                            <li itemtype="http://schema.org/ListItem">1-Instrument select buttons - chose which instrument you want to use.
+                                            </li>
+                                            <li itemtype="http://schema.org/ListItem">2-Songs which use the selected instrument</li>
+                                            <figure typeof="sa:Image">
+                                                <img src="./drag.png" alt="drag-action">
+                                                <figcaption>Drag and drop</figcaption>
+                                                <ul>
+                                                    <li itemtype="http://schema.org/ListItem">To add a song to the active list just drag it next to the big plus and drop it there</li>
+                                                </ul>
+                                            </figure>
+                                        </ul>
+                                    </figure>
+                                </li>
                         </li>
-                        </li>
-                    </ul>
-                    </li>
                     </ul>
                 </section>
             </section>
