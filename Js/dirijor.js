@@ -435,6 +435,11 @@ window.onload = function () {
                     // mute btn
                     let btn = document.createElement("BUTTON")
                     btn.classList.add("mute_volume_btn")
+                    btn.classList.add("press")
+                    btn.classList.add("press-xl")
+                    btn.classList.add("press-tes")
+                    btn.classList.add("press-round")
+                    btn.classList.add("press-raised")
                     btn.dataset.id = `${AM.instruments}`;
                     btn.textContent = "Mute"
 
