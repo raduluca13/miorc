@@ -4,6 +4,7 @@ var db = firebase.firestore();
 var songsRef = db.collection("Songs");
 
 
+
 function changeSongList(id){
     var list = document.createElement("div");
     list.id = "partituri_instrument";
@@ -29,11 +30,23 @@ function changeSongList(id){
                         var song = document.createElement("div");
                         song.id = "partitura" + i;
                         song.draggable = true;
-                        song.innerText = data.user + " - " + data.title;
                         song.dataset.notes = data.notes;
                         song.dataset.instrumentName = instrumentName;
                         song.classList.add("waveformDiv");
                         song.classList.add("partitura");
+
+                        let songHdr = document.createElement("div");
+                        songHdr.innerText = data.user + " - " + data.title;
+                        song.appendChild(songHdr)
+
+                        let ww = document.createElement("DIV")
+                        ww.classList.add("wave_wrap")
+                        ww.innerHTML = `<div class="wave_inner"><img class="waveform" src="../assets/wave.png">
+                        <div class="progress_over"></div><div class="progress">
+                        <div class="rand_prog" class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div></div>`
+                        song.appendChild(ww)
+
                         list.appendChild(song);
                         optionList.appendChild(list);
                         i++;

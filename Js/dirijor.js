@@ -366,6 +366,7 @@ window.onload = function () {
                 })
                 mutess.forEach((muteBtn) => {
                     muteBtn.disabled = true
+                    muteBtn.textContent = "Mute"
                 })
                 AM.stopAll();
                 break;
