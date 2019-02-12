@@ -442,3 +442,12 @@ h1 {
         font-size: 0.7rem;
     }
 }
+
+.myRange:disabled{
+    cursor: not-allowed;
+    opacity: 0.3
+}
+.myRange_header:disabled{
+    cursor: not-allowed;
+    opacity: 0.3
+}
