@@ -1,7 +1,52 @@
-https://codepen.io/one20/pen/zBGPpb
+https://medium.com/frontend-fun/js-vanilla-script-spa-1b29b43ea475
+https://github.com/SantiagoGdaR/vanilla-spa/blob/master/js/route.js
+https://medium.com/@bryanjenningz/how-to-record-and-play-audio-in-javascript-faa1b2b3e49b
+https://modernweb.com/creating-sound-with-the-web-audio-api-and-oscillators/
 
-FileReader -> LoadBlob(wavesurfer method)
+https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API
+https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API/Basic_concepts_behind_Web_Audio_API
+https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API/Advanced_techniques
+https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API/Visualizations_with_Web_Audio_API
 
-http://wavesurfer-js.org/docs/methods.html
 
-https://codepen.io/chrisdwheatley/pen/cJKIr
+audioParam
+
+https://developer.mozilla.org/en-US/docs/Web/API/AudioParam/setTargetAtTime
+https://developer.mozilla.org/en-US/docs/Web/API/AudioBufferSourceNode
+https://developer.mozilla.org/en-US/docs/Web/API/AudioBuffer/copyToChannel
+
+https://github.com/mdn/webaudio-examples
+https://github.com/mdn/webaudio-examples/tree/master/multi-track
+
+https://www.google.ro/search?safe=active&ei=dVIKXPfQHcuKsAHBzoLoAg&q=simple+crud+with+aws&oq=simple+crud+with+aws&gs_l=psy-ab.3..33i160.94287.98088..98252...4.0..0.282.4055.0j17j6......0....1..gws-wiz.......0j35i39j0i67j0i131j0i203j0i22i30j33i21.q-528wwQKtU
+https://riptutorial.com/aws-lambda/example/25230/create-simple-crud-operation
+https://github.com/aws-samples/aws-serverless-crud-sample
+https://aws.amazon.com/getting-started/projects/build-serverless-web-app-lambda-apigateway-s3-dynamodb-cognito/module-3/
+
+
+
+https://www.midi.org/17-the-mma/99-web-midi
+
+https://www.html5rocks.com/en/tutorials/webaudio/intro/
+https://medium.com/swinginc/playing-with-midi-in-javascript-b6999f2913c3
+
+http://danielstern.ca/range.css/#/  -input range
+!!
+https://css-tricks.com/introduction-web-audio-api/
+http://pages.mtu.edu/~suits/notefreqs.html
+http://alemangui.github.io/blog//2015/12/26/ramp-to-value.html
+https://www.keithmcmillen.com/blog/making-music-in-the-browser-web-audio-api-part-1/
+https://keithwhor.com/music/
+
+https://teropa.info/blog/2016/08/10/frequency-and-pitch.html
+
+https://www.clicktorelease.com/blog/loading-sounds-faster-using-html5-web-audio-api/
+
+
+
+Load an AudioBuffer like this:
+`wavesurfer.loadDecodedBuffer(audioBuffer);`
+and an ArrayBuffer:
+`wavesurfer.loadArrayBuffer(arrayBuffer);`
+
+recorderjs

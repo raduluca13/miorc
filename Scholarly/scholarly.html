@@ -147,7 +147,8 @@
             <cite property="schema:name">
               <a href="https://en.wikipedia.org/wiki/JavaScript">JS</a>
             </cite>, by
-            <span typeof="schema:Organization" resource="https://en.wikipedia.org/wiki/National_Center_for_Supercomputing_Applications">
+            <span typeof="schema:Organization"
+              resource="https://en.wikipedia.org/wiki/National_Center_for_Supercomputing_Applications">
               <span property="schema:name">National Center for Supercomputing Applications</span>,
               <span property="schema:parentOrganization">
                 <span typeof="schema:Organization">
@@ -245,7 +246,8 @@
         </li>
 
         <li itemtype="http://schema.org/ListItem">
-          <h3 itemtype="http://schema.org/title">For code management we chose <u>Git</u> and the tool we used <u>GitHub</u></h3>
+          <h3 itemtype="http://schema.org/title">For code management we chose <u>Git</u> and the tool we used
+            <u>GitHub</u></h3>
         </li>
 
         <li itemtype="http://schema.org/ListItem">
@@ -352,7 +354,8 @@
           </ul>
 
           <h4 itemtype="http://schema.org/title">Orchestra component</h4>
-          <p itemtype="http://schema.org/description"> 💨 It keeps a list of user selected tracks for playing together</p>
+          <p itemtype="http://schema.org/description"> 💨 It keeps a list of user selected tracks for playing together
+          </p>
           <h5 itemtype="http://schema.org/title">Methods:</h5>
           <ul style="list-style: none;">
             <li itemtype="http://schema.org/ListItem" itemtype="http://schema.org/Code">✔ AddTrack(String trackName) ➡
@@ -375,7 +378,8 @@
           <p itemtype="http://schema.org/description">✔ Audio "object"/ render result after Save() from the mixer</p>
 
           <h4 itemtype="http://schema.org/title">TrackList component</h4>
-          <p itemtype="http://schema.org/description"> 💨 It keeps a <b>list</b> of all available tracks from the <b>instrument
+          <p itemtype="http://schema.org/description"> 💨 It keeps a <b>list</b> of all available tracks from the
+            <b>instrument
               list</b></p>
           <h5 itemtype="http://schema.org/title">Methods:</h5>
           <ul style="list-style: none;">
@@ -407,57 +411,81 @@
         </li>
       </ul>
     </section>
+
     <section>
-      <h3 itemtype="http://schema.org/title">Implementation</h3>
-      <ul>
+      <h2 itemtype="http://schema.org/title">Implementation</h2>
+      <ul itemtype="http://schema.org/List">
+        <h4 itemtype="http://schema.org/description">The application has 2 main pages:</h4>
         <li itemtype="http://schema.org/ListItem">
-          <p itemtype="http://schema.org/description">
-            The application has 2 main pages:
-            <ul>
-              <li itemtype="http://schema.org/ListItem">The mixer page
-                <p itemtype="http://schema.org/description">Implementetion:</p>
-                <ul>
-                  <p>Problems:</p>
-                  <li>Midi.js library is quite old , and hasn't been updated in over 4 years so there are a lot of
-                    deprecated stuff in it , from loading an audiocontext immediately after load to non working
-                    functions</li>
-                  <li>The note sheet representation changed 2 times , until i stuck with the current one which is a
-                    canvas . Why i chose a canvas ? Because i found it really easy to get the coordinates of mouseclick
-                    rather then see which element the user clicked </li>
-                  <li>Even thou the 2 mentioned raised some difficulties , they can't compare with the REST api , for
-                    which i decided to use <b> node js </b> , without any experience on the backend side this proved to
-                    be quite difficult , so we ditched it and used firebase which proved to be quite a good solution</li>
-                </ul>
-              </li>
-              <li itemtype="http://schema.org/ListItem">The orchestra page
-
-
-              </li>
-
-              <li itemtype="http://schema.org/ListItem">
-                <p itemtype="http://schema.org/description">Testing:</p>
-                All test were done manually , from application responsiveness on mobile devices to composing , playing
-                and uploading songs;
-              </li>
-              <li itemtype="http://schema.org/ListItem">
-                <p itemtype="http://schema.org/description">
-                  <h3 itemtype="http://schema.org/title">Now the big question</h3>
-                </p>
-                <h2>CAN IT BE USED??</h2>
-                Yes the application works just fine but there are a few bugs which can ruin the experience <br>
-                Mixer page:
-                <ul>
-                  <p>Problems:</p>
-                  <li>The interface is although working just fine , quite ugly to look at</li>
-                  <li>There are a limited number of notes which can be played</li>
-                  <li>You cant pause the song just stop it</li>
-                </ul>
-              </li>
+          <h3 itemtype="http://schema.org/Title">The mixer page</h3>
+          <h4 itemtype="http://schema.org/description">Implementation:</h4>
+        </li>
+        <li>
+          <h3 itemtype="http://schema.org/Title">The orchestra page</h3>
+          <h4 itemtype="http://schema.org/description">Implementation:</h4>
+          <h4>AudioManager class</h4>
+          <ul>
+            <li>addInstrumentPartiture(instrumentName, DOMel, matrix)</li>
+            <span>after a track is dragged into a valid dropzone area, it receives a matrix of scheduled notes to play and creates corresponding number of audio elements for each track (16) by calling createAudio()</span>
+            <span></span>
+            <li>createAudio()</li><span>creates audio HTML element and a gain for it</span>
+            <li>reload()</li><span>restarts addInstrumentPartiture() for each track loaded </span>
+            <li>stopAll()</li><span>resets all intervals</span>
+            <li>playAll()</li><span>sets startedAt to Date.now() and calls play for each track</span>
+            <li>play(id)</li><span>starts interval for the selected track</span>
+            <li>resumeAll()</li><span>resumes audio context</span>
+            <li>pauseAll()</li><span>suspends audio context</span>
+          </ul>
+          <h4>Other functions</h4>
+          <ul>
+            <li>mute()</li><span>sets gain to 0 for each track</span>
+            <li>unmute()</li><span>sets gain to previous value that each track had</span>
+            <li>changeVolume()</li><span>sets gain to the value specified using the slider</span>
+            <li>changeBpm</li><span>changes frequency for setInterval</span>
+          </ul>
+          <h4>Web Audio API</h4> <span>playing audio notes in mp3-base64 format</span>
+          <h4>Drag and Drop API</h4> <span>taking the partiture one track has and move along with it to the active songs area (upper part)</span>
+          <h4>Firebase</h4> <span>load list of songs for each available instrument</span>
+          
+        </li>
+        <li itemtype="http://schema.org/ListItem">
+        <h3 itemtype="http://schema.org/title">Problems:</h3>
+          <ul itemtype="http://schema.org/List">
+            <li>Midi.js library is quite old , and hasn't been updated in over 4 years so there are a lot of
+              deprecated stuff in it , from loading an audiocontext immediately after load to non working
+              functions</li>
+            <li>The note sheet representation changed 2 times , until i stuck with the current one which is a
+              canvas. Why i chose a canvas? Because i found it really easy to get the coordinates of mouseclick
+              rather then see which element the user clicked </li>
+            <li>Even though the 2 mentioned raised some difficulties , they can't compare with the REST api , for
+              which i decided to use <b> node js </b> , without any experience on the backend side this proved to
+              be quite difficult , so we ditched it and used firebase which proved to be quite a good solution</li>
+            <li>The interface is although working just fine , quite ugly to look at</li>
+            <li>There are a limited number of notes which can be played</li>
+            <li>You cant pause the song just stop it</li>
+            <li>If it is playing the same note at a bpm that is too big, the interval won't change because the audio cannot be stopped</li>
+            <li>Loading a track means while others ar playing means reloading all tracks</li>
+          </ul>
         </li>
       </ul>
-      </li>
-      </ul>
-    </section>
+
+      
+
+      <h3 itemtype="http://schema.org/description">Testing:</h3>
+      <h4 itemtype="http://schema.org/description">All test were done manually , from application responsiveness on mobile devices to composing , playing
+          and uploading songs;</h4>
+      
+      <!-- <h3 itemtype="http://schema.org/title">Now the big question</h3> -->
+          
+      <!-- <h2>CAN IT BE USED??</h2>
+      <p itemtype="http://schema.org/description">Yes the application works just fine but there are a few bugs which can ruin the experience</p><br>
+      <h3>Mixer page:</h3>
+      <ul>
+        <h4>Problems:</h4>
+        <li>The interface is although working just fine , quite ugly to look at</li>
+        <li>There are a limited number of notes which can be played</li>
+        <li>You cant pause the song just stop it</li>
+      </ul> -->
     </section>
   </article>
 </body>
