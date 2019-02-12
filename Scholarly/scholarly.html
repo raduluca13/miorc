@@ -419,11 +419,28 @@
         <li itemtype="http://schema.org/ListItem">
           <h3 itemtype="http://schema.org/Title">The mixer page</h3>
           <h4 itemtype="http://schema.org/description">Implementation:</h4>
+          <h4>Chord Object</h4><span></span>
+          <h4>Note Object</h4><span></span>
+          <h4>Other functions</h4><span></span>
+          <ul>
+            <li>animate()</li><span></span>
+            <li>expand()</li><span></span>
+            <li>checkAction()</li><span></span>
+            <li>PlayMusic()</li><span></span>
+            <li>makeJson()</li><span></span>
+            <li>loadSong()</li><span></span>
+            <li>saveSong()</li><span></span>
+            <li>instrumentChange()</li><span></span>
+            <li>init()</li><span></span>
+            <li>makeMatrix()</li><span></span>
+          </ul>
+          <h4>Firebase</h4><span></span>
         </li>
+        
         <li>
           <h3 itemtype="http://schema.org/Title">The orchestra page</h3>
           <h4 itemtype="http://schema.org/description">Implementation:</h4>
-          <h4>AudioManager class</h4>
+          <h4>AudioManager Object</h4>
           <ul>
             <li>addInstrumentPartiture(instrumentName, DOMel, matrix)</li>
             <span>after a track is dragged into a valid dropzone area, it receives a matrix of scheduled notes to play and creates corresponding number of audio elements for each track (16) by calling createAudio()</span>
@@ -445,7 +462,7 @@
           </ul>
           <h4>Web Audio API</h4> <span>playing audio notes in mp3-base64 format</span>
           <h4>Drag and Drop API</h4> <span>taking the partiture one track has and move along with it to the active songs area (upper part)</span>
-          <h4>Firebase</h4> <span>load list of songs for each available instrument</span>
+          <h4>Firebase</h4> <span>user logging and loading list of songs for each available instrument</span>
           
         </li>
         <li itemtype="http://schema.org/ListItem">
