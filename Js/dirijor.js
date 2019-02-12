@@ -305,17 +305,22 @@ window.onload = function () {
             case "play-pause-btn":
                 let playPauseBtn = document.getElementById("play-pause-btn")
                 let volumes = document.querySelectorAll(".volum_instrument")
+                let mutes = document.querySelectorAll('.mute_volume_btn')
                 // alert(`AM is loaded: ${AM.isLoaded}`)
                 if (AM.isLoaded) {
                     switch (playPauseBtn.textContent) {
                         case "START":
                             playPauseBtn.textContent = "PAUSE"
+                            bpm.disabled = true;
                             volumes.forEach((volum) => {
                                 volum.addEventListener("mouseup", changeVolume)
                                 // onRangeChange(volum, AM.changeVolume());
                                 volum.disabled = false
                                 // how to disable this ?
                                 console.log(volum)
+                            })
+                            mutes.forEach((muteBtn) => {
+                                muteBtn.disabled = false
                             })
                             if (AM.isPaused) {
                                 AM.resumeAll()
@@ -441,6 +446,7 @@ window.onload = function () {
                     btn.classList.add("press-round")
                     btn.classList.add("press-raised")
                     btn.dataset.id = `${AM.instruments}`;
+                    btn.disabled = true;
                     btn.textContent = "Mute"
 
                     AM.instruments++; // we start from 0
