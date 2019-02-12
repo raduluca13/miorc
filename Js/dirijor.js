@@ -252,10 +252,9 @@ window.onload = function () {
     let bpm = document.getElementById("rangeBpm")
 
     bpm.addEventListener("change", changeBpm);
-
+    
     function changeBpm() {
-        console.log("CEva");
-        AM.bpm = bpm.value;
+        AM.bpm = this.value;
     }
 
     function changeVolume(event) {
@@ -352,18 +351,6 @@ window.onload = function () {
         }
     });
 
-    main.addEventListener("oninput", function (event) {
-        if (event.target) {
-            console.log(event.target)
-            if (event.target.id === "volum1") {
-                // AM.changeVolume(1, value)
-            }
-            if (event.target.id === "volum2") {}
-            if (event.target.id === "volum3") {}
-            if (event.target.id === "volum4") {}
-        }
-    })
-
     /* events fired on the draggable target */
     main.addEventListener("drag", function (event) {
 
@@ -423,10 +410,18 @@ window.onload = function () {
                     div.classList.add("instrumentDiv")
                     console.log("volumes", AM.instruments)
 
-                    // AM.instruments++; // if we want to start from 1
+                    // image
+                    let img = document.createElement("IMG")
+                    img.classList.add("poza_instrument")
+                    // img.src=`../assets/${instrumentName}.png`;
+                    img.src = `../assets/synth.png`;
+                    img.alt = `png ${instrumentName}`;
 
+
+                    // AM.instruments++; // if we want to start from 1
                     let input = document.createElement("INPUT")
                     input.classList.add("volum_instrument")
+                    input.classList.add("myRange")
                     input.dataset.id = `${AM.instruments}`;
                     input.type = "range"
                     input.min = "0.1"
@@ -434,13 +429,10 @@ window.onload = function () {
                     input.setAttribute("value", "0.2") // how to do this?
                     input.step = "0.1"
                     input.disabled = true;
-
-                    let img = document.createElement("IMG")
-                    img.classList.add("poza_instrument")
-                    // img.src=`../assets/${instrumentName}.png`;
-                    img.src = `../assets/synth.png`;
-                    img.alt = `png ${instrumentName}`;
-
+                    
+                    
+                    
+                    // mute btn
                     let btn = document.createElement("BUTTON")
                     btn.classList.add("mute_volume_btn")
                     btn.dataset.id = `${AM.instruments}`;
@@ -450,7 +442,7 @@ window.onload = function () {
 
                     div.appendChild(img)
                     div.appendChild(input)
-                    div.append(btn)
+                    div.appendChild(btn)
                     return div
                 }
                 let div = createInstrumentPanel()
