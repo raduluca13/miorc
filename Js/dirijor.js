@@ -314,10 +314,7 @@ window.onload = function () {
                             bpm.disabled = true;
                             volumes.forEach((volum) => {
                                 volum.addEventListener("mouseup", changeVolume)
-                                // onRangeChange(volum, AM.changeVolume());
                                 volum.disabled = false
-                                // how to disable this ?
-                                console.log(volum)
                             })
                             mutes.forEach((muteBtn) => {
                                 muteBtn.disabled = false
@@ -350,6 +347,21 @@ window.onload = function () {
                 } else {
                     alert("nothing to play. Consider adding some partitures via drag and drop")
                 }
+                break;
+            case "stopall-btn":
+                let playPause = document.getElementById("play-pause-btn")
+                let volumess = document.querySelectorAll(".volum_instrument")
+                let mutess = document.querySelectorAll('.mute_volume_btn')
+                playPause.textContent = "START"
+                bpm.disabled = false;
+                volumess.forEach((volum) => {
+                    volum.addEventListener("mouseup", changeVolume)
+                    volum.disabled = true
+                })
+                mutess.forEach((muteBtn) => {
+                    muteBtn.disabled = true
+                })
+                AM.stopAll();
                 break;
             default:
                 break

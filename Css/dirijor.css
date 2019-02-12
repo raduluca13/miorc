@@ -65,11 +65,8 @@ body::-webkit-scrollbar-thumb {
     display:flex;
     justify-content: space-evenly;
 }
-#play-pause-btn{
-    grid-column:2/3;
-}
-#loadall-btn{
-    grid-column: 3/4;
+#play-pause-btn, #stopall-btn{
+    padding: 20px 60px 20px 60px;
 }
 #mainContainer {
     /* transform-origin: 0 0; */
