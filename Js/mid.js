@@ -41,7 +41,7 @@ firebase.auth().onAuthStateChanged(function (user) {
             })
     }
 });
-
+var timeouts = [];
 var play = 0;
 var matrix;
 var files = ["acoustic_grand_piano", "bright_acoustic_piano", "electric_grand_piano", "honkytonk_piano", "electric_piano_1", "electric_piano_2", "harpsichord", "clavinet", "celesta", "glockenspiel", "music_box", "vibraphone", "marimba", "xylophone", "tubular_bells", "dulcimer", "drawbar_organ", "percussive_organ", "rock_organ", "church_organ", "reed_organ", "accordion", "harmonica", "tango_accordion", "acoustic_guitar_nylon", "acoustic_guitar_steel", "electric_guitar_jazz", "electric_guitar_clean", "electric_guitar_muted", "overdriven_guitar", "distortion_guitar", "guitar_harmonics", "acoustic_bass", "electric_bass_finger", "electric_bass_pick", "fretless_bass", "slap_bass_1", "slap_bass_2", "synth_bass_1", "synth_bass_2", "violin", "viola", "cello", "contrabass", "tremolo_strings", "pizzicato_strings", "orchestral_harp", "timpani", "string_ensemble_1", "string_ensemble_2", "synth_strings_1", "synth_strings_2", "choir_aahs", "voice_oohs", "synth_choir", "orchestra_hit", "trumpet", "trombone", "tuba", "muted_trumpet", "french_horn", "brass_section", "synth_brass_1", "synth_brass_2", "soprano_sax", "alto_sax", "tenor_sax", "baritone_sax", "oboe", "english_horn", "bassoon", "clarinet", "piccolo", "flute", "recorder", "pan_flute", "blown_bottle", "shakuhachi", "whistle", "ocarina"]
@@ -106,6 +106,10 @@ function checkAction(){
         startBtn.style.display = "block";
         stopBtn.style.display = "none";
         MIDI.stopAllNotes();
+        for(var i = 0 ; i<timeouts.length;i++){
+            clearTimeout(timeouts[i]);
+        }
+        timeouts = [];
     }
     
 }
@@ -140,16 +144,26 @@ function playMusic() {
                     if (notes[i][j].active == true) {
                         MIDI.noteOn(0, notes[i][j].value, 127, delay);
                         MIDI.noteOff(0, notes[i][j].value, delay+0.5);
+               
+
                     }
+                    timeouts.push(setTimeout(function(){
+                        animate();
+                        ctx.beginPath();
+                        ctx.moveTo(j*30 + 15, 0);
+                        ctx.lineTo(j*30 + 15, canvas.height);
+                        ctx.stroke();
+                    },delay*1000));
+ 
                 delay += 1 - bpm / 10;
             }
         }
-        setTimeout(function(){
+        timeouts.push(setTimeout(function(){
             if(stopBtn.style.display != "none"){
                 startBtn.style.display = "block";
                 stopBtn.style.display = "none";
             }
-        },delay*1000+100)
+        },delay*1000+100));
 }
 
 function saveSong() {

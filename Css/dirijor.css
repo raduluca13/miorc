@@ -283,7 +283,9 @@ body::-webkit-scrollbar-thumb {
 .instrument_options_list li {
     cursor: pointer;
     position: relative;
-    /* padding: 12px 8px 12px 20px; */
+    display: flex;
+    align-items: center;
+    padding: 10px 10px 10px 10px;
     list-style-type: none;
     /* background: rgb(210, 207, 220); */
     background: #000025;

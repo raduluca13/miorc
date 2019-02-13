@@ -16,7 +16,7 @@
     <meta property="schema:accessibilityFeature" content="alternativeText">
 
     <section typeof="sa:AuthorsList">
-      <h2 itemtype="http://schema.org/title">Authors</h2>
+      <h2 itemtype="http://schema.org/title" itemscope>Authors</h2>
       <ul>
         <li typeof="sa:ContributorRole" property="schema:author">
           <span typeof="schema:Person" resource="https://www.facebook.com/radu.97">
@@ -54,7 +54,7 @@
     </section>
 
     <section typeof="sa:Affiliations">
-      <h2 itemtype="http://schema.org/title">Affiliations</h2>
+      <h2 itemtype="http://schema.org/title" itemscope>Affiliations</h2>
       <ul>
         <li id="sa">
           <span typeof="schema:Organization" resource="https://science.ai/">
@@ -78,12 +78,12 @@
     </section>
 
     <section typeof="sa:Concepts">
-      <h2 itemtype="http://schema.org/title">Concepts</h2>
+      <h2 itemtype="http://schema.org/title" itemscope>Concepts</h2>
       <section typeof="schema:SoftwareSourceCode">
-        <h3 itemtype="http://schema.org/title">HTML</h3>
+        <h3 itemtype="http://schema.org/title" itemscope>HTML</h3>
         <ul>
           <li typeof="schema:WebPage" role="doc-biblioentry" resource="http://semver.org/" property="schema:citation"
-            id="some-id">
+            >
             <cite property="schema:name">
               <a href="https://en.wikipedia.org/wiki/HTML">HTML</a>
             </cite>, by
@@ -101,8 +101,8 @@
             </span>.
           </li>
 
-          <li itemtype="http://schema.org/ListItem">
-            <p itemtype="http://schema.org/description">Hypertext Markup Language (HTML) is the standard markup
+          <li itemtype="http://schema.org/ListItem" itemscope>
+            <p itemtype="http://schema.org/description" itemscope>Hypertext Markup Language (HTML) is the standard markup
               language for creating web pages and web applications. With Cascading Style Sheets (CSS) and JavaScript,
               it forms a triad of cornerstone technologies for the World Wide Web</p>
           </li>
@@ -110,10 +110,9 @@
       </section>
 
       <section>
-        <h3 itemtype="http://schema.org/title">CSS</h3>
+        <h3 itemtype="http://schema.org/title" itemscope>CSS</h3>
         <ul>
-          <li typeof="schema:WebPage" role="doc-biblioentry" resource="http://semver.org/" property="schema:citation"
-            id="some-id">
+          <li typeof="schema:WebPage" role="doc-biblioentry" resource="http://semver.org/" property="schema:citation">
             <cite property="schema:name">
               <a href="https://en.wikipedia.org/wiki/Cascading_Style_Sheets">CSS</a>
             </cite>, by
@@ -131,8 +130,8 @@
             </span>.
           </li>
 
-          <li itemtype="http://schema.org/ListItem">
-            <p itemtype="http://schema.org/description">Cascading Style Sheets (CSS) is a style sheet language used for
+          <li itemtype="http://schema.org/ListItem" itemscope>
+            <p itemtype="http://schema.org/description" itemscope>Cascading Style Sheets (CSS) is a style sheet language used for
               describing the presentation of a document written in a markup language like HTML. CSS is a cornerstone
               technology of the World Wide Web, alongside HTML and JavaScript.</p>
           </li>
@@ -140,10 +139,10 @@
       </section>
 
       <section>
-        <h3 itemtype="http://schema.org/title">JavaScript</h3>
+        <h3 itemtype="http://schema.org/title" itemscope>JavaScript</h3>
         <ul>
           <li typeof="schema:WebPage" role="doc-biblioentry" resource="http://semver.org/" property="schema:citation"
-            id="some-id">
+            >
             <cite property="schema:name">
               <a href="https://en.wikipedia.org/wiki/JavaScript">JS</a>
             </cite>, by
@@ -174,8 +173,8 @@
             </span>.
           </li>
 
-          <li itemtype="http://schema.org/ListItem">
-            <p itemtype="http://schema.org/description">JavaScript, often abbreviated as JS, is a high-level,
+          <li itemtype="http://schema.org/ListItem" itemscope>
+            <p itemtype="http://schema.org/description" itemscope>JavaScript, often abbreviated as JS, is a high-level,
               interpreted programming language. It is a language which is also characterized as dynamic, weakly typed,
               prototype-based and multi-paradigm. Alongside HTML and CSS, JavaScript is one of the three core
               technologies of the World Wide Web.</p>
@@ -184,10 +183,10 @@
       </section>
 
       <section>
-        <h3 itemtype="http://schema.org/title">GitHub</h3>
+        <h3 itemtype="http://schema.org/title" itemscope>GitHub</h3>
         <ul>
           <li typeof="schema:WebPage" role="doc-biblioentry" resource="http://semver.org/" property="schema:citation"
-            id="some-id">
+            >
             <cite property="schema:name">
               <a href="https://github.com/">GitHub</a>
             </cite>, by
@@ -217,8 +216,8 @@
             </span>.
           </li>
 
-          <li itemtype="http://schema.org/ListItem">
-            <p itemtype="http://schema.org/description">GitHub Inc. is a web-based hosting service for version control
+          <li itemtype="http://schema.org/ListItem" itemscope>
+            <p itemtype="http://schema.org/description" itemscope>GitHub Inc. is a web-based hosting service for version control
               using Git. It is mostly used for computer code. It offers all of the distributed version control and
               source code management (SCM) functionality of Git as well as adding its own features. It provides access
               control and several collaboration features such as bug tracking, feature requests, task management, and
@@ -231,27 +230,27 @@
     <section typeof="sa:MaterialsAndMethods">
       <h2>Our implementation using these concepts</h2>
       <ul>
-        <li itemtype="http://schema.org/ListItem">
-          <h3 itemtype="http://schema.org/title">First steps</h3>
+        <li itemtype="http://schema.org/ListItem" itemscope>
+          <h3 itemtype="http://schema.org/title" itemscope>First steps</h3>
           <ul>
-            <li itemtype="http://schema.org/ListItem">
+            <li itemtype="http://schema.org/ListItem" itemscope>
               Down here you can see a sketch we made before starting to work.
             </li>
-            <figure typeof="sa:Image">
-              <img src="./schita.jpg" alt="sketch">
-              <figcaption> Sketch for how the alerts should be previewed </figcaption>
-            </figure>
-
           </ul>
+          <figure typeof="sa:Image">
+            <img src="./schita.jpg" alt="sketch">
+            <figcaption> Sketch for how the alerts should be previewed </figcaption>
+          </figure>
+
         </li>
 
-        <li itemtype="http://schema.org/ListItem">
-          <h3 itemtype="http://schema.org/title">For code management we chose <u>Git</u> and the tool we used
+        <li itemtype="http://schema.org/ListItem" itemscope>
+          <h3 itemtype="http://schema.org/title" itemscope>For code management we chose <u>Git</u> and the tool we used
             <u>GitHub</u></h3>
         </li>
 
-        <li itemtype="http://schema.org/ListItem">
-          <h3 itemtype="http://schema.org/title">Now some sneaky peaks inside our code</h3>
+        <li itemtype="http://schema.org/ListItem" itemscope>
+          <h3 itemtype="http://schema.org/title" itemscope>Now some sneaky peaks inside our code</h3>
           <figure typeof="sa:Image">
             <img src="./navmenu.png" alt="html-example">
             <figcaption>Index page only with navigator menu</figcaption>
@@ -266,11 +265,11 @@
           </figure>
         </li>
 
-        <li itemtype="http://schema.org/ListItem">
-          <h3 itemtype="http://schema.org/title">Final product</h3>
-          <p itemtype="http://schema.org/description">Users will be able to login/register with or without
+        <li itemtype="http://schema.org/ListItem" itemscope>
+          <h3 itemtype="http://schema.org/title" itemscope>Final product</h3>
+          <p itemtype="http://schema.org/description" itemscope>Users will be able to login/register with or without
             facebook(quick method).</p>
-          <p itemtype="http://schema.org/description">And the ultimate goal for this project is to develop an
+          <p itemtype="http://schema.org/description" itemscope>And the ultimate goal for this project is to develop an
             application in which the users can easily compose their own music and mix it with other songs.</p>
           <figure typeof="sa:Image">
             <img src="./mixer.png" alt="mixer-example">
@@ -284,190 +283,190 @@
 
         </li>
 
-        <li itemtype="http://schema.org/ListItem">
-          <h3 itemtype="http://schema.org/title">Project Structure</h3>
-          <h4 itemtype="http://schema.org/title">A basic flowchart of our application</h4>
+        <li itemtype="http://schema.org/ListItem" itemscope>
+          <h3 itemtype="http://schema.org/title" itemscope>Project Structure</h3>
+          <h4 itemtype="http://schema.org/title" itemscope>A basic flowchart of our application</h4>
           <figure typeof="sa:Image">
             <img src="./Flowchart.png" alt="flowchart-example">
             <figcaption>Application flowchart</figcaption>
           </figure>
-          <h4 itemtype="http://schema.org/title">Login</h4>
+          <h4 itemtype="http://schema.org/title" itemscope>Login</h4>
           <figure typeof="sa:Image">
             <img src="./Login.png" alt="login-diagram">
             <figcaption>Login diagram</figcaption>
-            <p itemtype="http://schema.org/description">Will be based on token authentication and re-seed</p>
           </figure>
-          <h4 itemtype="http://schema.org/title">Database</h4>
+          <p itemtype="http://schema.org/description" itemscope>Will be based on token authentication and re-seed</p>
+          <h4 itemtype="http://schema.org/title" itemscope>Database</h4>
           <figure typeof="sa:Image">
             <img src="./Database.png" alt="database-diagram">
             <figcaption>Database diagram</figcaption>
           </figure>
-          <p itemtype="http://schema.org/description">There will be 2 tables:</p>
+          <p itemtype="http://schema.org/description" itemscope>There will be 2 tables:</p>
           <ul>
-            <li itemtype="http://schema.org/ListItem">
+            <li itemtype="http://schema.org/ListItem" itemscope>
               Users: <span>composer, orchestra master</span>
             </li>
-            <li itemtype="http://schema.org/ListItem">
+            <li itemtype="http://schema.org/ListItem" itemscope>
               Songs: 2 possible representations (as a "song" / as notes project - unprocessed audio )
             </li>
           </ul>
-          <h4 itemtype="http://schema.org/title">UML</h4>
+          <h4 itemtype="http://schema.org/title" itemscope>UML</h4>
           <figure typeof="sa:Image">
             <img src="./UML.png" alt="uml-diagram">
             <figcaption>UML Diagram</figcaption>
           </figure>
         </li>
 
-        <li itemtype="http://schema.org/ListItem">
-          <h3 itemtype="http://schema.org/title">UML in detail</h3>
-          <h4 itemtype="http://schema.org/title">Mixer component</h4>
-          <p itemtype="http://schema.org/description"> 💨 It keeps a list of user's scores and a list of instruments
+        <li itemtype="http://schema.org/ListItem" itemscope>
+          <h3 itemtype="http://schema.org/title" itemscope>UML in detail</h3>
+          <h4 itemtype="http://schema.org/title" itemscope>Mixer component</h4>
+          <p itemtype="http://schema.org/description" itemscope> 💨 It keeps a list of user's scores and a list of instruments
             from which the user can select</p>
-          <h5 itemtype="http://schema.org/title">Methods:</h5>
+          <h5 itemtype="http://schema.org/title" itemscope>Methods:</h5>
           <ul style="list-style: none;">
-            <li itemtype="http://schema.org/ListItem" itemtype="http://schema.org/Code">✔ AddScore() ➡ extends the
+            <li itemtype="http://schema.org/ListItem" itemscope>✔ AddScore() ➡ extends the
               scores with 8 note columns</li>
-            <li itemtype="http://schema.org/ListItem" itemtype="http://schema.org/Code">✔ Play() ➡ renders current
+            <li itemtype="http://schema.org/ListItem" itemscope>✔ Play() ➡ renders current
               state of the project and plays it</li>
-            <li itemtype="http://schema.org/ListItem" itemtype="http://schema.org/Code">✔ Pause() ➡ pauses playing</li>
-            <li itemtype="http://schema.org/ListItem" itemtype="http://schema.org/Code">✔ changeBpm() ➡ changes the BPM
+            <li itemtype="http://schema.org/ListItem" itemscope>✔ Pause() ➡ pauses playing</li>
+            <li itemtype="http://schema.org/ListItem" itemscope>✔ changeBpm() ➡ changes the BPM
               for each note</li>
-            <li itemtype="http://schema.org/ListItem" itemtype="http://schema.org/Code">✔ Save(String songName, String
+            <li itemtype="http://schema.org/ListItem" itemscope>✔ Save(String songName, String
               instrumentName) ➡ saves the state of the project to the database and renders the song so that it can be
               loaded in the orchestra</li>
-            <li itemtype="http://schema.org/ListItem" itemtype="http://schema.org/Code">✔ Load(String songName) ➡ takes
+            <li itemtype="http://schema.org/ListItem" itemscope>✔ Load(String songName) ➡ takes
               the project state of the selected song from database</li>
-            <li itemtype="http://schema.org/ListItem" itemtype="http://schema.org/Code">✔ ChangeName(String name) ➡
+            <li itemtype="http://schema.org/ListItem" itemscope>✔ ChangeName(String name) ➡
               changes song name</li>
-            <li itemtype="http://schema.org/ListItem" itemtype="http://schema.org/Code">✔ ChangeInstrument(String
+            <li itemtype="http://schema.org/ListItem" itemscope>✔ ChangeInstrument(String
               instrumentName) ➡ changes the notes according to the instrument</li>
           </ul>
 
-          <h4 itemtype="http://schema.org/title">Score component</h4>
-          <p itemtype="http://schema.org/description"> 💨 Keeps a representation of each note, repeated 8 times</p>
-          <h5 itemtype="http://schema.org/title">Methods:</h5>
+          <h4 itemtype="http://schema.org/title" itemscope>Score component</h4>
+          <p itemtype="http://schema.org/description" itemscope> 💨 Keeps a representation of each note, repeated 8 times</p>
+          <h5 itemtype="http://schema.org/title" itemscope>Methods:</h5>
           <ul style="list-style: none;">
-            <li itemtype="http://schema.org/ListItem" itemtype="http://schema.org/Code">✔ Add() ➡ event firing note
+            <li itemtype="http://schema.org/ListItem" itemscope>✔ Add() ➡ event firing note
               selection</li>
-            <li itemtype="http://schema.org/ListItem" itemtype="http://schema.org/Code">✔ Remove() ➡ event firing note
+            <li itemtype="http://schema.org/ListItem" itemscope>✔ Remove() ➡ event firing note
               deselection</li>
           </ul>
 
-          <h4 itemtype="http://schema.org/title">Orchestra component</h4>
-          <p itemtype="http://schema.org/description"> 💨 It keeps a list of user selected tracks for playing together
+          <h4 itemtype="http://schema.org/title" itemscope>Orchestra component</h4>
+          <p itemtype="http://schema.org/description" itemscope> 💨 It keeps a list of user selected tracks for playing together
           </p>
-          <h5 itemtype="http://schema.org/title">Methods:</h5>
+          <h5 itemtype="http://schema.org/title" itemscope>Methods:</h5>
           <ul style="list-style: none;">
-            <li itemtype="http://schema.org/ListItem" itemtype="http://schema.org/Code">✔ AddTrack(String trackName) ➡
+            <li itemtype="http://schema.org/ListItem" itemscope>✔ AddTrack(String trackName) ➡
               adds new track to the list</li>
-            <li itemtype="http://schema.org/ListItem" itemtype="http://schema.org/Code">✔ RemoveTrack(trackName) ➡
+            <li itemtype="http://schema.org/ListItem" itemscope>✔ RemoveTrack(trackName) ➡
               removes track from the list</li>
-            <li itemtype="http://schema.org/ListItem" itemtype="http://schema.org/Code">✔ PlayAll()/PauseAll() ➡
+            <li itemtype="http://schema.org/ListItem" itemscope>✔ PlayAll()/PauseAll() ➡
               plays/pauses the orchestra (all tracks simultaneously</li>
-            <li itemtype="http://schema.org/ListItem" itemtype="http://schema.org/Code">✔
+            <li itemtype="http://schema.org/ListItem" itemscope>✔
               Play(trackName)/Pause(trackName) ➡ plays/pauses the preview of a track</li>
-            <li itemtype="http://schema.org/ListItem" itemtype="http://schema.org/Code">✔ changeBpm() ➡ changes the
+            <li itemtype="http://schema.org/ListItem" itemscope>✔ changeBpm() ➡ changes the
               volume at which the track plays</li>
-            <li itemtype="http://schema.org/ListItem" itemtype="http://schema.org/Code">✔ changeVolume(trackName) ➡
+            <li itemtype="http://schema.org/ListItem" itemscope>✔ changeVolume(trackName) ➡
               changes the volume at which the track plays</li>
-            <li itemtype="http://schema.org/ListItem" itemtype="http://schema.org/Code">✔ changeTheme(trackName) ➡
+            <li itemtype="http://schema.org/ListItem" itemscope>✔ changeTheme(trackName) ➡
               changes the theme of the application (these could be a service for the whole app)</li>
           </ul>
 
-          <h4 itemtype="http://schema.org/title">Track component</h4>
-          <p itemtype="http://schema.org/description">✔ Audio "object"/ render result after Save() from the mixer</p>
+          <h4 itemtype="http://schema.org/title" itemscope>Track component</h4>
+          <p itemtype="http://schema.org/description" itemscope>✔ Audio "object"/ render result after Save() from the mixer</p>
 
-          <h4 itemtype="http://schema.org/title">TrackList component</h4>
-          <p itemtype="http://schema.org/description"> 💨 It keeps a <b>list</b> of all available tracks from the
+          <h4 itemtype="http://schema.org/title" itemscope>TrackList component</h4>
+          <p itemtype="http://schema.org/description" itemscope> 💨 It keeps a <b>list</b> of all available tracks from the
             <b>instrument
               list</b></p>
-          <h5 itemtype="http://schema.org/title">Methods:</h5>
+          <h5 itemtype="http://schema.org/title" itemscope>Methods:</h5>
           <ul style="list-style: none;">
-            <li itemtype="http://schema.org/ListItem" itemtype="http://schema.org/Code">✔
+            <li itemtype="http://schema.org/ListItem" itemscope>✔
               ChangeInstrument(instrumentName) ➡ when the user chooses another insturment it fires an event which
               changes the list of tracks visible</li>
           </ul>
         </li>
-        <li itemtype="http://schema.org/ListItem">
-          <h3 itemtype="http://schema.org/title">Patterns used</h3>
-          <h4 itemtype="http://schema.org/title"> 👀 IIFE ➡ immediately invoked functions used for models creating</h4>
-          <p itemtype="http://schema.org/description"> Mostly, them will create our components where needed. Examples:
+        <li itemtype="http://schema.org/ListItem" itemscope>
+          <h3 itemtype="http://schema.org/title" itemscope>Patterns used</h3>
+          <h4 itemtype="http://schema.org/title" itemscope> 👀 IIFE ➡ immediately invoked functions used for models creating</h4>
+          <p itemtype="http://schema.org/description" itemscope> Mostly, them will create our components where needed. Examples:
           </p>
           <ul>
-            <li itemtype="http://schema.org/ListItem" itemtype="http://schema.org/Code">✔ createTrackList()</li>
-            <li itemtype="http://schema.org/ListItem" itemtype="http://schema.org/Code">✔ createCard()</li>
+            <li itemtype="http://schema.org/ListItem" itemscope>✔ createTrackList()</li>
+            <li itemtype="http://schema.org/ListItem" itemscope>✔ createCard()</li>
           </ul>
 
-          <h4 itemtype="http://schema.org/title"> 👀 Observer ➡ observes the modifications of tracks (new track saved,
+          <h4 itemtype="http://schema.org/title" itemscope> 👀 Observer ➡ observes the modifications of tracks (new track saved,
             existing track edited, deleting track) and notifies TrackList</h4>
-          <h4 itemtype="http://schema.org/title"> 👀 Module Pattern ➡ for Score component and any other only function
+          <h4 itemtype="http://schema.org/title" itemscope> 👀 Module Pattern ➡ for Score component and any other only function
             editable component</h4>
         </li>
-        <li itemtype="http://schema.org/ListItem">
-          <h3 itemtype="http://schema.org/title">Storage</h3>
-          <h4 itemtype="http://schema.org/title"> 👀 Cloud ➡ Microsoft Azure/ NoSQL/ AWS</h4>
-          <h4 itemtype="http://schema.org/title"> 👀 localStorage/sessionStorage ➡ keeps the state of the currently
+        <li itemtype="http://schema.org/ListItem" itemscope>
+          <h3 itemtype="http://schema.org/title" itemscope>Storage</h3>
+          <h4 itemtype="http://schema.org/title" itemscope> 👀 Cloud ➡ Microsoft Azure/ NoSQL/ AWS</h4>
+          <h4 itemtype="http://schema.org/title" itemscope> 👀 localStorage/sessionStorage ➡ keeps the state of the currently
             produced song in mixer</h4>
         </li>
       </ul>
     </section>
 
     <section>
-      <h2 itemtype="http://schema.org/title">Implementation</h2>
-      <ul itemtype="http://schema.org/List">
-        <h4 itemtype="http://schema.org/description">The application has 2 main pages:</h4>
-        <li itemtype="http://schema.org/ListItem">
-          <h3 itemtype="http://schema.org/Title">The mixer page</h3>
-          <h4 itemtype="http://schema.org/description">Implementation:</h4>
-          <h4>Chord Object</h4><span></span>
-          <h4>Note Object</h4><span></span>
-          <h4>Other functions</h4><span></span>
+      <h2 itemtype="http://schema.org/title" itemscope>Implementation</h2>
+      <h4 itemtype="http://schema.org/description" itemscope>The application has 2 main pages:</h4>
+      <h3 itemtype="http://schema.org/Title" itemscope>The mixer page</h3>
+      <h4 itemtype="http://schema.org/description" itemscope>Implementation:</h4>
+      <h4>Chord Object</h4>
+      <h4>Note Object</h4>
+      <h4>Other functions</h4>
+      <ul itemtype="http://schema.org/List" itemscope>
+        <li itemtype="http://schema.org/ListItem" itemscope>
+
           <ul>
-            <li>animate()</li><span></span>
-            <li>expand()</li><span></span>
-            <li>checkAction()</li><span></span>
-            <li>PlayMusic()</li><span></span>
-            <li>makeJson()</li><span></span>
-            <li>loadSong()</li><span></span>
-            <li>saveSong()</li><span></span>
-            <li>instrumentChange()</li><span></span>
-            <li>init()</li><span></span>
-            <li>makeMatrix()</li><span></span>
+            <li>animate()</li>
+            <li>expand()</li>
+            <li>checkAction()</li>
+            <li>PlayMusic()</li>
+            <li>makeJson()</li>
+            <li>loadSong()</li>
+            <li>saveSong()</li>
+            <li>instrumentChange()</li>
+            <li>init()</li>
+            <li>makeMatrix()</li>
           </ul>
-          <h4>Firebase</h4><span></span>
+          <h4>Firebase</h4>
         </li>
         
         <li>
-          <h3 itemtype="http://schema.org/Title">The orchestra page</h3>
-          <h4 itemtype="http://schema.org/description">Implementation:</h4>
+          <h3 itemtype="http://schema.org/Title" itemscope>The orchestra page</h3>
+          <h4 itemtype="http://schema.org/description" itemscope>Implementation:</h4>
           <h4>AudioManager Object</h4>
           <ul>
             <li>addInstrumentPartiture(instrumentName, DOMel, matrix)</li>
-            <span>after a track is dragged into a valid dropzone area, it receives a matrix of scheduled notes to play and creates corresponding number of audio elements for each track (16) by calling createAudio()</span>
-            <span></span>
-            <li>createAudio()</li><span>creates audio HTML element and a gain for it</span>
-            <li>reload()</li><span>restarts addInstrumentPartiture() for each track loaded </span>
-            <li>stopAll()</li><span>resets all intervals</span>
-            <li>playAll()</li><span>sets startedAt to Date.now() and calls play for each track</span>
-            <li>play(id)</li><span>starts interval for the selected track</span>
-            <li>resumeAll()</li><span>resumes audio context</span>
-            <li>pauseAll()</li><span>suspends audio context</span>
+            <li>after a track is dragged into a valid dropzone area, it receives a matrix of scheduled notes to play and creates corresponding number of audio elements for each track (16) by calling createAudio()</li>
+            
+            <li>createAudio()</li><li>creates audio HTML element and a gain for it</li>
+            <li>reload()</li><li>restarts addInstrumentPartiture() for each track loaded </li>
+            <li>stopAll()</li><li>resets all intervals</li>
+            <li>playAll()</li><li>sets startedAt to Date.now() and calls play for each track</li>
+            <li>play(id)</li><li>starts interval for the selected track</li>
+            <li>resumeAll()</li><li>resumes audio context</li>
+            <li>pauseAll()</li><li>suspends audio context</li>
           </ul>
           <h4>Other functions</h4>
           <ul>
-            <li>mute()</li><span>sets gain to 0 for each track</span>
-            <li>unmute()</li><span>sets gain to previous value that each track had</span>
-            <li>changeVolume()</li><span>sets gain to the value specified using the slider</span>
-            <li>changeBpm</li><span>changes frequency for setInterval</span>
+            <li>mute()</li><li>sets gain to 0 for each track</li>
+            <li>unmute()</li><li>sets gain to previous value that each track had</li>
+            <li>changeVolume()</li><li>sets gain to the value specified using the slider</li>
+            <li>changeBpm</li><li>changes frequency for setInterval</li>
           </ul>
-          <h4>Web Audio API</h4> <span>playing audio notes in mp3-base64 format</span>
-          <h4>Drag and Drop API</h4> <span>taking the partiture one track has and move along with it to the active songs area (upper part)</span>
-          <h4>Firebase</h4> <span>user logging and loading list of songs for each available instrument</span>
-          
         </li>
-        <li itemtype="http://schema.org/ListItem">
-        <h3 itemtype="http://schema.org/title">Problems:</h3>
-          <ul itemtype="http://schema.org/List">
+        <li>Web Audio API</li> <li>playing audio notes in mp3-base64 format</li>
+        <li>Drag and Drop API</li> <li>taking the partiture one track has and move along with it to the active songs area (upper part)</li>
+        <li>Firebase</li> <li>user logging and loading list of songs for each available instrument</li>
+        <li itemtype="http://schema.org/ListItem" itemscope>
+        <h3 itemtype="http://schema.org/title" itemscope>Problems:</h3>
+          <ul itemtype="http://schema.org/List" itemscope>
             <li>Midi.js library is quite old , and hasn't been updated in over 4 years so there are a lot of
               deprecated stuff in it , from loading an audiocontext immediately after load to non working
               functions</li>
@@ -488,8 +487,8 @@
 
       
 
-      <h3 itemtype="http://schema.org/description">Testing:</h3>
-      <h4 itemtype="http://schema.org/description">All test were done manually , from application responsiveness on mobile devices to composing , playing
+      <h3 itemtype="http://schema.org/description" itemscope>Testing:</h3>
+      <h4 itemtype="http://schema.org/description" itemscope>All test were done manually , from application responsiveness on mobile devices to composing , playing
           and uploading songs;</h4>
       
       <!-- <h3 itemtype="http://schema.org/title">Now the big question</h3> -->
